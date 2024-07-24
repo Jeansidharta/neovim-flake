@@ -192,6 +192,7 @@
               terraform-ls
               zk
               nil
+
               # Null ls programs
               prettierd
               stylua
@@ -201,13 +202,13 @@
             ];
 
             text = ''
-              		  # Provides a config file for prettierd
-                        export PRETTIERD_DEFAULT_CONFIG=${./prettierrc.json}
+              # Provides a config file for prettierd
+              export PRETTIERD_DEFAULT_CONFIG=${./prettierrc.json}
 
-                        nvim \
-              		    --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
-              			--cmd "let &runtimepath.=',' .. \"${plugins_runtimepath}\"" \
-              			-u ${./config-lua}/init.lua "$@"
+              nvim \
+                --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
+                --cmd "let &runtimepath.=',' .. \"${plugins_runtimepath}\"" \
+                -u ${./config-lua}/init.lua "$@"
             '';
           };
         }
