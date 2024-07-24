@@ -18,7 +18,7 @@
       flake = false;
     };
 
-	# Plugins
+    # Plugins
     neoclip = {
       url = "github:AckslD/nvim-neoclip.lua/main";
       flake = false;
@@ -136,57 +136,81 @@
   outputs =
     { self, nixpkgs, ... }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      lib = pkgs.lib;
+      # System types to support.
+      supportedSystems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
 
-      not-plugins = [ "nixpkgs" ];
-      plugins =
-        with lib.attrsets;
-        with builtins;
-        map ({ value, ... }: value) (filter ({ name, ... }: !elem name not-plugins) (attrsToList inputs));
+      # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      plugins_runtimepath = "${./config-lua}," + lib.concatMapStringsSep "," (p: p.outPath) plugins;
-      sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+      # Nixpkgs instantiated for supported system types.
+      nixpkgsFor = forAllSystems (system: nixpkgs.legacyPackages.${system});
     in
     {
-      packages.${system}.default = pkgs.writeShellApplication {
-        name = "nvim";
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsFor.${system};
+          lib = pkgs.lib;
 
-        runtimeInputs = with pkgs; [
-          neovim
+          plugins_runtimepath =
+            with lib.attrsets;
+            with builtins;
+            (
+              let
+                not-plugins = [ "nixpkgs" ];
+                plugins_attr = filterAttrs (name: _: !elem name not-plugins) inputs;
+                plugins = map (p: p.outPath) (attrValues plugins_attr);
+                plugins_with_config = plugins ++ [ "${./config-lua}" ];
+              in
+              lib.concatStringsSep "," plugins_with_config
+            );
+          sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
+        in
+        {
+          default = pkgs.writeShellApplication {
+            name = "nvim";
 
-          # Language servers
-          lua-language-server
-          gleam
-          zls
-          nodePackages_latest.typescript-language-server
-          nodePackages_latest.bash-language-server
-          vscode-langservers-extracted
-          nginx-language-server
-          sqls
-          marksman
-          svelte-language-server
-          terraform-ls
-          zk
-          nil
-          # Null ls programs
-          prettierd
-          stylua
-          leptosfmt
-          selene
-          nixfmt-rfc-style
-        ];
+            runtimeInputs = with pkgs; [
+              neovim
 
-        text = ''
-          		  # Provides a config file for prettierd
-                    export PRETTIERD_DEFAULT_CONFIG=${./prettierrc.json}
+              # Language servers
+              lua-language-server
+              gleam
+              zls
+              nodePackages_latest.typescript-language-server
+              nodePackages_latest.bash-language-server
+              vscode-langservers-extracted
+              nginx-language-server
+              sqls
+              marksman
+              svelte-language-server
+              terraform-ls
+              zk
+              nil
+              # Null ls programs
+              prettierd
+              stylua
+              leptosfmt
+              selene
+              nixfmt-rfc-style
+            ];
 
-                    nvim \
-          		    --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
-          			--cmd "let &runtimepath.=',' .. \"${plugins_runtimepath}\"" \
-          			-u ${./config-lua}/init.lua "$@"
-        '';
-      };
+            text = ''
+              		  # Provides a config file for prettierd
+                        export PRETTIERD_DEFAULT_CONFIG=${./prettierrc.json}
+
+                        nvim \
+              		    --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
+              			--cmd "let &runtimepath.=',' .. \"${plugins_runtimepath}\"" \
+              			-u ${./config-lua}/init.lua "$@"
+            '';
+          };
+        }
+      );
     };
 }
