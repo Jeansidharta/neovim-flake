@@ -103,8 +103,8 @@
       url = "github:nvimtools/none-ls.nvim/main";
       flake = false;
     };
-    nvim-cmp = {
-      url = "github:hrsh7th/nvim-cmp/main";
+    mini-completion = {
+      url = "github:echasnovski/mini.completion/main";
       flake = false;
     };
     nvim-lspconfig = {
@@ -178,6 +178,9 @@
             runtimeInputs = with pkgs; [
               neovim
 
+			  # Tools
+			  ripgrep
+
               # Language servers
               lua-language-server
               gleam
@@ -199,11 +202,15 @@
               leptosfmt
               selene
               nixfmt-rfc-style
+
+              # For treesitter
+			  gcc
             ];
 
             text = ''
               # Provides a config file for prettierd
               export PRETTIERD_DEFAULT_CONFIG=${./prettierrc.json}
+              export TREESITTER_INSTALL_DIR=~/.local/state/treesitter
 
               nvim \
                 --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \

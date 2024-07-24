@@ -17,6 +17,108 @@
         "type": "github"
       }
     },
+    "cmp-buffer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660101488,
+        "narHash": "sha256-dG4U7MtnXThoa/PD+qFtCt76MQ14V1wX8GMYcvxEnbM=",
+        "owner": "hrsh7th",
+        "repo": "cmp-buffer",
+        "rev": "3022dbc9166796b644a841a02de8dd1cc1d311fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "ref": "main",
+        "repo": "cmp-buffer",
+        "type": "github"
+      }
+    },
+    "cmp-cmdline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711081050,
+        "narHash": "sha256-iBmXp+gUSMbgfkv7c7RDQAwPq02e07wEnBETP0dWBOo=",
+        "owner": "hrsh7th",
+        "repo": "cmp-cmdline",
+        "rev": "d250c63aa13ead745e3a40f61fdd3470efde3923",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "ref": "main",
+        "repo": "cmp-cmdline",
+        "type": "github"
+      }
+    },
+    "cmp-luasnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696878902,
+        "narHash": "sha256-nUJJl2zyK/oSwz5RzI9j3gf9zpDfCImCYbPbVsyXgz8=",
+        "owner": "saadparwaiz1",
+        "repo": "cmp_luasnip",
+        "rev": "05a9ab28b53f71d1aece421ef32fee2cb857a843",
+        "type": "github"
+      },
+      "original": {
+        "owner": "saadparwaiz1",
+        "ref": "master",
+        "repo": "cmp_luasnip",
+        "type": "github"
+      }
+    },
+    "cmp-nvim-lsp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715931395,
+        "narHash": "sha256-CT1+Z4XJBVsl/RqvJeGmyitD6x7So0ylXvvef5jh7I8=",
+        "owner": "hrsh7th",
+        "repo": "cmp-nvim-lsp",
+        "rev": "39e2eda76828d88b773cc27a3f61d2ad782c922d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "ref": "main",
+        "repo": "cmp-nvim-lsp",
+        "type": "github"
+      }
+    },
+    "cmp-nvim-lua": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1681458603,
+        "narHash": "sha256-6eXOK1mVK06TN1akhN42Bo4wQpeen3rk3b/m7iVmGKM=",
+        "owner": "hrsh7th",
+        "repo": "cmp-nvim-lua",
+        "rev": "f12408bdb54c39c23e67cab726264c10db33ada8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "ref": "main",
+        "repo": "cmp-nvim-lua",
+        "type": "github"
+      }
+    },
+    "cmp-path": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664784283,
+        "narHash": "sha256-thppiiV3wjIaZnAXmsh7j3DUc6ceSCvGzviwFUnoPaI=",
+        "owner": "hrsh7th",
+        "repo": "cmp-path",
+        "rev": "91ff86cd9c29299a64f968ebb45846c485725f23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "ref": "main",
+        "repo": "cmp-path",
+        "type": "github"
+      }
+    },
     "deferred-clipboard": {
       "flake": false,
       "locked": {
@@ -238,6 +340,23 @@
         "type": "github"
       }
     },
+    "mini-completion": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1719822501,
+        "narHash": "sha256-7XtXvE1m4USDO9uHd1fBC6Y1Xn2zSfQ4k52vURaU+cs=",
+        "owner": "echasnovski",
+        "repo": "mini.completion",
+        "rev": "f59f187443cc26371d82a59d4e7490dd028e03c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "echasnovski",
+        "ref": "main",
+        "repo": "mini.completion",
+        "type": "github"
+      }
+    },
     "neoclip": {
       "flake": false,
       "locked": {
@@ -410,6 +529,12 @@
     "root": {
       "inputs": {
         "bufjump": "bufjump",
+        "cmp-buffer": "cmp-buffer",
+        "cmp-cmdline": "cmp-cmdline",
+        "cmp-luasnip": "cmp-luasnip",
+        "cmp-nvim-lsp": "cmp-nvim-lsp",
+        "cmp-nvim-lua": "cmp-nvim-lua",
+        "cmp-path": "cmp-path",
         "deferred-clipboard": "deferred-clipboard",
         "dressing": "dressing",
         "fidget": "fidget",
@@ -423,6 +548,7 @@
         "lualine": "lualine",
         "luasnip": "luasnip",
         "mdeval": "mdeval",
+        "mini-completion": "mini-completion",
         "neoclip": "neoclip",
         "nixpkgs": "nixpkgs",
         "none-ls": "none-ls",
