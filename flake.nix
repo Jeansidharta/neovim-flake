@@ -195,6 +195,7 @@
               terraform-ls
               zk
               nil
+			  rust-analyzer
 
               # Null ls programs
               prettierd
