@@ -61,3 +61,5 @@ require("bufjump").setup({
 require("fidget").setup({})
 
 require("dressing").setup({})
+
+require("overseer").setup();
