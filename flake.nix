@@ -135,6 +135,10 @@
       url = "github:eraserhd/parinfer-rust/master";
       flake = false;
     };
+    guess-indent = {
+      url = "github:NMAC427/guess-indent.nvim/main";
+      flake = false;
+    };
   };
 
   outputs =
@@ -162,7 +166,7 @@
           lib = pkgs.lib;
 
           # This plugin needs to be built before being used. Thankfully, it already has
-		  # a derivation in its repo. We just have to import it and call it.
+          # a derivation in its repo. We just have to import it and call it.
           parinfer = pkgs.callPackage (import "${inputs.parinfer-rust}/derivation.nix") { };
 
           plugins_runtimepath =
@@ -180,7 +184,7 @@
               in
               lib.concatStringsSep "," plugins_with_config
             )
-			# Parinfer is a regular vimscript plugin
+            # Parinfer is a regular vimscript plugin
             + ",${parinfer}/share/vim-plugins/parinfer-rust";
           sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
         in

@@ -63,3 +63,5 @@ require("fidget").setup({})
 require("dressing").setup({})
 
 require("overseer").setup();
+
+require('guess-indent').setup {}
