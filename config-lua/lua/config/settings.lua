@@ -57,7 +57,7 @@ vim.o.infercase = true
 
 ------------ Tab size config ----------
 vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.o.shiftwidth = 0
 
 ------------ Timeout ----------
 vim.o.timeout = false

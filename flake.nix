@@ -131,6 +131,10 @@
       url = "github:chrisgrieser/nvim-various-textobjs/main";
       flake = false;
     };
+    parinfer-rust = {
+      url = "github:eraserhd/parinfer-rust/master";
+      flake = false;
+    };
   };
 
   outputs =
@@ -157,18 +161,27 @@
           pkgs = nixpkgsFor.${system};
           lib = pkgs.lib;
 
+          # This plugin needs to be built before being used. Thankfully, it already has
+		  # a derivation in its repo. We just have to import it and call it.
+          parinfer = pkgs.callPackage (import "${inputs.parinfer-rust}/derivation.nix") { };
+
           plugins_runtimepath =
             with lib.attrsets;
             with builtins;
             (
               let
-                not-plugins = [ "nixpkgs" ];
+                not-plugins = [
+                  "nixpkgs"
+                  "parinfer-rust"
+                ];
                 plugins_attr = filterAttrs (name: _: !elem name not-plugins) inputs;
                 plugins = map (p: p.outPath) (attrValues plugins_attr);
                 plugins_with_config = plugins ++ [ "${./config-lua}" ];
               in
               lib.concatStringsSep "," plugins_with_config
-            );
+            )
+			# Parinfer is a regular vimscript plugin
+            + ",${parinfer}/share/vim-plugins/parinfer-rust";
           sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
         in
         {
@@ -178,8 +191,8 @@
             runtimeInputs = with pkgs; [
               neovim
 
-			  # Tools
-			  ripgrep
+              # Tools
+              ripgrep
 
               # Language servers
               lua-language-server
@@ -195,7 +208,7 @@
               terraform-ls
               zk
               nil
-			  rust-analyzer
+              rust-analyzer
 
               # Null ls programs
               prettierd
@@ -205,12 +218,15 @@
               nixfmt-rfc-style
 
               # For treesitter
-			  gcc
+              gcc
             ];
 
-            text = ''
+            runtimeEnv = {
               # Provides a config file for prettierd
-              export PRETTIERD_DEFAULT_CONFIG=${./prettierrc.json}
+              PRETTIERD_DEFAULT_CONFIG = ./prettierrc.json;
+            };
+
+            text = ''
               export TREESITTER_INSTALL_DIR=~/.local/state/treesitter
 
               nvim \
