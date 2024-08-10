@@ -6,41 +6,41 @@
 
     # Libraries
     plenary = {
-      url = "github:nvim-lua/plenary.nvim/master";
+      url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
     sqlite = {
-      url = "github:kkharji/sqlite.lua/master";
+      url = "github:kkharji/sqlite.lua";
       flake = false;
     };
     git-magnum = {
-      url = "github:glts/vim-magnum/master";
+      url = "github:glts/vim-magnum";
       flake = false;
     };
 
     # Plugins
     neoclip = {
-      url = "github:AckslD/nvim-neoclip.lua/main";
+      url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
     tokyodark = {
-      url = "github:jeansidharta/tokyodark.nvim/master";
+      url = "github:jeansidharta/tokyodark.nvim";
       flake = false;
     };
     telescope = {
-      url = "github:nvim-telescope/telescope.nvim/master";
+      url = "github:nvim-telescope/telescope.nvim";
       flake = false;
     };
     nvim-notify = {
-      url = "github:rcarriga/nvim-notify/master";
+      url = "github:rcarriga/nvim-notify";
       flake = false;
     };
     git-conflict = {
-      url = "github:akinsho/git-conflict.nvim/main";
+      url = "github:akinsho/git-conflict.nvim";
       flake = false;
     };
     git-radical = {
-      url = "github:glts/vim-radical/master";
+      url = "github:glts/vim-radical";
       flake = false;
     };
     lsp-lines = {
@@ -48,95 +48,95 @@
       flake = false;
     };
     deferred-clipboard = {
-      url = "github:EtiamNullam/deferred-clipboard.nvim/master";
+      url = "github:EtiamNullam/deferred-clipboard.nvim";
       flake = false;
     };
     oil = {
-      url = "github:stevearc/oil.nvim/master";
+      url = "github:stevearc/oil.nvim";
       flake = false;
     };
     substitute = {
-      url = "github:gbprod/substitute.nvim/main";
+      url = "github:gbprod/substitute.nvim";
       flake = false;
     };
     bufjump = {
-      url = "github:kwkarlwang/bufjump.nvim/master";
+      url = "github:kwkarlwang/bufjump.nvim";
       flake = false;
     };
     fidget = {
-      url = "github:j-hui/fidget.nvim/main";
+      url = "github:j-hui/fidget.nvim";
       flake = false;
     };
     smart-splits = {
-      url = "github:mrjones2014/smart-splits.nvim/master";
+      url = "github:mrjones2014/smart-splits.nvim";
       flake = false;
     };
     dressing = {
-      url = "github:stevearc/dressing.nvim/master";
+      url = "github:stevearc/dressing.nvim";
       flake = false;
     };
     git-signs = {
-      url = "github:lewis6991/gitsigns.nvim/main";
+      url = "github:lewis6991/gitsigns.nvim";
       flake = false;
     };
     hover = {
-      url = "github:lewis6991/hover.nvim/main";
+      url = "github:lewis6991/hover.nvim";
       flake = false;
     };
     indent-blankline = {
-      url = "github:lukas-reineke/indent-blankline.nvim/master";
+      url = "github:lukas-reineke/indent-blankline.nvim";
       flake = false;
     };
     lualine = {
-      url = "github:nvim-lualine/lualine.nvim/master";
+      url = "github:nvim-lualine/lualine.nvim";
       flake = false;
     };
     luasnip = {
-      url = "github:L3MON4D3/LuaSnip/master";
+      url = "github:L3MON4D3/LuaSnip";
       flake = false;
     };
     mdeval = {
-      url = "github:jubnzv/mdeval.nvim/master";
+      url = "github:jubnzv/mdeval.nvim";
       flake = false;
     };
     none-ls = {
-      url = "github:nvimtools/none-ls.nvim/main";
+      url = "github:nvimtools/none-ls.nvim";
       flake = false;
     };
     mini-completion = {
-      url = "github:echasnovski/mini.completion/main";
+      url = "github:echasnovski/mini.completion";
       flake = false;
     };
     nvim-lspconfig = {
-      url = "github:neovim/nvim-lspconfig/master";
+      url = "github:neovim/nvim-lspconfig";
       flake = false;
     };
     overseer = {
-      url = "github:stevearc/overseer.nvim/master";
+      url = "github:stevearc/overseer.nvim";
       flake = false;
     };
     status-col = {
-      url = "github:luukvbaal/statuscol.nvim/main";
+      url = "github:luukvbaal/statuscol.nvim";
       flake = false;
     };
     treesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter/master";
+      url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
     };
     nvim-illuminate = {
-      url = "github:RRethy/vim-illuminate/master";
+      url = "github:RRethy/vim-illuminate";
       flake = false;
     };
     various-textobjs = {
-      url = "github:chrisgrieser/nvim-various-textobjs/main";
+      url = "github:chrisgrieser/nvim-various-textobjs";
       flake = false;
     };
     parinfer-rust = {
-      url = "github:eraserhd/parinfer-rust/master";
+      url = "github:eraserhd/parinfer-rust";
       flake = false;
     };
     guess-indent = {
-      url = "github:NMAC427/guess-indent.nvim/main";
+      url = "github:NMAC427/guess-indent.nvim";
       flake = false;
     };
   };

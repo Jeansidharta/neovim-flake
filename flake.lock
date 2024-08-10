@@ -12,7 +12,6 @@
       },
       "original": {
         "owner": "kwkarlwang",
-        "ref": "master",
         "repo": "bufjump.nvim",
         "type": "github"
       }
@@ -29,7 +28,6 @@
       },
       "original": {
         "owner": "EtiamNullam",
-        "ref": "master",
         "repo": "deferred-clipboard.nvim",
         "type": "github"
       }
@@ -46,7 +44,6 @@
       },
       "original": {
         "owner": "stevearc",
-        "ref": "master",
         "repo": "dressing.nvim",
         "type": "github"
       }
@@ -63,7 +60,6 @@
       },
       "original": {
         "owner": "j-hui",
-        "ref": "main",
         "repo": "fidget.nvim",
         "type": "github"
       }
@@ -80,7 +76,6 @@
       },
       "original": {
         "owner": "akinsho",
-        "ref": "main",
         "repo": "git-conflict.nvim",
         "type": "github"
       }
@@ -97,7 +92,6 @@
       },
       "original": {
         "owner": "glts",
-        "ref": "master",
         "repo": "vim-magnum",
         "type": "github"
       }
@@ -114,7 +108,6 @@
       },
       "original": {
         "owner": "glts",
-        "ref": "master",
         "repo": "vim-radical",
         "type": "github"
       }
@@ -131,7 +124,6 @@
       },
       "original": {
         "owner": "lewis6991",
-        "ref": "main",
         "repo": "gitsigns.nvim",
         "type": "github"
       }
@@ -148,7 +140,6 @@
       },
       "original": {
         "owner": "NMAC427",
-        "ref": "main",
         "repo": "guess-indent.nvim",
         "type": "github"
       }
@@ -165,7 +156,6 @@
       },
       "original": {
         "owner": "lewis6991",
-        "ref": "main",
         "repo": "hover.nvim",
         "type": "github"
       }
@@ -182,7 +172,6 @@
       },
       "original": {
         "owner": "lukas-reineke",
-        "ref": "master",
         "repo": "indent-blankline.nvim",
         "type": "github"
       }
@@ -216,7 +205,6 @@
       },
       "original": {
         "owner": "nvim-lualine",
-        "ref": "master",
         "repo": "lualine.nvim",
         "type": "github"
       }
@@ -233,7 +221,6 @@
       },
       "original": {
         "owner": "L3MON4D3",
-        "ref": "master",
         "repo": "LuaSnip",
         "type": "github"
       }
@@ -250,7 +237,6 @@
       },
       "original": {
         "owner": "jubnzv",
-        "ref": "master",
         "repo": "mdeval.nvim",
         "type": "github"
       }
@@ -267,7 +253,6 @@
       },
       "original": {
         "owner": "echasnovski",
-        "ref": "main",
         "repo": "mini.completion",
         "type": "github"
       }
@@ -284,7 +269,6 @@
       },
       "original": {
         "owner": "AckslD",
-        "ref": "main",
         "repo": "nvim-neoclip.lua",
         "type": "github"
       }
@@ -317,7 +301,6 @@
       },
       "original": {
         "owner": "nvimtools",
-        "ref": "main",
         "repo": "none-ls.nvim",
         "type": "github"
       }
@@ -334,7 +317,6 @@
       },
       "original": {
         "owner": "RRethy",
-        "ref": "master",
         "repo": "vim-illuminate",
         "type": "github"
       }
@@ -351,7 +333,6 @@
       },
       "original": {
         "owner": "neovim",
-        "ref": "master",
         "repo": "nvim-lspconfig",
         "type": "github"
       }
@@ -368,7 +349,6 @@
       },
       "original": {
         "owner": "rcarriga",
-        "ref": "master",
         "repo": "nvim-notify",
         "type": "github"
       }
@@ -385,7 +365,6 @@
       },
       "original": {
         "owner": "stevearc",
-        "ref": "master",
         "repo": "oil.nvim",
         "type": "github"
       }
@@ -402,7 +381,6 @@
       },
       "original": {
         "owner": "stevearc",
-        "ref": "master",
         "repo": "overseer.nvim",
         "type": "github"
       }
@@ -419,7 +397,6 @@
       },
       "original": {
         "owner": "eraserhd",
-        "ref": "master",
         "repo": "parinfer-rust",
         "type": "github"
       }
@@ -436,7 +413,6 @@
       },
       "original": {
         "owner": "nvim-lua",
-        "ref": "master",
         "repo": "plenary.nvim",
         "type": "github"
       }
@@ -491,7 +467,6 @@
       },
       "original": {
         "owner": "mrjones2014",
-        "ref": "master",
         "repo": "smart-splits.nvim",
         "type": "github"
       }
@@ -508,7 +483,6 @@
       },
       "original": {
         "owner": "kkharji",
-        "ref": "master",
         "repo": "sqlite.lua",
         "type": "github"
       }
@@ -525,7 +499,6 @@
       },
       "original": {
         "owner": "luukvbaal",
-        "ref": "main",
         "repo": "statuscol.nvim",
         "type": "github"
       }
@@ -542,7 +515,6 @@
       },
       "original": {
         "owner": "gbprod",
-        "ref": "main",
         "repo": "substitute.nvim",
         "type": "github"
       }
@@ -559,7 +531,6 @@
       },
       "original": {
         "owner": "nvim-telescope",
-        "ref": "master",
         "repo": "telescope.nvim",
         "type": "github"
       }
@@ -576,7 +547,6 @@
       },
       "original": {
         "owner": "jeansidharta",
-        "ref": "master",
         "repo": "tokyodark.nvim",
         "type": "github"
       }
@@ -593,7 +563,6 @@
       },
       "original": {
         "owner": "nvim-treesitter",
-        "ref": "master",
         "repo": "nvim-treesitter",
         "type": "github"
       }
@@ -610,7 +579,6 @@
       },
       "original": {
         "owner": "chrisgrieser",
-        "ref": "main",
         "repo": "nvim-various-textobjs",
         "type": "github"
       }
