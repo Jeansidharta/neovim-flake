@@ -138,7 +138,6 @@ for _, key in pairs({ "<Down>", "<Up>", "j", "k" }) do
 	end, { expr = true })
 end
 
-
 ---------------------------------------------------
 
 local custom_sql_group = vim.api.nvim_create_augroup("custom_sql", { clear = true })
@@ -171,5 +170,5 @@ vim.api.nvim_create_autocmd("filetype", {
 			remap = false,
 			buffer = buf,
 		})
-	end
+	end,
 })

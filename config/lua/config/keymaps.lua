@@ -297,7 +297,7 @@ vim.api.nvim_create_autocmd("Filetype", {
 			local filepath = vim.fn.expand("%:p")
 			local filename = vim.fn.expand("%:t")
 			local task =
-				require("overseer").new_task({ cmd = "openscad", args = { filepath }, name = "OpenSCAD " .. filename })
+					require("overseer").new_task({ cmd = "openscad", args = { filepath }, name = "OpenSCAD " .. filename })
 			require("overseer").run_action(task, "start")
 		end)
 	end,

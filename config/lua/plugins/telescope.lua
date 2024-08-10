@@ -71,5 +71,10 @@ require("config.utils").keymaps({
 	{ "<leader>twt", ":Telescope live_grep<CR>",                      desc = "Open live grep" },
 	{ "<leader>th",  ":Telescope help_tags<CR>",                      desc = "Open help window" },
 	{ "<leader>tp",  require("telescope.builtin").resume,             desc = "Resume last picker" },
-	{ "<leader>tr",  ":Telescope lsp_references<CR>",                 noremap = true,                            desc = "Open LSP references" },
+	{
+		"<leader>tr",
+		":Telescope lsp_references<CR>",
+		noremap = true,
+		desc = "Open LSP references",
+	},
 })

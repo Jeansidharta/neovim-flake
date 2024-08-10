@@ -120,20 +120,20 @@ local function tbl_find(f, l)
 	return nil
 end
 
-local function keymap (opts)
-		local mode = opts.mode or { "n" };
-		local lhs = opts[1];
-		local rhs = opts[2];
-		local noremap = opts.noremap or true;
-		local silent = opts.silent or true;
-		local desc = opts.desc;
-    vim.keymap.set(mode, lhs, rhs, { noremap = noremap, silent = silent, desc = desc})
+local function keymap(opts)
+	local mode = opts.mode or { "n" }
+	local lhs = opts[1]
+	local rhs = opts[2]
+	local noremap = opts.noremap or true
+	local silent = opts.silent or true
+	local desc = opts.desc
+	vim.keymap.set(mode, lhs, rhs, { noremap = noremap, silent = silent, desc = desc })
 end
 
-local function keymaps (optsArr)
-		for _,opt in pairs(optsArr) do
-				keymap(opt)
-		end
+local function keymaps(optsArr)
+	for _, opt in pairs(optsArr) do
+		keymap(opt)
+	end
 end
 
 return {
