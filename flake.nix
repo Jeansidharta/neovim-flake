@@ -180,7 +180,7 @@
                 ];
                 plugins_attr = filterAttrs (name: _: !elem name not-plugins) inputs;
                 plugins = map (p: p.outPath) (attrValues plugins_attr);
-                plugins_with_config = plugins ++ [ "${./config-lua}" ];
+                plugins_with_config = plugins ++ [ "${./config}" ];
               in
               lib.concatStringsSep "," plugins_with_config
             )
@@ -236,7 +236,7 @@
               nvim \
                 --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
                 --cmd "let &runtimepath.=',' .. \"${plugins_runtimepath}\"" \
-                -u ${./config-lua}/init.lua "$@"
+                -u ${./config}/init.lua "$@"
             '';
           };
         }
