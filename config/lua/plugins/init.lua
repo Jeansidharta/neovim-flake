@@ -26,7 +26,8 @@ require("various-textobjs").setup({
 -- Setup vim-notify
 require("telescope").load_extension("notify")
 require("notify").setup({ background_colour = "#000000" })
-vim.notify = require("notify")
+-- The schedule_wrap is due to https://github.com/rcarriga/nvim-notify/issues/205
+vim.notify = vim.schedule_wrap(require("notify"))
 
 -- Lsp lines
 require("lsp_lines").setup({})
