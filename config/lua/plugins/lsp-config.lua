@@ -31,7 +31,14 @@ require("lspconfig").terraformls.setup({})
 require("lspconfig").zk.setup({})
 require("lspconfig").nil_ls.setup({})
 require("lspconfig").rust_analyzer.setup({})
-require("lspconfig").zls.setup({})
+require("lspconfig").zls.setup({
+	settings = {
+		-- zls = {
+			enable_build_on_save = true,
+			enable_autofix = false,
+		-- },
+	},
+})
 
 require("lspconfig").openscad_ls.setup({
 	cmd = {
