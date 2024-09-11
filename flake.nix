@@ -220,6 +220,7 @@
               leptosfmt
               selene
               nixfmt-rfc-style
+              eslint
 
               # For treesitter
               gcc
