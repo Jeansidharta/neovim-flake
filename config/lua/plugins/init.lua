@@ -66,3 +66,6 @@ require("dressing").setup({})
 require("overseer").setup()
 
 require("guess-indent").setup({})
+
+require("snipe").setup({})
+vim.keymap.set("n", "gb", snipe.open_buffer_menu())

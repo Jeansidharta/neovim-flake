@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr) end
 
+require("lspconfig").ts_ls.setup({})
 require("lspconfig").lua_ls.setup({})
 require("lspconfig").bashls.setup({})
 require("lspconfig").cssls.setup({})
@@ -34,16 +35,15 @@ require("lspconfig").rust_analyzer.setup({})
 require("lspconfig").zls.setup({
 	settings = {
 		-- zls = {
-			enable_build_on_save = true,
-			enable_autofix = false,
+		enable_build_on_save = true,
+		enable_autofix = false,
 		-- },
 	},
 })
 
 require("lspconfig").openscad_ls.setup({
 	cmd = {
-		"/home/sidharta/projects/git/openscad-LSP/target/release/openscad-lsp",
+		"openscad-lsp",
 		"--stdio",
-		"--fmt-exe",
 	},
 })

@@ -139,10 +139,25 @@
       url = "github:NMAC427/guess-indent.nvim";
       flake = false;
     };
+    snipe = {
+      url = "github:leath-dub/snipe.nvim";
+      flake = false;
+    };
+
+    # LSPs
+    openscad-lsp = {
+      url = "github:Leathong/openscad-LSP";
+      flake = false;
+    };
+    zls.url = "github:zigtools/zls";
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      ...
+    }@inputs:
     let
       # System types to support.
       supportedSystems = [
@@ -169,6 +184,8 @@
           # a derivation in its repo. We just have to import it and call it.
           parinfer = pkgs.callPackage (import "${inputs.parinfer-rust}/derivation.nix") { };
 
+          zls-master = inputs.zls.outputs.packages.${system}.default;
+
           plugins_runtimepath =
             with lib.attrsets;
             with builtins;
@@ -176,6 +193,8 @@
               let
                 not-plugins = [
                   "nixpkgs"
+                  "zls"
+                  "openscad-lsp"
                   "parinfer-rust"
                 ];
                 plugins_attr = filterAttrs (name: _: !elem name not-plugins) inputs;
@@ -201,7 +220,7 @@
               # Language servers
               lua-language-server
               gleam
-              zls
+              zls-master
               nodePackages_latest.typescript-language-server
               nodePackages_latest.bash-language-server
               vscode-langservers-extracted
@@ -213,6 +232,29 @@
               zk
               nil
               rust-analyzer
+              clang-tools
+              (pkgs.callPackage (
+                {
+                  lib,
+                  rustPlatform,
+                }:
+
+                rustPlatform.buildRustPackage {
+                  pname = "openscad-lsp";
+                  version = "1.2.5";
+                  src = inputs.openscad-lsp;
+                  cargoHash = "sha256-JaX/BokVeHcD/38zbUFYucAqpASSxV9gvvjYvjX7xdA=";
+                  # no tests exist
+                  doCheck = false;
+
+                  meta = with lib; {
+                    description = "A LSP (Language Server Protocol) server for OpenSCAD";
+                    mainProgram = "openscad-lsp";
+                    homepage = "https://github.com/Leathong/openscad-LSP";
+                    license = licenses.asl20;
+                  };
+                }
+              ) { })
 
               # Null ls programs
               prettierd
