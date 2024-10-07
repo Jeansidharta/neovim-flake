@@ -67,5 +67,8 @@ require("overseer").setup()
 
 require("guess-indent").setup({})
 
-require("snipe").setup({})
-vim.keymap.set("n", "gb", snipe.open_buffer_menu())
+local snipe = require("snipe")
+snipe.setup()
+vim.keymap.set("n", "gb", function()
+	snipe.open_buffer_menu()
+end)
