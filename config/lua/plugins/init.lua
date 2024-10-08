@@ -1,6 +1,6 @@
 require("plugins.telescope")
 require("plugins.smart-splits")
-require("plugins.mini-completion")
+require("plugins.blink")
 require("plugins.lsp-config")
 require("plugins.git-signs")
 require("plugins.hover")
@@ -12,6 +12,7 @@ require("plugins.statuscol")
 require("plugins.treesitter")
 require("plugins.vim-illuminate")
 require("plugins.neoclip")
+require("plugins.snipe")
 
 -- Set colorscheme
 vim.g.tokyodark_transparent_background = true
@@ -66,9 +67,3 @@ require("dressing").setup({})
 require("overseer").setup()
 
 require("guess-indent").setup({})
-
-local snipe = require("snipe")
-snipe.setup()
-vim.keymap.set("n", "gb", function()
-	snipe.open_buffer_menu()
-end)

@@ -103,9 +103,8 @@
       url = "github:nvimtools/none-ls.nvim";
       flake = false;
     };
-    mini-completion = {
-      url = "github:echasnovski/mini.completion";
-      flake = false;
+    blink = {
+      url = "github:Saghen/blink.cmp";
     };
     nvim-lspconfig = {
       url = "github:neovim/nvim-lspconfig";
@@ -180,10 +179,10 @@
           pkgs = nixpkgsFor.${system};
           lib = pkgs.lib;
 
-          # This plugin needs to be built before being used. Thankfully, it already has
-          # a derivation in its repo. We just have to import it and call it.
+          # These plugins need to be built before being used.
           parinfer = pkgs.callPackage (import "${inputs.parinfer-rust}/derivation.nix") { };
-
+          blink = inputs.blink.outputs.packages.${system}.default;
+          # The master version of the Zig Language Server
           zls-master = inputs.zls.outputs.packages.${system}.default;
 
           plugins_runtimepath =
@@ -195,7 +194,9 @@
                   "nixpkgs"
                   "zls"
                   "openscad-lsp"
+                  # We are building these ourselves. Remove from automatic inclusion
                   "parinfer-rust"
+                  "blink"
                 ];
                 plugins_attr = filterAttrs (name: _: !elem name not-plugins) inputs;
                 plugins = map (p: p.outPath) (attrValues plugins_attr);
@@ -203,8 +204,9 @@
               in
               lib.concatStringsSep "," plugins_with_config
             )
-            # Parinfer is a regular vimscript plugin
-            + ",${parinfer}/share/vim-plugins/parinfer-rust";
+            # These we had to build before adding
+            + ",${parinfer}/share/vim-plugins/parinfer-rust"
+            + ",${blink}";
           sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
         in
         {
