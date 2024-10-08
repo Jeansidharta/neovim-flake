@@ -28,17 +28,17 @@ vim.api.nvim_create_autocmd("Filetype", {
 	callback = function(_ev)
 		local project_root = require("config.utils").find_project_root()
 		if not project_root then
-			vim.print("Project root not found")
+			-- vim.print("Project root not found")
 			return
 		end
-		vim.print("Project root is " .. project_root)
+		-- vim.print("Project root is " .. project_root)
 
 		local database_path = vim.fs.find(function(name)
 			return name:match(".sqlite3$")
 		end, { path = project_root })[1]
 
 		if not database_path then
-			vim.print("No database found")
+			-- vim.print("No database found")
 			return
 		end
 

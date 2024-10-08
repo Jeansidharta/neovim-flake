@@ -81,24 +81,6 @@ vim.o.equalalways = false
 --Makes so some plugins work better
 vim.o.updatetime = 300
 
-local file_type_tab_stop_setter_group = vim.api.nvim_create_augroup("FileTypeTabStopSetter", { clear = true })
-
-vim.api.nvim_create_autocmd("filetype", {
-	pattern = { "javascript", "vue", "lua" },
-	group = file_type_tab_stop_setter_group,
-	callback = function()
-		vim.bo.tabstop = 2
-	end,
-})
-
-vim.api.nvim_create_autocmd("filetype", {
-	pattern = { "rust", "json", "html" },
-	group = file_type_tab_stop_setter_group,
-	callback = function()
-		vim.bo.tabstop = 4
-	end,
-})
-
 local random_commands_group = vim.api.nvim_create_augroup("RandomCommands", { clear = true })
 
 vim.api.nvim_create_autocmd("filetype", {
@@ -110,22 +92,6 @@ vim.api.nvim_create_autocmd("filetype", {
 		end)
 	end,
 })
-
--- vim.api.nvim_create_user_command("CustomNextObject", function(args)
--- 	print(vim.inspect(args))
--- end, { force = true, nargs = 1 })
---
--- vim.cmd([[
--- function! CustomNextObject(arg)
--- 		execute "CustomNextObject" a:arg
--- endfunction
--- ]])
---
--- local function next_object()
--- 	vim.o.opfunc = "CustomNextObject"
--- 	return "g@"
--- end
--- vim.keymap.set({ "n", "v" }, "gt", next_object, { expr = true })
 
 local max_distance = 3
 
