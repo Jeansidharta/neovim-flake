@@ -1,3 +1,13 @@
+# Keymaps
+
+This file is supposed to contain all of the user's keybinds. This is so it's
+easy to find or grep for a keybind.
+
+## Misc actions
+
+Some actions that are at some point attached to a keybind.
+
+```lua
 local utils = require("config.utils")
 
 local function clear_notifications()
@@ -112,34 +122,55 @@ local function show_next_diagnostic()
 	end
 end
 
+```
+
+## Actual keymaps
+
+### Misc
+
+```lua
 utils.keymaps({
 	{ "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
 	{ "<leader>l",        ":messages<CR>",                  desc = "Show messages" },
 	{ "<leader>n",        clear_notifications,              desc = "Clear all notifications" },
 	{ "<S-Tab>",          ":lua vim.lsp.buf.format()<CR>",  desc = "Format buffer" },
+```
 
-	------------------ Splits --------------------
+### Splits
+
+```lua
 	{ "<leader>s<Up>",    ":split<CR><c-w>k<CR>",           desc = "Split up" },
 	{ "<leader>s<Down>",  ":split<CR>",                     desc = "Split down" },
 	{ "<leader>s<Left>",  ":vsplit<CR><c-w>h<CR>",          desc = "Split left" },
 	{ "<leader>s<Right>", ":vsplit<CR>",                    desc = "Split right" },
 
-	------------------ DIAGNOSTICS --------------------
+```
+
+### Diagnostics
+
+```lua
 	{ "<leader>dn",       vim.diagnostic.goto_next,         desc = "Go to next diagnostics" },
 	{ "<leader>dN",       vim.diagnostic.goto_prev,         desc = "Go to prev diagnostics" },
 	{ "<leader>do",       vim.diagnostic.open_float,        desc = "Open diagnostics float" },
 	{ "<leader>dq",       vim.diagnostic.setloclist,        desc = "Send diagnostics to qf list" },
 	{ "<leader>di",       toggle_inlay_hints,               desc = "Toggle inlay hints" },
 
-	-------------- QUICK FIX --------------------------
+```
+
+### Quick Fix
+
+```lua
 	{ "<leader>qt",       toggle_quick_fix,                 desc = "Toggle Quick Fix" },
 	{ "<leader>qo",       ":copen<CR>",                     desc = "Open Quick Fix" },
 	{ "<leader>qn",       ":cnext<CR>",                     desc = "Next Quick Fix" },
 	{ "<leader>qN",       ":cprev<CR>",                     desc = "Prev Quick Fix" },
 	{ "<leader>qf",       ":cfirst<CR>",                    desc = "First item in Quick Fix" },
 	{ "<leader>ql",       ":clast<CR>",                     desc = "Last item in Quick Fix" },
+```
 
-	-------------- LSP --------------------------
+### LSP
+
+```lua
 	{ "gD",               vim.lsp.buf.declaration,          desc = "Go to declaration" },
 	{ "gd",               vim.lsp.buf.definition,           desc = "Go to definition" },
 	{ "gt",               vim.lsp.buf.type_definition,      desc = "Go to type definition" },
@@ -150,146 +181,175 @@ utils.keymaps({
 	{ "<space>wl",        list_workspace_folders,           desc = "List workspace folders" },
 	{ "<space>rn",        vim.lsp.buf.rename,               desc = "Rename symbol" },
 
-	----------------- OTHER -------------------
+```
+
+### Other
+
+````lua
 	{ "++",               "\"zyymzo```<ESC>'z==O```<ESC>P", desc = "Run current line" },
 	{ "<leader>io",       new_file_selector,                desc = "New file selector" },
 	{ "<leader>df",       show_next_diagnostic,             desc = "Run current line" },
 	{ "<C-H>",            ":nohlsearch<CR>",                desc = "Remove highlights" },
 
-	----------------- Plugins -------------------
-	-- Neoclip
-	{ "<leader>tc",       ":Telescope neoclip<Return>",     desc = "Open neoclip in telescope" },
-	{
-		"<leader>tm",
-		require("telescope").extensions.macroscope.default,
-		desc = "Open macroscope in telescope",
-	},
-	-- Hover
-	{ "K",          require("hover").hover,        desc = "hover.nvim" },
-	{ "<leader>k",  require("hover").hover_select, desc = "hover.nvim (select)" },
-	-- Luasnip
-	{ "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
-	{ "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
-	{
-		"<C-,>",
-		function()
-			require("luasnip").jump(1)
-		end,
-		desc = "LuaSnip jump to next slot",
-	},
-	{
-		"<C-.>",
-		function()
-			require("luasnip").jump(-1)
-		end,
-		desc = "LuaSnip jump to previous slot",
-	},
-	{
-		"<C-,>",
-		function()
-			require("luasnip").jump(1)
-		end,
-		desc = "LuaSnip jump to next slot",
-		mode = { "i" },
-	},
-	{
-		"<C-.>",
-		function()
-			require("luasnip").jump(-1)
-		end,
-		desc = "LuaSnip jump to previous slot",
-		mode = { "i" },
-	},
-	-- Mdeval
-	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
-	-- Smart Splits
-	{
-		"<leader><leader>wr",
-		require("smart-splits").start_resize_mode,
-		desc = "start resize mode",
-	},
-	{
-		"<C-Left>",
-		require("smart-splits").move_cursor_left,
-		desc = "move cursor left",
-	},
-	{
-		"<C-Down>",
-		require("smart-splits").move_cursor_down,
-		desc = "move cursor down",
-	},
-	{
-		"<C-Up>",
-		require("smart-splits").move_cursor_up,
-		desc = "move cursor up",
-	},
-	{
-		"<C-Right>",
-		require("smart-splits").move_cursor_right,
-		desc = "move cursor right",
-	},
-	{
-		"<C-S-Left>",
-		function()
-			require("smart-splits").swap_buf_left()
-			require("smart-splits").move_cursor_left()
-		end,
-		desc = "swap buf left",
-	},
-	{
-		"<C-S-Down>",
-		function()
-			require("smart-splits").swap_buf_down()
-			require("smart-splits").move_cursor_down()
-		end,
-		desc = "swap buf down",
-	},
-	{
-		"<C-S-Up>",
-		function()
-			require("smart-splits").swap_buf_up()
-			require("smart-splits").move_cursor_up()
-		end,
-		desc = "swap buf up",
-	},
-	{
-		"<C-S-Right>",
-		function()
-			require("smart-splits").swap_buf_right()
-			require("smart-splits").move_cursor_right()
-		end,
-		desc = "swap buf right",
-	},
-	-- Lsp lines
-	{
-		"<leader>dl",
-		function()
-			local is_lines_set = vim.diagnostic.config().virtual_lines
-			if is_lines_set then
-				vim.diagnostic.config({
-					virtual_lines = false,
-					virtual_text = true,
-				})
-			else
-				vim.diagnostic.config({
-					virtual_lines = true,
-					virtual_text = false,
-				})
-			end
-		end,
-		desc = "Toggle lsp_lines",
-	},
-	-- Oil
-	{ "-",          require("oil").open,               desc = "Open oil.nvim" },
-	-- Substitute
-	{ "<Leader>r",  require("substitute").operator,    desc = "Substitution operator" },
-	{ "<Leader>rr", require("substitute").line,        desc = "Substitute line with register" },
-	{ "<Leader>R",  require("substitute").eol,         desc = "Substitute until EOL with register" },
-	-- Overseer
-	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
-	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
-})
+````
 
+### Plugins
+
+- Neoclip
+  ```lua
+  	{ "<leader>tc",       ":Telescope neoclip<Return>",     desc = "Open neoclip in telescope" },
+  	{
+  		"<leader>tm",
+  		require("telescope").extensions.macroscope.default,
+  		desc = "Open macroscope in telescope",
+  	},
+  ```
+- Hover
+  ```lua
+  	{ "K",          require("hover").hover,        desc = "hover.nvim" },
+  	{ "<leader>k",  require("hover").hover_select, desc = "hover.nvim (select)" },
+  ```
+- Luasnip
+  ```lua
+  	{ "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
+  	{ "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
+  	{
+  		"<C-,>",
+  		function()
+  			require("luasnip").jump(1)
+  		end,
+  		desc = "LuaSnip jump to next slot",
+  	},
+  	{
+  		"<C-.>",
+  		function()
+  			require("luasnip").jump(-1)
+  		end,
+  		desc = "LuaSnip jump to previous slot",
+  	},
+  	{
+  		"<C-,>",
+  		function()
+  			require("luasnip").jump(1)
+  		end,
+  		desc = "LuaSnip jump to next slot",
+  		mode = { "i" },
+  	},
+  	{
+  		"<C-.>",
+  		function()
+  			require("luasnip").jump(-1)
+  		end,
+  		desc = "LuaSnip jump to previous slot",
+  		mode = { "i" },
+  	},
+  ```
+- Mdeval
+  ```lua
+  	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
+  ```
+- Smart Splits
+  ```lua
+  	{
+  		"<leader><leader>wr",
+  		require("smart-splits").start_resize_mode,
+  		desc = "start resize mode",
+  	},
+  	{
+  		"<C-Left>",
+  		require("smart-splits").move_cursor_left,
+  		desc = "move cursor left",
+  	},
+  	{
+  		"<C-Down>",
+  		require("smart-splits").move_cursor_down,
+  		desc = "move cursor down",
+  	},
+  	{
+  		"<C-Up>",
+  		require("smart-splits").move_cursor_up,
+  		desc = "move cursor up",
+  	},
+  	{
+  		"<C-Right>",
+  		require("smart-splits").move_cursor_right,
+  		desc = "move cursor right",
+  	},
+  	{
+  		"<C-S-Left>",
+  		function()
+  			require("smart-splits").swap_buf_left()
+  			require("smart-splits").move_cursor_left()
+  		end,
+  		desc = "swap buf left",
+  	},
+  	{
+  		"<C-S-Down>",
+  		function()
+  			require("smart-splits").swap_buf_down()
+  			require("smart-splits").move_cursor_down()
+  		end,
+  		desc = "swap buf down",
+  	},
+  	{
+  		"<C-S-Up>",
+  		function()
+  			require("smart-splits").swap_buf_up()
+  			require("smart-splits").move_cursor_up()
+  		end,
+  		desc = "swap buf up",
+  	},
+  	{
+  		"<C-S-Right>",
+  		function()
+  			require("smart-splits").swap_buf_right()
+  			require("smart-splits").move_cursor_right()
+  		end,
+  		desc = "swap buf right",
+  	},
+  ```
+- Lsp lines
+  ```lua
+  	{
+  		"<leader>dl",
+  		function()
+  			local is_lines_set = vim.diagnostic.config().virtual_lines
+  			if is_lines_set then
+  				vim.diagnostic.config({
+  					virtual_lines = false,
+  					virtual_text = true,
+  				})
+  			else
+  				vim.diagnostic.config({
+  					virtual_lines = true,
+  					virtual_text = false,
+  				})
+  			end
+  		end,
+  		desc = "Toggle lsp_lines",
+  	},
+  ```
+- Oil
+  ```lua
+  	-- Oil
+  	{ "-",          require("oil").open,               desc = "Open oil.nvim" },
+  ```
+- Substitute
+  ```lua
+  	{ "<Leader>r",  require("substitute").operator,    desc = "Substitution operator" },
+  	{ "<Leader>rr", require("substitute").line,        desc = "Substitute line with register" },
+  	{ "<Leader>R",  require("substitute").eol,         desc = "Substitute until EOL with register" },
+  ```
+- Overseer
+  ```lua
+  	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
+  	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
+  })
+  ```
+
+## Filetype specific keybinds
+
+```lua
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "openscad",
 	callback = function()
@@ -302,3 +362,4 @@ vim.api.nvim_create_autocmd("Filetype", {
 		end)
 	end,
 })
+```

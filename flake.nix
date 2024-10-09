@@ -202,9 +202,9 @@
               fd-bin = "${pkgs.fd}/bin/fd";
             in
             pkgs.runCommand "parsed-config" { } ''
+              mkdir $out
               cd ${./config}
-              cp -r . $out
-              ${fd-bin} . -e md -t f --strip-cwd-prefix
+              cp -r --no-preserve=mode . $out
               ${fd-bin} . -e md -t f --strip-cwd-prefix -x ${literate-markdown-bin} "{}" "$out/{.}.lua" \;
             '';
 

@@ -611,11 +611,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1728431028,
-        "narHash": "sha256-1ggSY65Zdw/MLP5tNghD0YZ3rVsUUgxbRa6n2u/KO8I=",
+        "lastModified": 1728464330,
+        "narHash": "sha256-sVrqLW3hv9OClGdxt/5+rB9JN5PLVN1byJonAsK+tOo=",
         "owner": "jeansidharta",
         "repo": "literate-markdown",
-        "rev": "c369bd2feef85b523c8428c7d634c871d3cfd750",
+        "rev": "86fad01e002fd05f9d0bfacf5953166fec92f386",
         "type": "github"
       },
       "original": {
