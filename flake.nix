@@ -151,6 +151,10 @@
       url = "github:OXY2DEV/markview.nvim";
       flake = false;
     };
+    otter = {
+      url = "github:jmbuhr/otter.nvim";
+      flake = false;
+    };
 
     # LSPs
     openscad-lsp = {

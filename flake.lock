@@ -1135,6 +1135,22 @@
         "type": "github"
       }
     },
+    "otter": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724585935,
+        "narHash": "sha256-euHwoK2WHLF/hrjLY2P4yGrIbYyBN38FL3q4CKNZmLY=",
+        "owner": "jmbuhr",
+        "repo": "otter.nvim",
+        "rev": "ca9ce67d0399380b659923381b58d174344c9ee7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jmbuhr",
+        "repo": "otter.nvim",
+        "type": "github"
+      }
+    },
     "overseer": {
       "flake": false,
       "locked": {
@@ -1308,6 +1324,7 @@
         "nvim-notify": "nvim-notify",
         "oil": "oil",
         "openscad-lsp": "openscad-lsp",
+        "otter": "otter",
         "overseer": "overseer",
         "parinfer-rust": "parinfer-rust",
         "plenary": "plenary",

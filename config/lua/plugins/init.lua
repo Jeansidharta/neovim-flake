@@ -67,3 +67,10 @@ require("dressing").setup({})
 require("overseer").setup()
 
 require("guess-indent").setup({})
+
+vim.api.nvim_create_autocmd("Filetype", {
+	pattern = "markdown",
+	callback = function()
+		require("otter").activate()
+	end,
+})
