@@ -129,8 +129,7 @@ end
 ### Misc
 
 ```lua
-utils.keymaps({
-	{ "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
+utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
 	{ "<leader>l",        ":messages<CR>",                  desc = "Show messages" },
 	{ "<leader>n",        clear_notifications,              desc = "Clear all notifications" },
 	{ "<S-Tab>",          ":lua vim.lsp.buf.format()<CR>",  desc = "Format buffer" },
@@ -360,6 +359,76 @@ vim.api.nvim_create_autocmd("Filetype", {
 					require("overseer").new_task({ cmd = "openscad", args = { filepath }, name = "OpenSCAD " .. filename })
 			require("overseer").run_action(task, "start")
 		end)
+	end,
+})
+
+```
+
+Run an entire lua file through neovim. Good for testing new plugins
+
+```lua
+vim.api.nvim_create_autocmd("filetype", {
+	pattern = { "lua" },
+	callback = function()
+		vim.keymap.set("n", "<leader>ff", function()
+			vim.cmd([[luafile %]])
+		end)
+	end,
+})
+
+```
+
+Forces neovim to add a jumplist entry whenever the user jumps more than
+`max_distance` up or down using a could (e.g. in normal mode: `10j`)
+
+```lua
+local max_distance = 3
+
+for _, key in pairs({ "<Down>", "<Up>", "j", "k" }) do
+	vim.keymap.set({ "n", "v" }, key, function()
+		if vim.v.count > max_distance then
+			return "m'" .. vim.v.count .. key
+		end
+		return key
+	end, { expr = true })
+end
+```
+
+Set some bindings to run SQL queries using the `usql` cli program.
+
+```lua
+
+local utils = require("config.utils")
+local custom_sql_group = vim.api.nvim_create_augroup("custom_sql", { clear = true })
+
+vim.api.nvim_create_autocmd("filetype", {
+	group = custom_sql_group,
+	pattern = "sql",
+	desc = "Add sql bindings",
+	-- callback = function(_id, _event, _group, _match, buf, _file, _data)
+	callback = function(args)
+		local buf = args.buf
+
+		vim.keymap.set("v", "!+", function()
+			local text = table.concat(utils.get_visual_selection_lines(), "\n")
+			local result = vim.split(vim.fn.system({ "usql", "database_sqlite", "-c", text }), "\n")
+			utils.open_editor_temp_window(result)
+		end, {
+			desc = "Send to database",
+			remap = false,
+			buffer = buf,
+		})
+
+		vim.keymap.set("n", "!+", function()
+			local cursor_line = vim.fn.getcurpos()[2]
+			local text = table.concat(vim.api.nvim_buf_get_lines(buf, cursor_line - 1, cursor_line, false), "\n")
+			local result = vim.split(vim.fn.system({ "uql", "database_sqlite", "-c", text }), "\n")
+			utils.open_editor_temp_window(result)
+		end, {
+			desc = "Send to database",
+			remap = false,
+			buffer = buf,
+		})
 	end,
 })
 ```
