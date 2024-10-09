@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
+    # Literate programming builder
+    literate-markdown = {
+      url = "github:jeansidharta/literate-markdown";
+    };
+
     # Libraries
     plenary = {
       url = "github:nvim-lua/plenary.nvim";
@@ -142,6 +147,10 @@
       url = "github:leath-dub/snipe.nvim";
       flake = false;
     };
+    markview = {
+      url = "github:OXY2DEV/markview.nvim";
+      flake = false;
+    };
 
     # LSPs
     openscad-lsp = {
@@ -185,6 +194,20 @@
           # The master version of the Zig Language Server
           zls-master = inputs.zls.outputs.packages.${system}.default;
 
+          parsed_config =
+            let
+              literate-markdown-bin = "${
+                inputs.literate-markdown.outputs.packages.${system}.default
+              }/bin/literate-markdown";
+              fd-bin = "${pkgs.fd}/bin/fd";
+            in
+            pkgs.runCommand "parsed-config" { } ''
+              cd ${./config}
+              cp -r . $out
+              ${fd-bin} . -e md -t f --strip-cwd-prefix
+              ${fd-bin} . -e md -t f --strip-cwd-prefix -x ${literate-markdown-bin} "{}" "$out/{.}.lua" \;
+            '';
+
           plugins_runtimepath =
             with lib.attrsets;
             with builtins;
@@ -200,7 +223,7 @@
                 ];
                 plugins_attr = filterAttrs (name: _: !elem name not-plugins) inputs;
                 plugins = map (p: p.outPath) (attrValues plugins_attr);
-                plugins_with_config = plugins ++ [ "${./config}" ];
+                plugins_with_config = plugins ++ [ "${parsed_config}" ];
               in
               lib.concatStringsSep "," plugins_with_config
             )
@@ -210,6 +233,7 @@
           sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
         in
         {
+          parsed-config = parsed_config;
           default = pkgs.writeShellApplication {
             name = "nvim";
 
@@ -281,7 +305,7 @@
               nvim \
                 --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
                 --cmd "let &runtimepath.=',' .. \"${plugins_runtimepath}\"" \
-                -u ${./config}/init.lua "$@"
+                -u ${parsed_config}/init.lua "$@"
             '';
           };
         }
