@@ -692,15 +692,15 @@
     "mdeval": {
       "flake": false,
       "locked": {
-        "lastModified": 1726742702,
-        "narHash": "sha256-XFnAGMA1kHfqDqdGY2UvXFwxJUT2E+TvwUy8+RShBlM=",
-        "owner": "jubnzv",
+        "lastModified": 1698692031,
+        "narHash": "sha256-fHYtKarXPHTg4ElxK5MfYeISr4WeI9G4w9omEV+vu7A=",
+        "owner": "jeansidharta",
         "repo": "mdeval.nvim",
-        "rev": "79df3e716d7918942d768665cd57b2eb2a0352f7",
+        "rev": "74ca61bee6d4e44fe2875d9548fd1e29103ac7d5",
         "type": "github"
       },
       "original": {
-        "owner": "jubnzv",
+        "owner": "jeansidharta",
         "repo": "mdeval.nvim",
         "type": "github"
       }

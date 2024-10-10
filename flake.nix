@@ -101,7 +101,7 @@
       flake = false;
     };
     mdeval = {
-      url = "github:jubnzv/mdeval.nvim";
+      url = "github:jeansidharta/mdeval.nvim";
       flake = false;
     };
     none-ls = {
