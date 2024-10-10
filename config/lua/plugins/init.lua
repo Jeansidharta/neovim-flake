@@ -1,3 +1,5 @@
+-- Plugins should be setup so that importing them would be enough to trigger their setup.
+-- Therefore, no need to do anything else after importing them.
 require("plugins.telescope")
 require("plugins.smart-splits")
 require("plugins.blink")
@@ -67,6 +69,8 @@ require("dressing").setup({})
 require("overseer").setup()
 
 require("guess-indent").setup({})
+
+require("zk").setup({})
 
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "markdown",

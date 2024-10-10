@@ -155,6 +155,10 @@
       url = "github:jmbuhr/otter.nvim";
       flake = false;
     };
+    zk-nvim = {
+      url = "github:zk-org/zk-nvim";
+      flake = false;
+    };
 
     # LSPs
     openscad-lsp = {
@@ -301,6 +305,8 @@
             runtimeEnv = {
               # Provides a config file for prettierd
               PRETTIERD_DEFAULT_CONFIG = ./prettierrc.json;
+              # For the zk plugin. This should be your ZK notebook directory
+              ZK_NOTEBOOK_DIR = "/home/sidharta/notes";
             };
 
             text = ''

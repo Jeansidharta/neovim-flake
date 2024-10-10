@@ -1337,6 +1337,7 @@
         "tokyodark": "tokyodark",
         "treesitter": "treesitter",
         "various-textobjs": "various-textobjs",
+        "zk-nvim": "zk-nvim",
         "zls": "zls"
       }
     },
@@ -1599,6 +1600,22 @@
       "original": {
         "owner": "mitchellh",
         "repo": "zig-overlay",
+        "type": "github"
+      }
+    },
+    "zk-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727810836,
+        "narHash": "sha256-tCAR/ONhpnGu4KAi0Jtw0XSFImpY8eJBHvZPw3DJ74U=",
+        "owner": "zk-org",
+        "repo": "zk-nvim",
+        "rev": "16fc98ce3d037418f04c181b5cc0fc4b982ceaed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zk-org",
+        "repo": "zk-nvim",
         "type": "github"
       }
     },
