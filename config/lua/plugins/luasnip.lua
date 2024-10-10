@@ -45,10 +45,10 @@ vim.api.nvim_create_autocmd("Filetype", {
 		local available_snipts = ls.available()
 
 		if
-				available_snipts.markdown
-				and utils.tbl_find(function(snip)
-					return snip.name == "`usql"
-				end, available_snipts.markdown)
+			available_snipts.markdown
+			and utils.tbl_find(function(snip)
+				return snip.name == "`usql"
+			end, available_snipts.markdown)
 		then
 			return
 		end

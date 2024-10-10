@@ -390,8 +390,15 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
   ```lua
   	{ "<leader>zo", ":Telescope zk notes<Return>",     desc = "Open a zk note" },
   	{ "<leader>zn", ":ZkNew<Return>",                  desc = "Create a new zk note" },
-  	{ "<leader>zt", ":Telescope zk tags<Return>",      desc = "List all tags"},
-  	{ "<leader>zn", turnSelectionIntoZkLink ,          desc = "Create note with visual selection", mode = "v"},
+  	{ "<leader>zt", ":Telescope zk tags<Return>",      desc = "List all tags" },
+  	{ "<leader>zn", turnSelectionIntoZkLink ,          desc = "Create note with visual selection", mode = "v" },
+  ```
+- bufjump
+  ```lua
+  	{ "<C-i>", require('bufjump').forward,             desc = "Jump to the next buffer in the jump list" },
+  	{ "<C-o>", require('bufjump').backward,            desc = "Jump to the previous buffer in the jump list" },
+  	{ "<C-.>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
+  	{ "<C-,>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
   })
   ```
 

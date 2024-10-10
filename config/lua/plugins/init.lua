@@ -55,12 +55,7 @@ require("oil").setup({
 
 require("substitute").setup({})
 
-require("bufjump").setup({
-	forward = "<C-i>",
-	backward = "<C-o>",
-	backwardInBuffer = "<C-p>",
-	forwardInBuffer = "<C-l>",
-})
+require("bufjump").setup()
 
 require("fidget").setup({})
 
