@@ -71,6 +71,7 @@ require("overseer").setup()
 require("guess-indent").setup({})
 
 require("zk").setup({})
+require("telescope").load_extension("zk")
 
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "markdown",

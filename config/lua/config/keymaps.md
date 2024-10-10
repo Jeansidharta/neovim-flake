@@ -122,6 +122,48 @@ local function show_next_diagnostic()
 	end
 end
 
+-- Should be invoked while on a visual selection
+-- Will take the text selected and create a new zk note with that text as a title.
+-- The originally selected note will be replaced by a link to the note.
+local function turnSelectionIntoZkLink ()
+	local zk = require("zk.api")
+	local title = utils.get_visual_selection_text()
+	if #title > 1 then
+		vim.notify("Cannot create note with a multi-line title", vim.log.levels.WARN);
+		return;
+	end
+	title = vim.trim(title[1])
+	local location = utils.get_visual_selection_position()
+	zk.new(
+		-- Path to the note. If nil, zk will create one itself.
+		nil,
+		-- dryRun makes sure the note is not created in the filesystem. This allows the user to change
+		-- their mind before actually saving the note.
+		{ title = title, dryRun = true },
+		function (err, note)
+			if err ~= nil then
+				vim.notify("Failed to create link", vim.log.levels.ERROR)
+				vim.print(err)
+				return
+			end
+			vim.notify("Created note " .. note.path);
+			-- Replace the selected text with the link
+			vim.api.nvim_buf_set_text(
+				location.buf,
+				location.start[1] - 1,
+				location.start[2] - 1,
+				location.finish[1] - 1,
+				location.finish[2],
+				{"["..title.."]("..vim.fs.basename(note.path)..")"}
+			)
+			vim.cmd[[write]] -- Save current buffer. This is to make sure the recently placed link is permanently saved
+			vim.cmd([[edit ]] .. note.path) -- Open new note for editing
+			-- Since the note wasn't saved in the filesystem (because of the dryRun) we have to
+			-- fill its content ourselves.
+			vim.api.nvim_buf_set_lines(0, 0, 0, false, vim.split(note.content, "\n"))
+		end
+	);
+end
 ```
 
 ## Actual keymaps
@@ -210,8 +252,8 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
   ```
 - Luasnip
   ```lua
-  	{ "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
-  	{ "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
+  	-- { "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
+  	-- { "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
   	{
   		"<C-,>",
   		function()
@@ -343,6 +385,13 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
   ```lua
   	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
   	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
+  ```
+- ZK: zettelkasten
+  ```lua
+  	{ "<leader>zo", ":Telescope zk notes<Return>",     desc = "Open a zk note" },
+  	{ "<leader>zn", ":ZkNew<Return>",                  desc = "Create a new zk note" },
+  	{ "<leader>zt", ":Telescope zk tags<Return>",      desc = "List all tags"},
+  	{ "<leader>zn", turnSelectionIntoZkLink ,          desc = "Create note with visual selection", mode = "v"},
   })
   ```
 

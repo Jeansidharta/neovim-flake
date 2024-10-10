@@ -102,10 +102,6 @@ end
 
 local function find_project_root()
 	local buf_path = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
-end
-
-local function find_project_root()
-	local buf_path = vim.fs.dirname(vim.api.nvim_buf_get_name(0))
 	return vim.fs.dirname(
 		vim.fs.find(".git/", { upward = true, path = buf_path })[1] or vim.fs.find(".git", { upward = true })[1] or "."
 	)
@@ -138,6 +134,7 @@ end
 
 return {
 	open_editor_temp_window = open_editor_temp_window,
+	get_visual_selection_position = get_visual_selection_position,
 	get_visual_selection_text = get_visual_selection_text,
 	get_visual_selection_lines = get_visual_selection_lines,
 	find_project_root = find_project_root,
