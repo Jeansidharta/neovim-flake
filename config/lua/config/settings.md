@@ -201,3 +201,11 @@ Makes so some plugins work better
 ```lua
 vim.o.updatetime = 300
 ```
+
+Auto sync between neovim processes. It disables swapfiles too, but they're not
+really that useful to me
+
+```lua
+vim.opt.autoread = true
+vim.opt.swapfile = false
+```
