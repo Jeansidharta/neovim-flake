@@ -164,6 +164,21 @@ local function turnSelectionIntoZkLink ()
 		end
 	);
 end
+
+local function toggle_lsp_lines ()
+	local is_lines_set = vim.diagnostic.config().virtual_lines
+	if is_lines_set then
+		vim.diagnostic.config({
+			virtual_lines = false,
+			virtual_text = true,
+		})
+	else
+		vim.diagnostic.config({
+			virtual_lines = true,
+			virtual_text = false,
+		})
+	end
+end
 ```
 
 ## Actual keymaps
@@ -231,176 +246,182 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 	{ "<leader>io",       new_file_selector,                desc = "New file selector" },
 	{ "<leader>df",       show_next_diagnostic,             desc = "Run current line" },
 	{ "<C-H>",            ":nohlsearch<CR>",                desc = "Remove highlights" },
-
 ````
 
 ### Plugins
 
-- Neoclip
-  ```lua
-  	{ "<leader>tc",       ":Telescope neoclip<Return>",     desc = "Open neoclip in telescope" },
-  	{
-  		"<leader>tm",
-  		require("telescope").extensions.macroscope.default,
-  		desc = "Open macroscope in telescope",
-  	},
-  ```
-- Hover
-  ```lua
-  	{ "K",          require("hover").hover,        desc = "hover.nvim" },
-  	{ "<leader>k",  require("hover").hover_select, desc = "hover.nvim (select)" },
-  ```
-- Luasnip
-  ```lua
-  	-- { "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
-  	-- { "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
-  	{
-  		"<C-,>",
-  		function()
-  			require("luasnip").jump(1)
-  		end,
-  		desc = "LuaSnip jump to next slot",
-  	},
-  	{
-  		"<C-.>",
-  		function()
-  			require("luasnip").jump(-1)
-  		end,
-  		desc = "LuaSnip jump to previous slot",
-  	},
-  	{
-  		"<C-,>",
-  		function()
-  			require("luasnip").jump(1)
-  		end,
-  		desc = "LuaSnip jump to next slot",
-  		mode = { "i" },
-  	},
-  	{
-  		"<C-.>",
-  		function()
-  			require("luasnip").jump(-1)
-  		end,
-  		desc = "LuaSnip jump to previous slot",
-  		mode = { "i" },
-  	},
-  ```
-- Mdeval
-  ```lua
-  	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
-  ```
-- Smart Splits
-  ```lua
-  	{
-  		"<leader><leader>wr",
-  		require("smart-splits").start_resize_mode,
-  		desc = "start resize mode",
-  	},
-  	{
-  		"<C-Left>",
-  		require("smart-splits").move_cursor_left,
-  		desc = "move cursor left",
-  	},
-  	{
-  		"<C-Down>",
-  		require("smart-splits").move_cursor_down,
-  		desc = "move cursor down",
-  	},
-  	{
-  		"<C-Up>",
-  		require("smart-splits").move_cursor_up,
-  		desc = "move cursor up",
-  	},
-  	{
-  		"<C-Right>",
-  		require("smart-splits").move_cursor_right,
-  		desc = "move cursor right",
-  	},
-  	{
-  		"<C-S-Left>",
-  		function()
-  			require("smart-splits").swap_buf_left()
-  			require("smart-splits").move_cursor_left()
-  		end,
-  		desc = "swap buf left",
-  	},
-  	{
-  		"<C-S-Down>",
-  		function()
-  			require("smart-splits").swap_buf_down()
-  			require("smart-splits").move_cursor_down()
-  		end,
-  		desc = "swap buf down",
-  	},
-  	{
-  		"<C-S-Up>",
-  		function()
-  			require("smart-splits").swap_buf_up()
-  			require("smart-splits").move_cursor_up()
-  		end,
-  		desc = "swap buf up",
-  	},
-  	{
-  		"<C-S-Right>",
-  		function()
-  			require("smart-splits").swap_buf_right()
-  			require("smart-splits").move_cursor_right()
-  		end,
-  		desc = "swap buf right",
-  	},
-  ```
-- Lsp lines
-  ```lua
-  	{
-  		"<leader>dl",
-  		function()
-  			local is_lines_set = vim.diagnostic.config().virtual_lines
-  			if is_lines_set then
-  				vim.diagnostic.config({
-  					virtual_lines = false,
-  					virtual_text = true,
-  				})
-  			else
-  				vim.diagnostic.config({
-  					virtual_lines = true,
-  					virtual_text = false,
-  				})
-  			end
-  		end,
-  		desc = "Toggle lsp_lines",
-  	},
-  ```
-- Oil
-  ```lua
-  	-- Oil
-  	{ "-",          require("oil").open,               desc = "Open oil.nvim" },
-  ```
-- Substitute
-  ```lua
-  	{ "<Leader>r",  require("substitute").operator,    desc = "Substitution operator" },
-  	{ "<Leader>rr", require("substitute").line,        desc = "Substitute line with register" },
-  	{ "<Leader>R",  require("substitute").eol,         desc = "Substitute until EOL with register" },
-  ```
-- Overseer
-  ```lua
-  	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
-  	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
-  ```
-- ZK: zettelkasten
-  ```lua
-  	{ "<leader>zo", ":Telescope zk notes<Return>",     desc = "Open a zk note" },
-  	{ "<leader>zn", ":ZkNew<Return>",                  desc = "Create a new zk note" },
-  	{ "<leader>zt", ":Telescope zk tags<Return>",      desc = "List all tags" },
-  	{ "<leader>zn", turnSelectionIntoZkLink ,          desc = "Create note with visual selection", mode = "v" },
-  ```
-- bufjump
-  ```lua
-  	{ "<C-i>", require('bufjump').forward,             desc = "Jump to the next buffer in the jump list" },
-  	{ "<C-o>", require('bufjump').backward,            desc = "Jump to the previous buffer in the jump list" },
-  	{ "<C-.>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
-  	{ "<C-,>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
-  })
-  ```
+#### Telescope Pickers
+
+```lua
+	{ "<leader>tt",  ":Telescope<CR>",                                desc = "Open telescope pickers" },
+	{ "<leader>twt", ":Telescope live_grep<CR>",                      desc = "Open live grep" },
+	{ "<leader>th",  ":Telescope help_tags<CR>",                      desc = "Open help window" },
+	{ "<leader>tp",  require("telescope.builtin").resume,             desc = "Resume last picker" },
+	{ "<leader>tr", ":Telescope lsp_references<CR>", noremap = true, desc = "Open LSP references", },
+```
+
+##### Diagnostics
+
+```lua
+	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>",                desc = "Open diagnostics" },
+	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>",                desc = "Open diagnostics" },
+	{ "<leader>tdh", "<cmd>Telescope diagnostics severity=HINT<cr>",  desc = "Open diagnostics for errors" },
+	{ "<leader>tdi", "<cmd>Telescope diagnostics severity=INFO<cr>",  desc = "Open diagnostics for errors" },
+	{ "<leader>tdw", "<cmd>Telescope diagnostics severity=WARN<cr>",  desc = "Open diagnostics for errors" },
+	{ "<leader>tde", "<cmd>Telescope diagnostics severity=ERROR<cr>", desc = "Open diagnostics for errors" },
+```
+
+##### Notify
+
+```lua
+	{ "<leader>tn",  ":Telescope notify<CR>",                         desc = "Open notifications history" },
+```
+
+##### Git
+
+```lua
+	{ "<leader>tgb", ":Telescope telescope_git all_branches<CR>",     desc = "Open branch list" },
+	{ "<leader>tgd", ":Telescope git_bcommits<CR>",                   desc = "Open git commits for current file" },
+	{ "<leader>tgc", ":Telescope git_commits<CR>",                    desc = "Open git commits" },
+	{ "<leader>tgs", ":Telescope git_status<CR>",                     desc = "Open git status" },
+	{ "<leader>tgf", ":Telescope git_files<CR>",                      desc = "Open git files" },
+```
+
+#### Neoclip
+
+```lua
+	{ "<leader>tc",       ":Telescope neoclip<Return>",     desc = "Open neoclip in telescope" },
+	{ "<leader>tm", require("telescope").extensions.macroscope.default, desc = "Open macroscope in telescope", },
+```
+
+#### Hover
+
+```lua
+	{ "K",          require("hover").hover,        desc = "hover.nvim" },
+	{ "<leader>k",  require("hover").hover_select, desc = "hover.nvim (select)" },
+```
+
+#### Luasnip
+
+```lua
+	-- { "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
+	-- { "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
+```
+
+#### Mdeval
+
+```lua
+	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
+```
+
+#### Smart Splits
+
+```lua
+	{
+		"<leader><leader>wr",
+		require("smart-splits").start_resize_mode,
+		desc = "start resize mode",
+	},
+	{
+		"<C-Left>",
+		require("smart-splits").move_cursor_left,
+		desc = "move cursor left",
+	},
+	{
+		"<C-Down>",
+		require("smart-splits").move_cursor_down,
+		desc = "move cursor down",
+	},
+	{
+		"<C-Up>",
+		require("smart-splits").move_cursor_up,
+		desc = "move cursor up",
+	},
+	{
+		"<C-Right>",
+		require("smart-splits").move_cursor_right,
+		desc = "move cursor right",
+	},
+	{
+		"<C-S-Left>",
+		function()
+			require("smart-splits").swap_buf_left()
+			require("smart-splits").move_cursor_left()
+		end,
+		desc = "swap buf left",
+	},
+	{
+		"<C-S-Down>",
+		function()
+			require("smart-splits").swap_buf_down()
+			require("smart-splits").move_cursor_down()
+		end,
+		desc = "swap buf down",
+	},
+	{
+		"<C-S-Up>",
+		function()
+			require("smart-splits").swap_buf_up()
+			require("smart-splits").move_cursor_up()
+		end,
+		desc = "swap buf up",
+	},
+	{
+		"<C-S-Right>",
+		function()
+			require("smart-splits").swap_buf_right()
+			require("smart-splits").move_cursor_right()
+		end,
+		desc = "swap buf right",
+	},
+```
+
+#### Lsp lines
+
+```lua
+	{ "<leader>dl", toggle_lsp_lines, desc = "Toggle lsp_lines", },
+```
+
+#### Oil
+
+```lua
+	-- Oil
+	{ "-",          require("oil").open,               desc = "Open oil.nvim" },
+```
+
+#### Substitute
+
+```lua
+	{ "<Leader>r",  require("substitute").operator,    desc = "Substitution operator" },
+	{ "<Leader>rr", require("substitute").line,        desc = "Substitute line with register" },
+	{ "<Leader>R",  require("substitute").eol,         desc = "Substitute until EOL with register" },
+```
+
+#### Overseer
+
+```lua
+	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
+	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
+```
+
+#### ZK: zettelkasten
+
+```lua
+	{ "<leader>zo", ":Telescope zk notes<Return>",     desc = "Open a zk note" },
+	{ "<leader>zn", ":ZkNew<Return>",                  desc = "Create a new zk note" },
+	{ "<leader>zt", ":Telescope zk tags<Return>",      desc = "List all tags" },
+	{ "<leader>zn", turnSelectionIntoZkLink ,          desc = "Create note with visual selection", mode = "v" },
+```
+
+#### bufjump
+
+```lua
+	{ "<C-i>", require('bufjump').forward,             desc = "Jump to the next buffer in the jump list" },
+	{ "<C-o>", require('bufjump').backward,            desc = "Jump to the previous buffer in the jump list" },
+	{ "<C-.>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
+	{ "<C-,>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
+})
+```
 
 ## Filetype specific keybinds
 
