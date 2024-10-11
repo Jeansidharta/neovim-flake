@@ -1,8 +1,15 @@
 snippet err
-  std.log.err($1)
+  std.log.err("$1\n", .{})
 
 snippet info
-  std.log.info($1)
+  std.log.info("$1\n", .{})
 
 snippet debug
-  std.log.debug($1)
+  std.log.debug("$1\n", .{})
+
+snippet print
+  std.debug.print("$1\n", .{})
+
+snippet gpa
+  var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+  const alloc = gpa.allocator();
