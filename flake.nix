@@ -144,7 +144,7 @@
       flake = false;
     };
     snipe = {
-      url = "github:leath-dub/snipe.nvim";
+      url = "github:jeansidharta/snipe.nvim/feat-menu-context";
       flake = false;
     };
     markview = {

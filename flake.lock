@@ -1377,15 +1377,16 @@
     "snipe": {
       "flake": false,
       "locked": {
-        "lastModified": 1724418876,
-        "narHash": "sha256-G4g/OzyXhDhX84HkxlhFSy6E+EAGxH+HL1Bw5s5FWHE=",
-        "owner": "leath-dub",
+        "lastModified": 1728635341,
+        "narHash": "sha256-C1II1upetSO2x8ANNVQBVAIp/Q5AHJOB0bEQdcENWdg=",
+        "owner": "jeansidharta",
         "repo": "snipe.nvim",
-        "rev": "f1abd4aaaef6398b45dcddc9f1a40dd982f732b0",
+        "rev": "9cc61bd49cae39a6c059005fe98c19387c19c651",
         "type": "github"
       },
       "original": {
-        "owner": "leath-dub",
+        "owner": "jeansidharta",
+        "ref": "feat-menu-context",
         "repo": "snipe.nvim",
         "type": "github"
       }
