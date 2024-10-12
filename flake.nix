@@ -159,6 +159,10 @@
       url = "github:zk-org/zk-nvim";
       flake = false;
     };
+    outline = {
+      url = "github:hedyhli/outline.nvim";
+      flake = false;
+    };
 
     # LSPs
     openscad-lsp = {

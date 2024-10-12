@@ -420,6 +420,12 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 	{ "<C-o>", require('bufjump').backward,            desc = "Jump to the previous buffer in the jump list" },
 	{ "<C-.>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
 	{ "<C-,>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
+```
+
+#### outline
+
+```lua
+	{ "<leader>/", "<cmd>Outline<CR>", desc = "Toggle outline"},
 })
 ```
 

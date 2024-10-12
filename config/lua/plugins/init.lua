@@ -74,3 +74,5 @@ vim.api.nvim_create_autocmd("Filetype", {
 		require("otter").activate()
 	end,
 })
+
+require("outline").setup({})

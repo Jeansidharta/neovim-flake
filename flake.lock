@@ -1151,6 +1151,22 @@
         "type": "github"
       }
     },
+    "outline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726927412,
+        "narHash": "sha256-wzZK0TVImRPCFN3heOemnvEJA6LScePbKRpjAnCrrNs=",
+        "owner": "hedyhli",
+        "repo": "outline.nvim",
+        "rev": "6c44527837ff7ac1cd054dc365a721e881020a2e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hedyhli",
+        "repo": "outline.nvim",
+        "type": "github"
+      }
+    },
     "overseer": {
       "flake": false,
       "locked": {
@@ -1325,6 +1341,7 @@
         "oil": "oil",
         "openscad-lsp": "openscad-lsp",
         "otter": "otter",
+        "outline": "outline",
         "overseer": "overseer",
         "parinfer-rust": "parinfer-rust",
         "plenary": "plenary",
