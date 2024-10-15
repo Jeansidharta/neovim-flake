@@ -19,12 +19,12 @@ require("blink.cmp").setup({
 	sources = {
 		providers = {
 			{
-				{ "blink.cmp.sources.lsp" },
-				{ "blink.cmp.sources.path" },
+				{ "blink.cmp.sources.lsp", score_offset = 3 },
+				{ "blink.cmp.sources.path", score_offset = -3 },
+				{ "blink-luasnip-src", score_offset = -3 },
 				{ "blink.cmp.sources.snippets", score_offset = -3 },
-				{ "blink-luasnip-src" },
+				{ "blink.cmp.sources.buffer", score_offset = 0 },
 			},
-			{ { "blink.cmp.sources.buffer" } },
 		},
 	},
 })
