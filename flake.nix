@@ -163,6 +163,10 @@
       url = "github:hedyhli/outline.nvim";
       flake = false;
     };
+    hex = {
+      url = "github:RaafatTurki/hex.nvim";
+      flake = false;
+    };
 
     # LSPs
     openscad-lsp = {
@@ -254,6 +258,7 @@
 
               # Tools
               ripgrep
+              unixtools.xxd
 
               # Language servers
               lua-language-server
