@@ -1,4 +1,6 @@
 require("blink.cmp").setup({
+	keymap = { preset = "super-tab" },
+
 	trigger = {
 		signature_help = {
 			enabled = true,
@@ -17,12 +19,16 @@ require("blink.cmp").setup({
 		},
 	},
 	sources = {
+		completion = {
+			enabled_providers = { "lsp", "path", "snippets", "buffer", "luasnip" },
+		},
 		providers = {
-			{ "blink.cmp.sources.lsp", name = "Lsp", score_offset = 9999 },
-			{ "blink.cmp.sources.path", name = "Path", score_offset = -3 },
-			{ "blink-luasnip-src", name = "Luasnip", score_offset = -3 },
-			{ "blink.cmp.sources.snippets", name = "Snippets", score_offset = -3 },
-			{ "blink.cmp.sources.buffer", name = "Buffer", score_offset = 0 },
+			luasnip = {
+				name = "luasnip",
+				module = "blink-luasnip-src",
+
+				score_offset = -3,
+			},
 		},
 	},
 })
