@@ -23,7 +23,7 @@ vim.cmd([[colorscheme tokyodark]])
 require("deferred-clipboard").setup({})
 
 require("various-textobjs").setup({
-	useDefaultKeymaps = true,
+	keymaps = { useDefaults = true },
 })
 
 -- Setup vim-notify
