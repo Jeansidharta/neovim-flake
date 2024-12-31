@@ -18,6 +18,12 @@ require("blink.cmp").setup({
 			},
 		},
 	},
+	fuzzy = {
+		prebuilt_binaries = {
+			-- Required since this package is downloaded through nix
+			download = false,
+		},
+	},
 	snippets = {
 		expand = function(snippet)
 			require("luasnip").lsp_expand(snippet)
