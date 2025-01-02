@@ -29,6 +29,10 @@
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
+    nvim-colorizer = {
+      url = "github:catgoose/nvim-colorizer.lua";
+      flake = false;
+    };
     tokyodark = {
       url = "github:jeansidharta/tokyodark.nvim";
       flake = false;
