@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
+    theme.url = "github:jeansidharta/configuration.nix?dir=theming";
+
     # Literate programming builder
     literate-markdown = {
       url = "github:jeansidharta/literate-markdown";
@@ -185,6 +187,7 @@
     {
       self,
       nixpkgs,
+      theme,
       ...
     }@inputs:
     let
@@ -238,6 +241,7 @@
                   "nixpkgs"
                   "zls"
                   "openscad-lsp"
+                  "theme"
                   # We are building these ourselves. Remove from automatic inclusion
                   "parinfer-rust"
                   "blink"
