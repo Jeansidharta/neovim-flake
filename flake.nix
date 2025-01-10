@@ -59,10 +59,6 @@
       url = "git+https://git.sr.ht/~whynothugo/lsp_lines.nvim?ref=main";
       flake = false;
     };
-    deferred-clipboard = {
-      url = "github:EtiamNullam/deferred-clipboard.nvim";
-      flake = false;
-    };
     oil = {
       url = "github:stevearc/oil.nvim";
       flake = false;

@@ -20,8 +20,6 @@ require("plugins.snipe")
 vim.g.tokyodark_transparent_background = true
 vim.cmd([[colorscheme tokyodark]])
 
-require("deferred-clipboard").setup({})
-
 require("various-textobjs").setup({
 	keymaps = { useDefaults = true },
 })
