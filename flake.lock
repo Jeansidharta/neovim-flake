@@ -737,6 +737,7 @@
         "substitute": "substitute",
         "telescope": "telescope",
         "theme": "theme",
+        "tiny-glimmer": "tiny-glimmer",
         "tokyodark": "tokyodark",
         "treesitter": "treesitter",
         "various-textobjs": "various-textobjs",
@@ -917,6 +918,22 @@
         "dir": "theming",
         "owner": "jeansidharta",
         "repo": "configuration.nix",
+        "type": "github"
+      }
+    },
+    "tiny-glimmer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737248858,
+        "narHash": "sha256-ES408Dsiu9Uxgaf6neZmE+7IGbzc0KHg0pDdzpJp3Ig=",
+        "owner": "rachartier",
+        "repo": "tiny-glimmer.nvim",
+        "rev": "c054d7a36485d61f478f535911f3edf1b248cb5d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rachartier",
+        "repo": "tiny-glimmer.nvim",
         "type": "github"
       }
     },

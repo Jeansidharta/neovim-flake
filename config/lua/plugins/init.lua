@@ -36,6 +36,8 @@ vim.diagnostic.config({
 	virtual_lines = false,
 })
 
+require("tiny-glimmer").setup({})
+
 require("oil").setup({
 	columns = {
 		"icon",

@@ -31,6 +31,10 @@
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
+    tiny-glimmer = {
+      url = "github:rachartier/tiny-glimmer.nvim";
+      flake = false;
+    };
     oil-lsp-diagnostics = {
       url = "github:JezerM/oil-lsp-diagnostics.nvim";
       flake = false;
