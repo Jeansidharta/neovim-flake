@@ -36,7 +36,9 @@ vim.diagnostic.config({
 	virtual_lines = false,
 })
 
-require("tiny-glimmer").setup({})
+require("tiny-glimmer").setup({
+	transparency_color = "#FF0000",
+})
 
 require("oil").setup({
 	columns = {
