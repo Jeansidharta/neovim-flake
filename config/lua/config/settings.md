@@ -38,6 +38,12 @@ modern terminal emulators support, instead of the old 16 colors table
 vim.o.termguicolors = true
 ```
 
+Allow neovim to use the system clipboad
+
+```lua
+vim.opt.clipboard:append("unnamedplus")
+```
+
 ## LSP Debug
 
 Allow for easier debugging of the LSP. **This is disabled until needed.**
