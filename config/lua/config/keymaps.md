@@ -376,6 +376,22 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 	},
 ```
 
+#### Treewalker
+
+```lua
+-- movement
+	{ '<C-Up>', '<cmd>Treewalker Up<cr>', silent = true },
+	{ '<C-Down>', '<cmd>Treewalker Down<cr>', silent = true },
+	{ '<C-Left>', '<cmd>Treewalker Left<cr>', silent = true },
+	{ '<C-Right>', '<cmd>Treewalker Right<cr>', silent = true },
+
+-- swapping
+	{ '<leader><C-Up>', '<cmd>Treewalker SwapUp<cr>', silent = true },
+	{ '<leader><C-Down>', '<cmd>Treewalker SwapDown<cr>', silent = true },
+	{ '<leader><C-Left>', '<cmd>Treewalker SwapLeft<CR>', silent = true },
+	{ '<leader><C-Right>', '<cmd>Treewalker SwapRight<CR>', silent = true },
+```
+
 #### Lsp lines
 
 ```lua

@@ -47,6 +47,10 @@
       url = "github:catgoose/nvim-colorizer.lua";
       flake = false;
     };
+    treewalker = {
+      url = "github:aaronik/treewalker.nvim";
+      flake = false;
+    };
     tokyodark = {
       url = "github:jeansidharta/tokyodark.nvim";
       flake = false;

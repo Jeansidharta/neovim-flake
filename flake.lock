@@ -757,6 +757,7 @@
         "tiny-glimmer": "tiny-glimmer",
         "tokyodark": "tokyodark",
         "treesitter": "treesitter",
+        "treewalker": "treewalker",
         "various-textobjs": "various-textobjs",
         "zk-nvim": "zk-nvim",
         "zls": "zls"
@@ -983,6 +984,22 @@
       "original": {
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
+        "type": "github"
+      }
+    },
+    "treewalker": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737256549,
+        "narHash": "sha256-pd9Yfz5oqmQZimxkCyrl6dAEh3TyDdcj/mfO1KGH4iQ=",
+        "owner": "aaronik",
+        "repo": "treewalker.nvim",
+        "rev": "9a29abe2141d930321a88c3a1ff9d914f4fd3257",
+        "type": "github"
+      },
+      "original": {
+        "owner": "aaronik",
+        "repo": "treewalker.nvim",
         "type": "github"
       }
     },
