@@ -35,6 +35,10 @@
       url = "github:rachartier/tiny-glimmer.nvim";
       flake = false;
     };
+    colorful-menu = {
+      url = "github:xzbdmw/colorful-menu.nvim";
+      flake = false;
+    };
     oil-lsp-diagnostics = {
       url = "github:JezerM/oil-lsp-diagnostics.nvim";
       flake = false;

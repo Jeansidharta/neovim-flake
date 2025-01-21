@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "colorful-menu": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1737172195,
+        "narHash": "sha256-7Dk2Neg4NuUQ1tPsAW88PPx0kSBDsiQwYrwTmq4vI2g=",
+        "owner": "xzbdmw",
+        "repo": "colorful-menu.nvim",
+        "rev": "4a17385c4e229027eb6de0f4d3e095448ab3dec1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "xzbdmw",
+        "repo": "colorful-menu.nvim",
+        "type": "github"
+      }
+    },
     "dressing": {
       "flake": false,
       "locked": {
@@ -699,6 +715,7 @@
       "inputs": {
         "blink": "blink",
         "bufjump": "bufjump",
+        "colorful-menu": "colorful-menu",
         "dressing": "dressing",
         "fidget": "fidget",
         "git-conflict": "git-conflict",
