@@ -583,6 +583,22 @@
         "type": "github"
       }
     },
+    "oil-lsp-diagnostics": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736696478,
+        "narHash": "sha256-+hQizcEfsXU63Mgc6wVzje62UyYjM3VQv4MBTspEhyY=",
+        "owner": "JezerM",
+        "repo": "oil-lsp-diagnostics.nvim",
+        "rev": "693374aa4cfa97ed5e95370bc5a9f0c452351c6c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JezerM",
+        "repo": "oil-lsp-diagnostics.nvim",
+        "type": "github"
+      }
+    },
     "openscad-lsp": {
       "flake": false,
       "locked": {
@@ -707,6 +723,7 @@
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-notify": "nvim-notify",
         "oil": "oil",
+        "oil-lsp-diagnostics": "oil-lsp-diagnostics",
         "openscad-lsp": "openscad-lsp",
         "otter": "otter",
         "outline": "outline",

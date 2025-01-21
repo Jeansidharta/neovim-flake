@@ -31,6 +31,10 @@
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
+    oil-lsp-diagnostics = {
+      url = "github:JezerM/oil-lsp-diagnostics.nvim";
+      flake = false;
+    };
     nvim-colorizer = {
       url = "github:catgoose/nvim-colorizer.lua";
       flake = false;

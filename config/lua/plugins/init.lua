@@ -51,6 +51,8 @@ require("oil").setup({
 	},
 })
 
+require("oil-lsp-diagnostics").setup({})
+
 require("substitute").setup({})
 
 require("bufjump").setup()
