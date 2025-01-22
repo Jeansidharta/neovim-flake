@@ -314,68 +314,6 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
 ```
 
-#### Smart Splits
-
-```lua
-	{
-		"<leader><leader>wr",
-		require("smart-splits").start_resize_mode,
-		desc = "start resize mode",
-	},
-	{
-		"<C-Left>",
-		require("smart-splits").move_cursor_left,
-		desc = "move cursor left",
-	},
-	{
-		"<C-Down>",
-		require("smart-splits").move_cursor_down,
-		desc = "move cursor down",
-	},
-	{
-		"<C-Up>",
-		require("smart-splits").move_cursor_up,
-		desc = "move cursor up",
-	},
-	{
-		"<C-Right>",
-		require("smart-splits").move_cursor_right,
-		desc = "move cursor right",
-	},
-	{
-		"<C-S-Left>",
-		function()
-			require("smart-splits").swap_buf_left()
-			require("smart-splits").move_cursor_left()
-		end,
-		desc = "swap buf left",
-	},
-	{
-		"<C-S-Down>",
-		function()
-			require("smart-splits").swap_buf_down()
-			require("smart-splits").move_cursor_down()
-		end,
-		desc = "swap buf down",
-	},
-	{
-		"<C-S-Up>",
-		function()
-			require("smart-splits").swap_buf_up()
-			require("smart-splits").move_cursor_up()
-		end,
-		desc = "swap buf up",
-	},
-	{
-		"<C-S-Right>",
-		function()
-			require("smart-splits").swap_buf_right()
-			require("smart-splits").move_cursor_right()
-		end,
-		desc = "swap buf right",
-	},
-```
-
 #### Treewalker
 
 ```lua

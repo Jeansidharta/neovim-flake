@@ -747,7 +747,6 @@
         "overseer": "overseer",
         "parinfer-rust": "parinfer-rust",
         "plenary": "plenary",
-        "smart-splits": "smart-splits",
         "snipe": "snipe",
         "sqlite": "sqlite",
         "status-col": "status-col",
@@ -777,22 +776,6 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
-        "type": "github"
-      }
-    },
-    "smart-splits": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1736527113,
-        "narHash": "sha256-YCs472ff+y1OAYuS/mUtoinEDSvqMT9tZ55eia8vchA=",
-        "owner": "mrjones2014",
-        "repo": "smart-splits.nvim",
-        "rev": "7266722346df921535ca3f317164a62069436b7c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "mrjones2014",
-        "repo": "smart-splits.nvim",
         "type": "github"
       }
     },

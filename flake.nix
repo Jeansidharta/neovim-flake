@@ -91,10 +91,6 @@
       url = "github:j-hui/fidget.nvim";
       flake = false;
     };
-    smart-splits = {
-      url = "github:mrjones2014/smart-splits.nvim";
-      flake = false;
-    };
     dressing = {
       url = "github:stevearc/dressing.nvim";
       flake = false;
