@@ -599,6 +599,22 @@
         "type": "github"
       }
     },
+    "oil-git-status": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1736777807,
+        "narHash": "sha256-pz/+RF5woO4V5pNEp6gEsTaRNNqCQDrI6jFrNdtDmmY=",
+        "owner": "refractalize",
+        "repo": "oil-git-status.nvim",
+        "rev": "293021c42f9d725981616c26c05964c7e5a88a08",
+        "type": "github"
+      },
+      "original": {
+        "owner": "refractalize",
+        "repo": "oil-git-status.nvim",
+        "type": "github"
+      }
+    },
     "oil-lsp-diagnostics": {
       "flake": false,
       "locked": {
@@ -740,6 +756,7 @@
         "nvim-lspconfig": "nvim-lspconfig",
         "nvim-notify": "nvim-notify",
         "oil": "oil",
+        "oil-git-status": "oil-git-status",
         "oil-lsp-diagnostics": "oil-lsp-diagnostics",
         "openscad-lsp": "openscad-lsp",
         "otter": "otter",

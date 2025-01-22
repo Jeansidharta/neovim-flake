@@ -43,6 +43,10 @@
       url = "github:JezerM/oil-lsp-diagnostics.nvim";
       flake = false;
     };
+    oil-git-status = {
+      url = "github:refractalize/oil-git-status.nvim";
+      flake = false;
+    };
     nvim-colorizer = {
       url = "github:catgoose/nvim-colorizer.lua";
       flake = false;

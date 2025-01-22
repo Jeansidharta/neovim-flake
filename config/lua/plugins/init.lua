@@ -52,6 +52,9 @@ require("oil").setup({
 		"size",
 		-- "mtime",
 	},
+	win_options = {
+		signcolumn = "yes:2",
+	},
 	view_options = {
 		show_hidden = true,
 		is_always_hidden = function(name, bufnr)
@@ -61,6 +64,8 @@ require("oil").setup({
 })
 
 require("oil-lsp-diagnostics").setup({})
+
+require("oil-git-status").setup({})
 
 require("substitute").setup({})
 
