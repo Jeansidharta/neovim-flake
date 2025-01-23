@@ -35,10 +35,6 @@ vim.diagnostic.config({
 	virtual_lines = false,
 })
 
-require("tiny-glimmer").setup({
-	transparency_color = "#FF0000",
-})
-
 require("treewalker").setup({
 	highlight = true,
 	highlight_duration = 250,

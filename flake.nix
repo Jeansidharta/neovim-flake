@@ -31,10 +31,6 @@
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
-    tiny-glimmer = {
-      url = "github:rachartier/tiny-glimmer.nvim";
-      flake = false;
-    };
     colorful-menu = {
       url = "github:xzbdmw/colorful-menu.nvim";
       flake = false;
