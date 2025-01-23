@@ -29,6 +29,10 @@ require("nvim-treesitter.configs").setup({
 		"vim",
 		"vue",
 		"yaml",
+		"yuck",
+		"zig",
+		"hyprlang",
+		"nix",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
