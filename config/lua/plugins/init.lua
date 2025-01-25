@@ -77,6 +77,8 @@ require("guess-indent").setup({})
 
 require("hex").setup()
 
+require("colorizer").setup({})
+
 require("zk").setup({})
 require("telescope").load_extension("zk")
 
