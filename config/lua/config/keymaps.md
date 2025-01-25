@@ -242,7 +242,7 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 ### Other
 
 ````lua
-	{ "++",               "\"zyymzo```<ESC>'z==O```<ESC>P", desc = "Run current line" },
+	{ "++",               "\"zyymzo```<ESC>'z==O```<ESC>\"zP", desc = "Run current line" },
 	{ "<leader>io",       new_file_selector,                desc = "New file selector" },
 	{ "<leader>df",       show_next_diagnostic,             desc = "Run current line" },
 	{ "<C-H>",            ":nohlsearch<CR>",                desc = "Remove highlights" },
