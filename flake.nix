@@ -43,10 +43,6 @@
       url = "github:refractalize/oil-git-status.nvim";
       flake = false;
     };
-    nvim-colorizer = {
-      url = "github:catgoose/nvim-colorizer.lua";
-      flake = false;
-    };
     treewalker = {
       url = "github:aaronik/treewalker.nvim";
       flake = false;
