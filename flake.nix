@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     theme.url = "github:jeansidharta/configuration.nix?dir=theming";
 
@@ -191,6 +192,7 @@
     {
       self,
       nixpkgs,
+      nixpkgs-stable,
       theme,
       ...
     }@inputs:
@@ -246,6 +248,7 @@
                   "zls"
                   "openscad-lsp"
                   "theme"
+                  "nixpkgs-stable"
                   # We are building these ourselves. Remove from automatic inclusion
                   "parinfer-rust"
                   "blink"
@@ -299,7 +302,8 @@
                   pname = "openscad-lsp";
                   version = "1.2.5";
                   src = inputs.openscad-lsp;
-                  cargoHash = "sha256-JaX/BokVeHcD/38zbUFYucAqpASSxV9gvvjYvjX7xdA=";
+                  useFetchCargoVendor = true;
+                  cargoHash = "sha256-/OEamj/4+8Zu/XCOtJy4tBtK6fZ6VjLg61Ir7EnCh/I=";
                   # no tests exist
                   doCheck = false;
 
@@ -318,7 +322,7 @@
               leptosfmt
               selene
               nixfmt-rfc-style
-              eslint
+              nixpkgs-stable.legacyPackages.${system}.eslint
 
               # For treesitter
               gcc
