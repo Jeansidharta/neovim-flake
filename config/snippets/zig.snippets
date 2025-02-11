@@ -1,18 +1,29 @@
 snippet err
-  std.log.err("$1\n", .{})
+  std.log.err("$1", .{});
 
 snippet warn
-  std.log.warn("$1\n", .{})
+  std.log.warn("$1", .{});
 
 snippet info
-  std.log.info("$1\n", .{})
+  std.log.info("$1", .{});
 
 snippet debug
-  std.log.debug("$1\n", .{})
+  std.log.debug("$1", .{});
 
 snippet print
-  std.debug.print("$1\n", .{})
+  std.debug.print("$1", .{});
 
 snippet gpa
-  var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+  var gpa = std.heap.GeneralPurposeAllocator(.{}).init;
   const alloc = gpa.allocator();
+  defer {
+    if (gpa.deinit() == .leak) {
+      std.log.err("Memory leak detected", .{});
+    }
+  }
+
+snippet std
+  const std = @import("std");
+
+snippet req
+  const $1 = @import("$2");
