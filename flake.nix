@@ -14,168 +14,173 @@
     };
 
     # Libraries
-    plenary = {
+    plenary_plugin = {
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
-    sqlite = {
+    sqlite_plugin = {
       url = "github:kkharji/sqlite.lua";
       flake = false;
     };
-    git-magnum = {
+    git-magnum_plugin = {
       url = "github:glts/vim-magnum";
       flake = false;
     };
 
     # Plugins
-    neoclip = {
+    neoclip_plugin = {
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
-    oil-lsp-diagnostics = {
+    oil-lsp-diagnostics_plugin = {
       url = "github:JezerM/oil-lsp-diagnostics.nvim";
       flake = false;
     };
-    oil-git-status = {
+    oil-git-status_plugin = {
       url = "github:refractalize/oil-git-status.nvim";
       flake = false;
     };
-    nvim-colorizer = {
+    nvim-colorizer_plugin = {
       url = "github:catgoose/nvim-colorizer.lua";
       flake = false;
     };
-    treewalker = {
+    treewalker_plugin = {
       url = "github:aaronik/treewalker.nvim";
       flake = false;
     };
-    tokyodark = {
+    tokyodark_plugin = {
       url = "github:jeansidharta/tokyodark.nvim";
       flake = false;
     };
-    telescope = {
+    telescope_plugin = {
       url = "github:nvim-telescope/telescope.nvim";
       flake = false;
     };
-    nvim-notify = {
+    nvim-notify_plugin = {
       url = "github:rcarriga/nvim-notify";
       flake = false;
     };
-    git-conflict = {
+    git-conflict_plugin = {
       url = "github:akinsho/git-conflict.nvim";
       flake = false;
     };
-    git-radical = {
+    git-radical_plugin = {
       url = "github:glts/vim-radical";
       flake = false;
     };
-    lsp-lines = {
+    lsp-lines_plugin = {
       url = "git+https://git.sr.ht/~whynothugo/lsp_lines.nvim?ref=main";
       flake = false;
     };
-    oil = {
+    oil_plugin = {
       url = "github:stevearc/oil.nvim";
       flake = false;
     };
-    substitute = {
+    substitute_plugin = {
       url = "github:gbprod/substitute.nvim";
       flake = false;
     };
-    bufjump = {
+    bufjump_plugin = {
       url = "github:kwkarlwang/bufjump.nvim";
       flake = false;
     };
-    fidget = {
+    fidget_plugin = {
       url = "github:j-hui/fidget.nvim";
       flake = false;
     };
-    dressing = {
+    dressing_plugin = {
       url = "github:stevearc/dressing.nvim";
       flake = false;
     };
-    git-signs = {
+    git-signs_plugin = {
       url = "github:lewis6991/gitsigns.nvim";
       flake = false;
     };
-    hover = {
+    hover_plugin = {
       url = "github:lewis6991/hover.nvim";
       flake = false;
     };
-    indent-blankline = {
+    indent-blankline_plugin = {
       url = "github:lukas-reineke/indent-blankline.nvim";
       flake = false;
     };
-    lualine = {
+    lualine_plugin = {
       url = "github:nvim-lualine/lualine.nvim";
       flake = false;
     };
-    luasnip = {
+    luasnip_plugin = {
       url = "github:L3MON4D3/LuaSnip";
       flake = false;
     };
-    mdeval = {
+    mdeval_plugin = {
       url = "github:jeansidharta/mdeval.nvim";
       flake = false;
     };
-    none-ls = {
+    none-ls_plugin = {
       url = "github:nvimtools/none-ls.nvim";
       flake = false;
     };
+    # This is a plugin, but wont have the plugin prefix because it has
+    # to be handled separately, as it is a proper flake.
     blink = {
       url = "github:Saghen/blink.cmp";
     };
-    nvim-lspconfig = {
+    nvim-lspconfig_plugin = {
       url = "github:neovim/nvim-lspconfig";
       flake = false;
     };
-    overseer = {
+    overseer_plugin = {
       url = "github:stevearc/overseer.nvim";
       flake = false;
     };
-    status-col = {
+    status-col_plugin = {
       url = "github:luukvbaal/statuscol.nvim";
       flake = false;
     };
-    treesitter = {
+    treesitter_plugin = {
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
     };
-    nvim-illuminate = {
+    nvim-illuminate_plugin = {
       url = "github:RRethy/vim-illuminate";
       flake = false;
     };
-    various-textobjs = {
+    various-textobjs_plugin = {
       url = "github:chrisgrieser/nvim-various-textobjs";
       flake = false;
     };
+    # This is a plugin, but wont have the plugin prefix because it has
+    # to be built before being used, and because the plugin directory
+    # is weird, so we must handle that separately
     parinfer-rust = {
       url = "github:eraserhd/parinfer-rust";
       flake = false;
     };
-    guess-indent = {
+    guess-indent_plugin = {
       url = "github:NMAC427/guess-indent.nvim";
       flake = false;
     };
-    snipe = {
+    snipe_plugin = {
       url = "github:leath-dub/snipe.nvim";
       flake = false;
     };
-    markview = {
+    markview_plugin = {
       url = "github:OXY2DEV/markview.nvim";
       flake = false;
     };
-    otter = {
+    otter_plugin = {
       url = "github:jmbuhr/otter.nvim";
       flake = false;
     };
-    zk-nvim = {
+    zk-nvim_plugin = {
       url = "github:zk-org/zk-nvim";
       flake = false;
     };
-    outline = {
+    outline_plugin = {
       url = "github:hedyhli/outline.nvim";
       flake = false;
     };
-    hex = {
+    hex_plugin = {
       url = "github:RaafatTurki/hex.nvim";
       flake = false;
     };
@@ -238,34 +243,27 @@
               ${fd-bin} . -e md -t f --strip-cwd-prefix -x ${literate-markdown-bin} "{}" "$out/{.}.lua" \;
             '';
 
-          plugins_runtimepath =
-            with lib.attrsets;
-            with builtins;
-            (
-              let
-                not-plugins = [
-                  "nixpkgs"
-                  "zls"
-                  "openscad-lsp"
-                  "theme"
-                  "nixpkgs-stable"
-                  # We are building these ourselves. Remove from automatic inclusion
-                  "parinfer-rust"
-                  "blink"
-                ];
-                plugins_attr = filterAttrs (name: _: !elem name not-plugins) inputs;
-                plugins = map (p: p.outPath) (attrValues plugins_attr);
-                plugins_with_config = plugins ++ [ "${parsed_config}" ];
-              in
-              lib.concatStringsSep "," plugins_with_config
-            )
-            # These we had to build before adding
-            + ",${parinfer}/share/vim-plugins/parinfer-rust"
-            + ",${blink}";
+          plugins_dir = (
+            let
+              inherit (lib.strings) hasSuffix removeSuffix;
+              inherit (lib.attrsets) mapAttrs' filterAttrs nameValuePair;
+              plugins_attr = filterAttrs (name: _: hasSuffix "_plugin" name) inputs;
+              plugins = mapAttrs' (
+                name: value: nameValuePair (removeSuffix "_plugin" name) value.outPath
+              ) plugins_attr;
+              plugins_with_config = plugins // {
+                personal-config = "${parsed_config}";
+                # These we had to build before adding
+                parinfer = "${parinfer}/share/vim-plugins/parinfer-rust";
+                blink = "${blink}";
+              };
+            in
+            pkgs.linkFarm "neovim-plugins" plugins_with_config
+          );
           sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
         in
         {
-          parsed-config = parsed_config;
+          plugins_dir = plugins_dir;
           default = pkgs.writeShellApplication {
             name = "nvim";
 
@@ -297,7 +295,6 @@
                   lib,
                   rustPlatform,
                 }:
-
                 rustPlatform.buildRustPackage {
                   pname = "openscad-lsp";
                   version = "1.2.5";
@@ -340,7 +337,7 @@
 
               nvim \
                 --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
-                --cmd "let &runtimepath.=',' .. \"${plugins_runtimepath}\"" \
+                --cmd "let &runtimepath.=',' .. \"${plugins_dir.outPath}/*\"" \
                 -u ${parsed_config}/init.lua "$@"
             '';
           };
