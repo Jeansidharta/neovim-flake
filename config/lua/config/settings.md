@@ -143,7 +143,12 @@ thinking
 
 ```lua
 vim.o.timeout = false
-vim.o.ttimeout = false
+```
+
+For a while, I had a bug when moving to Hyprland regarding this option and the clipboard. Whenever I'd suspend neovim with CTRL-Z, and restore it with `fg`, Neovim would paste its clipboard contents. This would result in me seeing some jumbled lines when resuming Neovim, and being forced to undo the last action (which was the paste command). I spent some time debugging the issue, and realized it went away when disabling this option. This is not really used by my config, and was only set out of completeness, since I also set the `timeout` option above. Therefore, I'm commenting this line for now, and will try to uncoment it from time to time to check if the issue went away by itself.
+
+```lua
+-- vim.o.ttimeout = false
 ```
 
 ## Undo file
