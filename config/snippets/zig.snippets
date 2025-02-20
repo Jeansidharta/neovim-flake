@@ -27,3 +27,10 @@ snippet std
 
 snippet req
   const $1 = @import("$2");
+
+snippet format
+  pub fn format(self: @This(), comptime fmt: []const u8, options: std.fmt.FormatOptions, writer: anytype) !void {
+    _ = fmt;
+    _ = options;
+    try writer.print("{any}", .{ self });
+  }
