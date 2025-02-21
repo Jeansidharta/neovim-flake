@@ -300,7 +300,7 @@
                   version = "1.2.5";
                   src = inputs.openscad-lsp;
                   useFetchCargoVendor = true;
-                  cargoHash = "sha256-/OEamj/4+8Zu/XCOtJy4tBtK6fZ6VjLg61Ir7EnCh/I=";
+                  cargoHash = "sha256-EscpHTBH6R7sBmIxTH/n5zTs2YahXRh4HTWWgq50Lh8=";
                   # no tests exist
                   doCheck = false;
 
