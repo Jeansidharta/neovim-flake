@@ -16,23 +16,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr) end
 
-require("lspconfig").ts_ls.setup({})
-require("lspconfig").lua_ls.setup({})
-require("lspconfig").bashls.setup({})
-require("lspconfig").cssls.setup({})
-require("lspconfig").eslint.setup({})
-require("lspconfig").gleam.setup({})
-require("lspconfig").html.setup({})
-require("lspconfig").nginx_language_server.setup({})
-require("lspconfig").sqls.setup({})
-require("lspconfig").jsonls.setup({})
-require("lspconfig").marksman.setup({})
-require("lspconfig").svelte.setup({})
-require("lspconfig").terraformls.setup({})
-require("lspconfig").zk.setup({})
-require("lspconfig").nil_ls.setup({})
-require("lspconfig").rust_analyzer.setup({})
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+require("lspconfig").ts_ls.setup({ capabilities = capabilities })
+require("lspconfig").lua_ls.setup({ capabilities = capabilities })
+require("lspconfig").bashls.setup({ capabilities = capabilities })
+require("lspconfig").cssls.setup({ capabilities = capabilities })
+require("lspconfig").eslint.setup({ capabilities = capabilities })
+require("lspconfig").gleam.setup({ capabilities = capabilities })
+require("lspconfig").html.setup({ capabilities = capabilities })
+require("lspconfig").nginx_language_server.setup({ capabilities = capabilities })
+require("lspconfig").sqls.setup({ capabilities = capabilities })
+require("lspconfig").jsonls.setup({ capabilities = capabilities })
+require("lspconfig").marksman.setup({ capabilities = capabilities })
+require("lspconfig").svelte.setup({ capabilities = capabilities })
+require("lspconfig").terraformls.setup({ capabilities = capabilities })
+require("lspconfig").zk.setup({ capabilities = capabilities })
+require("lspconfig").nil_ls.setup({ capabilities = capabilities })
+require("lspconfig").rust_analyzer.setup({ capabilities = capabilities })
 require("lspconfig").zls.setup({
+	capabilities = capabilities,
 	settings = {
 		zls = {
 			enable_build_on_save = true,
@@ -42,6 +45,7 @@ require("lspconfig").zls.setup({
 })
 
 require("lspconfig").openscad_ls.setup({
+	capabilities = capabilities,
 	cmd = {
 		"openscad-lsp",
 		"--stdio",
