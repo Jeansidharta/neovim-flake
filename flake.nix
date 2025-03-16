@@ -278,6 +278,7 @@
               lua-language-server
               gleam
               zls-master
+              astro-language-server
               nodePackages_latest.typescript-language-server
               nodePackages_latest.bash-language-server
               vscode-langservers-extracted

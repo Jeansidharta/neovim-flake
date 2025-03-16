@@ -7,11 +7,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1741903085,
-        "narHash": "sha256-Ps67peRvcX0z0u7IQZXsh0p7zFfTiweePHpo+6yQKRw=",
+        "lastModified": 1741989409,
+        "narHash": "sha256-q0IzIb+GNvOniatW3lnnaQxYPgS1JkaAC9VpF2aA2Jo=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "d3607d2daa4fd4f06e8f9c22e1b2a272fdd7fc30",
+        "rev": "cb8cc634dee35b14e359daf2e9b0c418a60f75f1",
         "type": "github"
       },
       "original": {
@@ -332,11 +332,11 @@
     "lualine_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1741948622,
-        "narHash": "sha256-wXfaxtfJJtIPjTi8MCVKU97XuWwXP9femHQxLK9Zl34=",
+        "lastModified": 1742039150,
+        "narHash": "sha256-qYKykdCcXd+OHmK3WvsUCbn0zDKTQDj49VYsQ8iVvgs=",
         "owner": "nvim-lualine",
         "repo": "lualine.nvim",
-        "rev": "edf4b24861fa5d586058ff2c9e8982bb971f7098",
+        "rev": "b8b60c7f1d0d95ad74ee215b2291280b30482476",
         "type": "github"
       },
       "original": {
@@ -455,11 +455,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1741851582,
-        "narHash": "sha256-cPfs8qMccim2RBgtKGF+x9IBCduRvd/N5F4nYpU0TVE=",
+        "lastModified": 1742069588,
+        "narHash": "sha256-C7jVfohcGzdZRF6DO+ybyG/sqpo1h6bZi9T56sxLy+k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "6607cf789e541e7873d40d3a8f7815ea92204f32",
+        "rev": "c80f6a7e10b39afcc1894e02ef785b1ad0b0d7e5",
         "type": "github"
       },
       "original": {
@@ -923,11 +923,11 @@
     "treesitter_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1741935281,
-        "narHash": "sha256-vjGO7XFB28xYDh86a1Jr1Q7cvHeIQCyneo4/UITJWqw=",
+        "lastModified": 1742107939,
+        "narHash": "sha256-rBoVO4CKJ65j4jqTm/J+Cn4pFUV1gcpZjS63RBBN9Pc=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "8b79cddc708cb8549562f0101f7f509ad7cebf97",
+        "rev": "845356a256ed6ff5868da582cb62a31d762e1804",
         "type": "github"
       },
       "original": {
@@ -1032,11 +1032,11 @@
         "zig-overlay": "zig-overlay"
       },
       "locked": {
-        "lastModified": 1741485474,
-        "narHash": "sha256-ej8PBSH3n/JVn0W9iwL7nK6Pubq1Vw92ZtodAbtDFw8=",
+        "lastModified": 1742074228,
+        "narHash": "sha256-Gt88eJbZT9aZg7SQU1/aTWx39SP9np5dGii0NvkgQww=",
         "owner": "zigtools",
         "repo": "zls",
-        "rev": "fedbf31eb7d7cb55888e656501767cbe423061af",
+        "rev": "54f5765b342d3da5a1a1877b3b0ff9ef55afa10e",
         "type": "github"
       },
       "original": {
