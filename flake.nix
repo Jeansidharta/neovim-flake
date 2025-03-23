@@ -190,7 +190,11 @@
       url = "github:Leathong/openscad-LSP";
       flake = false;
     };
-    zls.url = "github:zigtools/zls";
+    zig-overlay.url = "github:mitchellh/zig-overlay";
+    zls = {
+      url = "github:zigtools/zls";
+      inputs.zig-overlay.follows = "zig-overlay";
+    };
   };
 
   outputs =

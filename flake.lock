@@ -471,6 +471,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1708161998,
+        "narHash": "sha256-6KnemmUorCvlcAvGziFosAVkrlWZGIc6UNT9GUYr0jQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "84d981bae8b5e783b3b548de505b22880559515f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1741196730,
         "narHash": "sha256-0Sj6ZKjCpQMfWnN0NURqRCQn2ob7YtXTAOTwCuz7fkA=",
         "owner": "NixOS",
@@ -756,6 +772,7 @@
         "treesitter_plugin": "treesitter_plugin",
         "treewalker_plugin": "treewalker_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
+        "zig-overlay": "zig-overlay",
         "zk-nvim_plugin": "zk-nvim_plugin",
         "zls": "zls"
       }
@@ -990,17 +1007,14 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "zls",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1741263138,
-        "narHash": "sha256-qlX8tgtZMTSOEeAM8AmC7K6mixgYOguhl/xLj5xQrXc=",
+        "lastModified": 1742690075,
+        "narHash": "sha256-LVZI6NL+eu8aFotXHrg12lMvwGk/Uxu9SOmq3LzkQFI=",
         "owner": "mitchellh",
         "repo": "zig-overlay",
-        "rev": "627055069ee1409e8c9be7bcc533e8823fb87b18",
+        "rev": "57c9aa1f3f2f861ebce3102fcbb9db6d5b1460a0",
         "type": "github"
       },
       "original": {
@@ -1028,8 +1042,10 @@
     "zls": {
       "inputs": {
         "gitignore": "gitignore",
-        "nixpkgs": "nixpkgs_3",
-        "zig-overlay": "zig-overlay"
+        "nixpkgs": "nixpkgs_4",
+        "zig-overlay": [
+          "zig-overlay"
+        ]
       },
       "locked": {
         "lastModified": 1742247504,
