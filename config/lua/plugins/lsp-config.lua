@@ -34,6 +34,7 @@ require("lspconfig").terraformls.setup({ capabilities = capabilities })
 require("lspconfig").zk.setup({ capabilities = capabilities })
 require("lspconfig").nil_ls.setup({ capabilities = capabilities })
 require("lspconfig").rust_analyzer.setup({ capabilities = capabilities })
+require("lspconfig").emmet_language_server.setup({})
 require("lspconfig").astro.setup({ capabilities = capabilities })
 require("lspconfig").zls.setup({
 	capabilities = capabilities,

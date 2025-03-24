@@ -287,6 +287,8 @@
               nodePackages_latest.bash-language-server
               vscode-langservers-extracted
               nginx-language-server
+              emmet-language-server
+              nodejs
               sqls
               marksman
               svelte-language-server
