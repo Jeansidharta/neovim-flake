@@ -96,10 +96,6 @@
       url = "github:lewis6991/gitsigns.nvim";
       flake = false;
     };
-    hover_plugin = {
-      url = "github:lewis6991/hover.nvim";
-      flake = false;
-    };
     indent-blankline_plugin = {
       url = "github:lukas-reineke/indent-blankline.nvim";
       flake = false;

@@ -259,22 +259,6 @@
         "type": "github"
       }
     },
-    "hover_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1733931974,
-        "narHash": "sha256-t+Aigyh12oAVugDJkvXKwzLe9CasmzJHmPcoyxVyLnw=",
-        "owner": "lewis6991",
-        "repo": "hover.nvim",
-        "rev": "140c4d0ae9397b76baa46b87c574f5377de09309",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lewis6991",
-        "repo": "hover.nvim",
-        "type": "github"
-      }
-    },
     "indent-blankline_plugin": {
       "flake": false,
       "locked": {
@@ -737,7 +721,6 @@
         "git-signs_plugin": "git-signs_plugin",
         "guess-indent_plugin": "guess-indent_plugin",
         "hex_plugin": "hex_plugin",
-        "hover_plugin": "hover_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "literate-markdown": "literate-markdown",
         "lsp-lines_plugin": "lsp-lines_plugin",

@@ -145,7 +145,15 @@ thinking
 vim.o.timeout = false
 ```
 
-For a while, I had a bug when moving to Hyprland regarding this option and the clipboard. Whenever I'd suspend neovim with CTRL-Z, and restore it with `fg`, Neovim would paste its clipboard contents. This would result in me seeing some jumbled lines when resuming Neovim, and being forced to undo the last action (which was the paste command). I spent some time debugging the issue, and realized it went away when disabling this option. This is not really used by my config, and was only set out of completeness, since I also set the `timeout` option above. Therefore, I'm commenting this line for now, and will try to uncoment it from time to time to check if the issue went away by itself.
+For a while, I had a bug when moving to Hyprland regarding this option and the
+clipboard. Whenever I'd suspend neovim with CTRL-Z, and restore it with `fg`,
+Neovim would paste its clipboard contents. This would result in me seeing some
+jumbled lines when resuming Neovim, and being forced to undo the last action
+(which was the paste command). I spent some time debugging the issue, and
+realized it went away when disabling this option. This is not really used by my
+config, and was only set out of completeness, since I also set the `timeout`
+option above. Therefore, I'm commenting this line for now, and will try to
+uncoment it from time to time to check if the issue went away by itself.
 
 ```lua
 -- vim.o.ttimeout = false
@@ -219,4 +227,22 @@ really that useful to me
 ```lua
 vim.opt.autoread = true
 vim.opt.swapfile = false
+```
+
+Make prettier hover windows
+
+```lua
+vim.api.nvim_create_autocmd({ 'VimEnter', 'VimResized' }, {
+  desc = 'Setup LSP hover window',
+  callback = function()
+    local width = math.floor(vim.o.columns * 0.8)
+    local height = math.floor(vim.o.lines * 0.3)
+
+    vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+      border = 'rounded',
+      max_width = width,
+      max_height = height,
+    })
+  end,
+})
 ```

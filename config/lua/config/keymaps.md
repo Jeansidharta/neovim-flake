@@ -297,8 +297,7 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 #### Hover
 
 ```lua
-	{ "K",          require("hover").hover,        desc = "hover.nvim" },
-	{ "<leader>k",  require("hover").hover_select, desc = "hover.nvim (select)" },
+	{ "K",          vim.lsp.buf.hover,        desc = "hover.nvim" },
 ```
 
 #### Luasnip
