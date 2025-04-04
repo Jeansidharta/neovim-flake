@@ -12,7 +12,6 @@ require("plugins.statuscol")
 require("plugins.treesitter")
 require("plugins.vim-illuminate")
 require("plugins.neoclip")
-require("plugins.snipe")
 
 -- Set colorscheme
 vim.g.tokyodark_transparent_background = true
@@ -72,20 +71,9 @@ require("dressing").setup({})
 
 require("overseer").setup()
 
-require("guess-indent").setup({})
-
-require("hex").setup()
-
 require("colorizer").setup({})
 
 require("zk").setup({})
 require("telescope").load_extension("zk")
-
-vim.api.nvim_create_autocmd("Filetype", {
-	pattern = "markdown",
-	callback = function()
-		require("otter").activate()
-	end,
-})
 
 require("outline").setup({})

@@ -152,20 +152,8 @@
       url = "github:eraserhd/parinfer-rust";
       flake = false;
     };
-    guess-indent_plugin = {
-      url = "github:NMAC427/guess-indent.nvim";
-      flake = false;
-    };
-    snipe_plugin = {
-      url = "github:leath-dub/snipe.nvim";
-      flake = false;
-    };
     markview_plugin = {
       url = "github:OXY2DEV/markview.nvim";
-      flake = false;
-    };
-    otter_plugin = {
-      url = "github:jmbuhr/otter.nvim";
       flake = false;
     };
     zk-nvim_plugin = {
@@ -174,10 +162,6 @@
     };
     outline_plugin = {
       url = "github:hedyhli/outline.nvim";
-      flake = false;
-    };
-    hex_plugin = {
-      url = "github:RaafatTurki/hex.nvim";
       flake = false;
     };
 

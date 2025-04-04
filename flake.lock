@@ -7,11 +7,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1743539707,
-        "narHash": "sha256-bRhgL+tS54zRHfpgj0qc8FVUH+W8FrP9vw77zt+Y0mY=",
+        "lastModified": 1743705398,
+        "narHash": "sha256-EfHJVMuJgTeTBZ3IhHG1zDYf4YEU9wznN9F94ccbju0=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "dbdde6e5d457da5d70da9b54fef204e14ed3a3db",
+        "rev": "ea29ab1620de5e61284abc01ae39e56df5a5fe53",
         "type": "github"
       },
       "original": {
@@ -227,38 +227,6 @@
         "type": "github"
       }
     },
-    "guess-indent_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1742937349,
-        "narHash": "sha256-M/FkwCXXhojVFEcCuHo/GkuCCSX9GlVYHBUECSZxBjs=",
-        "owner": "NMAC427",
-        "repo": "guess-indent.nvim",
-        "rev": "84a4987ff36798c2fc1169cbaff67960aed9776f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NMAC427",
-        "repo": "guess-indent.nvim",
-        "type": "github"
-      }
-    },
-    "hex_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1728458034,
-        "narHash": "sha256-m/B4y6GYGcOFPSoL2Z7Y+y+wP+sws7NHwfIilbptCPI=",
-        "owner": "RaafatTurki",
-        "repo": "hex.nvim",
-        "rev": "fcff75fcf43b5a6c5b471eed65b3a06c412d6020",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RaafatTurki",
-        "repo": "hex.nvim",
-        "type": "github"
-      }
-    },
     "indent-blankline_plugin": {
       "flake": false,
       "locked": {
@@ -348,11 +316,11 @@
     "markview_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1743598008,
-        "narHash": "sha256-OY4vdO8+D73Hg/YtIg34Sh5YR1fPo3oAEee96b4cy7E=",
+        "lastModified": 1743669370,
+        "narHash": "sha256-1rvleoJxZne2ox1Odao9wwUkPa6XJawpoeWXqr1knQU=",
         "owner": "OXY2DEV",
         "repo": "markview.nvim",
-        "rev": "ba2ada21f3787b384e57092bbea8c4e78e51d5ea",
+        "rev": "00697269306b8a5b8b56c0baabe94a9f4cee93dc",
         "type": "github"
       },
       "original": {
@@ -568,11 +536,11 @@
     "oil-git-status_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1736777807,
-        "narHash": "sha256-pz/+RF5woO4V5pNEp6gEsTaRNNqCQDrI6jFrNdtDmmY=",
+        "lastModified": 1743675562,
+        "narHash": "sha256-V1tR6U3SAufrPwjSmVXIfhWyaDcF/I48/r2nuCc1/Ms=",
         "owner": "refractalize",
         "repo": "oil-git-status.nvim",
-        "rev": "293021c42f9d725981616c26c05964c7e5a88a08",
+        "rev": "4b5cf53842c17a09420919e655a6a559da3112d7",
         "type": "github"
       },
       "original": {
@@ -626,22 +594,6 @@
       "original": {
         "owner": "Leathong",
         "repo": "openscad-LSP",
-        "type": "github"
-      }
-    },
-    "otter_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1743074371,
-        "narHash": "sha256-N3uoE2AUl51xxBYDrTbVlagM5QnqzQaGZ2wtOPrEkZU=",
-        "owner": "jmbuhr",
-        "repo": "otter.nvim",
-        "rev": "622816aac66933352e20e4d5d01993cd270d6fb0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jmbuhr",
-        "repo": "otter.nvim",
         "type": "github"
       }
     },
@@ -719,8 +671,6 @@
         "git-magnum_plugin": "git-magnum_plugin",
         "git-radical_plugin": "git-radical_plugin",
         "git-signs_plugin": "git-signs_plugin",
-        "guess-indent_plugin": "guess-indent_plugin",
-        "hex_plugin": "hex_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "literate-markdown": "literate-markdown",
         "lsp-lines_plugin": "lsp-lines_plugin",
@@ -740,12 +690,10 @@
         "oil-lsp-diagnostics_plugin": "oil-lsp-diagnostics_plugin",
         "oil_plugin": "oil_plugin",
         "openscad-lsp": "openscad-lsp",
-        "otter_plugin": "otter_plugin",
         "outline_plugin": "outline_plugin",
         "overseer_plugin": "overseer_plugin",
         "parinfer-rust": "parinfer-rust",
         "plenary_plugin": "plenary_plugin",
-        "snipe_plugin": "snipe_plugin",
         "sqlite_plugin": "sqlite_plugin",
         "status-col_plugin": "status-col_plugin",
         "substitute_plugin": "substitute_plugin",
@@ -774,22 +722,6 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
-        "type": "github"
-      }
-    },
-    "snipe_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1740838551,
-        "narHash": "sha256-KbZuHll6VFcdSAC9fBLVfTnympKveDaiSoxZOt3GMJQ=",
-        "owner": "leath-dub",
-        "repo": "snipe.nvim",
-        "rev": "f43a1f0090de03d48ce5c55df630c1aa4d0b4291",
-        "type": "github"
-      },
-      "original": {
-        "owner": "leath-dub",
-        "repo": "snipe.nvim",
         "type": "github"
       }
     },
@@ -993,11 +925,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1743640312,
-        "narHash": "sha256-dmn5lip2w8YzTXLIKiymqyMpD1lD6psCkXldQ2SYVmo=",
+        "lastModified": 1743682344,
+        "narHash": "sha256-2HNAYaAvbAyDkcsgxzgaOSk0hegUIzPYH60hHahqIb0=",
         "owner": "mitchellh",
         "repo": "zig-overlay",
-        "rev": "8e02139fc7ea43a53724712b01c485e9bfb8d884",
+        "rev": "aa2d41ec82872801a45581a10c177f40058da296",
         "type": "github"
       },
       "original": {
@@ -1031,11 +963,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743630615,
-        "narHash": "sha256-CKYy25Loo6W3IjQYChGR/PM50K1KzMzIm/3ViAjg4eQ=",
+        "lastModified": 1743714173,
+        "narHash": "sha256-siRiMBlRfHySRhwzenUp93oPm1l0ZgJ9sJ8dd/kXITk=",
         "owner": "zigtools",
         "repo": "zls",
-        "rev": "bcc5d9fd67d815613cce0294a0d45b0d76cecd88",
+        "rev": "99eaaf61abf3dc35c6c6c49e3459b632eeda3dfe",
         "type": "github"
       },
       "original": {
