@@ -172,7 +172,8 @@
     };
     zig-overlay.url = "github:mitchellh/zig-overlay";
     zls = {
-      url = "github:zigtools/zls";
+      # TODO - remove this once build is fixed
+      url = "github:zigtools/zls/82cbf30d165920f8ba2d5e0084855795d3b4c29d";
       inputs.zig-overlay.follows = "zig-overlay";
     };
   };
@@ -287,7 +288,7 @@
                   version = "1.2.5";
                   src = inputs.openscad-lsp;
                   useFetchCargoVendor = true;
-                  cargoHash = "sha256-EscpHTBH6R7sBmIxTH/n5zTs2YahXRh4HTWWgq50Lh8=";
+                  cargoHash = "sha256-yRXTVdOxy7NTJ46onfCyjCwa1WWbpNMn9rJCuRBVewo=";
                   # no tests exist
                   doCheck = false;
 
