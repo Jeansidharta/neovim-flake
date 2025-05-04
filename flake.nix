@@ -172,8 +172,7 @@
     };
     zig-overlay.url = "github:mitchellh/zig-overlay";
     zls = {
-      # TODO - remove this once build is fixed
-      url = "github:zigtools/zls/82cbf30d165920f8ba2d5e0084855795d3b4c29d";
+      url = "github:zigtools/zls";
       inputs.zig-overlay.follows = "zig-overlay";
     };
   };
