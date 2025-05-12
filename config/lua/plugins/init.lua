@@ -12,6 +12,7 @@ require("plugins.statuscol")
 require("plugins.treesitter")
 require("plugins.vim-illuminate")
 require("plugins.neoclip")
+require("plugins.mdeval")
 
 -- Set colorscheme
 vim.g.tokyodark_transparent_background = true

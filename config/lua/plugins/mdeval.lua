@@ -28,7 +28,7 @@ mdeval.setup({
 		usql = {
 			command = { "usql", "$$", "-q", "-f" },
 			exec_type = "interpreted",
-			language_code = "usql",
+			language_code = "sql",
 		},
 	},
 })
