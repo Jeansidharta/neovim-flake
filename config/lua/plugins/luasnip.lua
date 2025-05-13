@@ -23,44 +23,4 @@ ls.config.set_config({
 	enable_autosnippets = true,
 })
 
-vim.api.nvim_create_autocmd("Filetype", {
-	pattern = "markdown",
-	callback = function(_ev)
-		local project_root = require("config.utils").find_project_root()
-		if not project_root then
-			-- vim.print("Project root not found")
-			return
-		end
-		-- vim.print("Project root is " .. project_root)
-
-		local database_path = vim.fs.find(function(name)
-			return name:match(".sqlite3$")
-		end, { path = project_root })[1]
-
-		if not database_path then
-			-- vim.print("No database found")
-			return
-		end
-
-		local available_snipts = ls.available()
-
-		if
-			available_snipts.markdown
-			and utils.tbl_find(function(snip)
-				return snip.name == "`usql"
-			end, available_snipts.markdown)
-		then
-			return
-		end
-
-		ls.add_snippets("markdown", {
-			s("`usql", {
-				t({ "```usql " .. database_path }),
-				i(1),
-				t({ "", "", "```" }),
-			}),
-		})
-	end,
-})
-
 require("luasnip.loaders.from_snipmate").lazy_load()

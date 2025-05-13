@@ -54,6 +54,12 @@ local function new_file_selector()
 				vim.api.nvim_buf_set_option(commands_buf, "modified", false)
 			end,
 		})
+		vim.api.nvim_create_autocmd("BufWinEnter", {
+			buffer = commands_buf,
+			callback = function()
+                require("markview").actions.disable()
+			end,
+		})
 	end
 
 	local open_win = utils.tbl_find(function(i)
