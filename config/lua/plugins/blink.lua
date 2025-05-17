@@ -8,6 +8,11 @@ require("blink.cmp").setup({
 		},
 	},
 	completion = {
+		accept = {
+			auto_brackets = {
+				enabled = true,
+			}
+		},
 		menu = {
 			auto_show = true,
 			border = "rounded",

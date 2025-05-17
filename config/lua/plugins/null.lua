@@ -18,16 +18,6 @@ nls.setup({
 		nls.builtins.formatting.stylua,
 		nls.builtins.formatting.gleam_format,
 		nls.builtins.formatting.nixfmt,
-		nls.builtins.formatting.leptosfmt.with({
-			generator_opts = {
-				command = "leptosfmt",
-				args = { "--quiet", "--stdin" },
-				to_stdin = true,
-			},
-			condition = function(utils)
-				return utils.root_has_file({ "leptosfmt.toml" })
-			end,
-		}),
 		nls.builtins.formatting.terraform_fmt,
 		nls.builtins.diagnostics.selene.with({
 			condition = function(utils)
