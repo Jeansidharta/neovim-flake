@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     theme.url = "github:jeansidharta/configuration.nix?dir=theming";
 
@@ -287,7 +287,7 @@
                   version = "1.2.5";
                   src = inputs.openscad-lsp;
                   useFetchCargoVendor = true;
-                  cargoHash = "sha256-DgwIhCtlKx3wpzDyDRFifpD5D2BBuQ6maDX5b2fJzoE=";
+                  cargoHash = "sha256-2L3LBwcCsNMXaLYbs9j2aOnfqTPudRGWTcw5pwmtdxQ=";
                   # no tests exist
                   doCheck = false;
 
