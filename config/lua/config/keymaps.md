@@ -345,7 +345,7 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 
 ```lua
 	-- Oil
-	{ "-",          require("oil").open,               desc = "Open oil.nvim" },
+	{ "-",          ":Fyler<CR>",               desc = "Open oil.nvim" },
 ```
 
 #### Substitute

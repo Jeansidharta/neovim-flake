@@ -40,27 +40,23 @@ require("treewalker").setup({
 	highlight_group = "CursorLine",
 })
 
-require("oil").setup({
-	columns = {
-		"icon",
-		-- "permissions",
-		"size",
-		-- "mtime",
+require("fyler").setup({
+	close_on_open = true,
+	default_explorer = false,
+	window_config = {
+		width = 0.3,
+		split = "right",
 	},
-	win_options = {
-		signcolumn = "yes:2",
+	window_options = {
+		number = true,
+		relativenumbers = true,
 	},
-	view_options = {
-		show_hidden = true,
-		is_always_hidden = function(name, bufnr)
-			return name == ".."
-		end,
+	view_config = {
+		git_status = {
+			enable = true,
+		},
 	},
 })
-
-require("oil-lsp-diagnostics").setup({})
-
-require("oil-git-status").setup({})
 
 require("substitute").setup({})
 

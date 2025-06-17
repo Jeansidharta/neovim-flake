@@ -32,12 +32,13 @@
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
-    oil-lsp-diagnostics_plugin = {
-      url = "github:JezerM/oil-lsp-diagnostics.nvim";
+    fyler_plugin = {
+      url = "github:A7Lavinraj/fyler.nvim";
       flake = false;
     };
-    oil-git-status_plugin = {
-      url = "github:refractalize/oil-git-status.nvim";
+    # Dependency for fyler.nvim
+    mini-icons_plugin = {
+      url = "github:echasnovski/mini.icons";
       flake = false;
     };
     nvim-colorizer_plugin = {
@@ -70,10 +71,6 @@
     };
     lsp-lines_plugin = {
       url = "git+https://git.sr.ht/~whynothugo/lsp_lines.nvim?ref=main";
-      flake = false;
-    };
-    oil_plugin = {
-      url = "github:stevearc/oil.nvim";
       flake = false;
     };
     substitute_plugin = {
@@ -170,11 +167,9 @@
       url = "github:Leathong/openscad-LSP";
       flake = false;
     };
-    zig-overlay.url = "github:mitchellh/zig-overlay";
-    zls = {
-      url = "github:zigtools/zls";
-      inputs.zig-overlay.follows = "zig-overlay";
-    };
+    # zls = {
+    #   url = "github:zigtools/zls";
+    # };
   };
 
   outputs =
@@ -199,19 +194,21 @@
 
       # Nixpkgs instantiated for supported system types.
       nixpkgsFor = forAllSystems (system: nixpkgs.legacyPackages.${system});
+      nixpkgsStableFor = forAllSystems (system: nixpkgs-stable.legacyPackages.${system});
     in
     {
       packages = forAllSystems (
         system:
         let
-          pkgs = nixpkgsFor.${system};
+          pkgs-stable = nixpkgsStableFor.${system};
+          pkgs = nixpkgsFor.${system}.extend (final: prev: { deno = pkgs-stable.deno; });
           lib = pkgs.lib;
 
           # These plugins need to be built before being used.
           parinfer = pkgs.callPackage (import "${inputs.parinfer-rust}/derivation.nix") { };
           blink = inputs.blink.outputs.packages.${system}.default;
           # The master version of the Zig Language Server
-          zls-master = inputs.zls.outputs.packages.${system}.default;
+          # zls-master = inputs.zls.outputs.packages.${system}.default;
 
           parsed_config =
             let
@@ -261,7 +258,7 @@
               # Language servers
               lua-language-server
               gleam
-              zls-master
+              # zls-master
               astro-language-server
               nodePackages_latest.typescript-language-server
               nodePackages_latest.bash-language-server
