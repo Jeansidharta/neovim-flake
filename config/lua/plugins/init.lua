@@ -42,7 +42,7 @@ require("treewalker").setup({
 
 require("fyler").setup({
 	close_on_open = true,
-	default_explorer = false,
+	default_explorer = true,
 	window_config = {
 		width = 0.3,
 		split = "left",

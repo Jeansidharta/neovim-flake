@@ -345,6 +345,12 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 
 ```lua
 	{ "-",          function()
+        if vim.startswith(vim.api.nvim_buf_get_name(0), "fyler://") then
+            local old_cwd = require("fyler.lib.state").get({ "cwd" });
+            require("fyler").show({ cwd = vim.fs.dirname(old_cwd:gsub("(.+)/$", "%1")) })
+            return
+        end
+
         local bufs = vim.iter(vim.api.nvim_list_bufs())
             :filter(function(buf)
                 return vim.startswith(vim.api.nvim_buf_get_name(buf), "fyler://")
