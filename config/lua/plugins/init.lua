@@ -45,11 +45,11 @@ require("fyler").setup({
 	default_explorer = false,
 	window_config = {
 		width = 0.3,
-		split = "right",
+		split = "left",
 	},
 	window_options = {
 		number = true,
-		relativenumbers = true,
+		relativenumber = true,
 	},
 	view_config = {
 		git_status = {

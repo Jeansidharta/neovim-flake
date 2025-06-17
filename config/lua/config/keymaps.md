@@ -341,11 +341,25 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 	{ "<leader>dl", toggle_lsp_lines, desc = "Toggle lsp_lines", },
 ```
 
-#### Oil
+#### Fyler
 
 ```lua
-	-- Oil
-	{ "-",          ":Fyler<CR>",               desc = "Open oil.nvim" },
+	{ "-",          function()
+        local bufs = vim.iter(vim.api.nvim_list_bufs())
+            :filter(function(buf)
+                return vim.startswith(vim.api.nvim_buf_get_name(buf), "fyler://")
+            end)
+            :totable()
+
+        if vim.tbl_isempty(bufs) then
+            require("fyler").show()
+        else
+            local wins = utils.get_wins_with_bufs(bufs)
+            for _, win in pairs(wins) do
+                vim.api.nvim_win_close(win, true)
+            end
+        end
+    end,               desc = "Toggle fyler.nvim" },
 ```
 
 #### Substitute

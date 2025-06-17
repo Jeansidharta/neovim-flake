@@ -132,6 +132,31 @@ local function keymaps(optsArr)
 	end
 end
 
+---@param bufs number[]
+local function get_wins_with_bufs(bufs)
+	local wins_with_buf = vim.iter(vim.api.nvim_list_wins())
+		:map(function(win)
+			local buf = vim.api.nvim_win_get_buf(win)
+			return { win, buf }
+		end)
+		:totable()
+
+	return vim.iter(bufs)
+		:map(function(buf)
+			return vim.iter(wins_with_buf)
+				:filter(function(win_buf_pair)
+					local win_buf = win_buf_pair[2]
+					return buf == win_buf
+				end)
+				:map(function(pair)
+					return pair[1]
+				end)
+				:totable()
+		end)
+		:flatten()
+		:totable()
+end
+
 return {
 	open_editor_temp_window = open_editor_temp_window,
 	get_visual_selection_position = get_visual_selection_position,
@@ -141,4 +166,5 @@ return {
 	tbl_find = tbl_find,
 	keymap = keymap,
 	keymaps = keymaps,
+	get_wins_with_bufs = get_wins_with_bufs,
 }
