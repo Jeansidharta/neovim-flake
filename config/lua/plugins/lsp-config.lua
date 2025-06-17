@@ -78,20 +78,13 @@ vim.lsp.enable("nil_ls")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("emmet_language_server")
 vim.lsp.enable("astro")
-vim.lsp.enable("zls")
 vim.lsp.config("zls", {
 	settings = {
 		zls = {
 			enable_build_on_save = true,
-			enable_autofix = true,
 		},
 	},
 })
+vim.lsp.enable("zls")
 
 vim.lsp.enable("openscad_ls")
-vim.lsp.config("openscad_ls", {
-	cmd = {
-		"openscad-lsp",
-		"--stdio",
-	},
-})

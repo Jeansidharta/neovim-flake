@@ -74,60 +74,6 @@ local function new_file_selector()
 	end
 end
 
-local function show_next_diagnostic()
-	local function get_closest_diagnostic()
-		local next = vim.diagnostic.get_next()
-		local prev = vim.diagnostic.get_prev()
-
-		if next == nil and prev == nil then
-			return nil
-		elseif next == nil then
-			return prev
-		elseif prev == nil then
-			return next
-		end
-
-		local curr_buffer = vim.api.nvim_get_current_buf()
-
-		if curr_buffer ~= next.buffer and curr_buffer ~= prev.buffer then
-			return next
-		elseif curr_buffer ~= next.buffer then
-			return prev
-		elseif curr_buffer ~= prev.buffer then
-			return next
-		end
-
-		local curpos = vim.fn.getcurpos()
-		local curline = curpos[2]
-		local curcol = curpos[3]
-
-		if curline ~= next.lnum and curline == prev.lnum then
-			return prev
-		elseif curline == next.lnum and curline ~= prev.lnum then
-			return next
-		elseif curline == next.lnum and curline == prev.lnum then
-			if math.abs(curcol - next.col) < math.abs(curcol - prev.col) then
-				return next
-			else
-				return prev
-			end
-		else
-			if math.abs(curline - next.lnum) < math.abs(curline - prev.lnum) then
-				return next
-			else
-				return prev
-			end
-		end
-	end
-
-	local closest_diagnostic = get_closest_diagnostic()
-	if closest_diagnostic == nil then
-		vim.notify("No diagnostics available")
-	else
-		utils.open_editor_temp_window(vim.split(closest_diagnostic.message, "\n"), "text")
-	end
-end
-
 -- Should be invoked while on a visual selection
 -- Will take the text selected and create a new zk note with that text as a title.
 -- The originally selected note will be replaced by a link to the note.
@@ -195,7 +141,11 @@ end
 utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
 	{ "<leader>l",        ":messages<CR>",                  desc = "Show messages" },
 	{ "<leader>n",        clear_notifications,              desc = "Clear all notifications" },
-	{ "<S-Tab>",          ":lua vim.lsp.buf.format()<CR>",  desc = "Format buffer" },
+	{ "<S-Tab>",          function ()
+        vim.lsp.buf.format()
+        -- For some reason, format will sometimes disable diagnostic?
+        vim.diagnostic.enable()
+    end,  desc = "Format buffer" },
 ```
 
 ### Splits
@@ -250,7 +200,9 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 ````lua
 	{ "++",               "\"zyymzo```<ESC>'z==O```<ESC>\"zP", desc = "Run current line" },
 	{ "<leader>io",       new_file_selector,                desc = "New file selector" },
-	{ "<leader>df",       show_next_diagnostic,             desc = "Run current line" },
+	{ "<leader>df",       function ()
+        vim.diagnostic.open_float({ border = "rounded", source = "if_many" })
+    end, desc = "Run current line" },
 	{ "<C-H>",            ":nohlsearch<CR>",                desc = "Remove highlights" },
 ````
 
@@ -303,7 +255,7 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 #### Hover
 
 ```lua
-	{ "K",          vim.lsp.buf.hover,        desc = "hover.nvim" },
+	{ "K", function () vim.lsp.buf.hover({ border = "rounded" }) end, desc = "hover.nvim" },
 ```
 
 #### Luasnip
@@ -317,22 +269,6 @@ utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "
 
 ```lua
 	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
-```
-
-#### Treewalker
-
-```lua
--- movement
-	{ '<C-Up>', '<cmd>Treewalker Up<cr>', silent = true },
-	{ '<C-Down>', '<cmd>Treewalker Down<cr>', silent = true },
-	{ '<C-Left>', '<cmd>Treewalker Left<cr>', silent = true },
-	{ '<C-Right>', '<cmd>Treewalker Right<cr>', silent = true },
-
--- swapping
-	{ '<leader><C-Up>', '<cmd>Treewalker SwapUp<cr>', silent = true },
-	{ '<leader><C-Down>', '<cmd>Treewalker SwapDown<cr>', silent = true },
-	{ '<leader><C-Left>', '<cmd>Treewalker SwapLeft<CR>', silent = true },
-	{ '<leader><C-Right>', '<cmd>Treewalker SwapRight<CR>', silent = true },
 ```
 
 #### Lsp lines

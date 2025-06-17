@@ -36,22 +36,6 @@
         "type": "github"
       }
     },
-    "dressing_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739381641,
-        "narHash": "sha256-dBz+/gZA6O6fJy/GSgM6ZHGAR3MTGt/W1olzzTYRlgM=",
-        "owner": "stevearc",
-        "repo": "dressing.nvim",
-        "rev": "2d7c2db2507fa3c4956142ee607431ddb2828639",
-        "type": "github"
-      },
-      "original": {
-        "owner": "stevearc",
-        "repo": "dressing.nvim",
-        "type": "github"
-      }
-    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -223,23 +207,6 @@
         "owner": "jeansidharta",
         "repo": "literate-markdown",
         "type": "github"
-      }
-    },
-    "lsp-lines_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1734793049,
-        "narHash": "sha256-jHiIZemneQACTDYZXBJqX2/PRTBoxq403ILvt1Ej1ZM=",
-        "ref": "main",
-        "rev": "a92c755f182b89ea91bd8a6a2227208026f27b4d",
-        "revCount": 56,
-        "type": "git",
-        "url": "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
       }
     },
     "lualine_plugin": {
@@ -562,7 +529,6 @@
       "inputs": {
         "blink": "blink",
         "bufjump_plugin": "bufjump_plugin",
-        "dressing_plugin": "dressing_plugin",
         "fidget_plugin": "fidget_plugin",
         "fyler_plugin": "fyler_plugin",
         "git-conflict_plugin": "git-conflict_plugin",
@@ -571,7 +537,6 @@
         "git-signs_plugin": "git-signs_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "literate-markdown": "literate-markdown",
-        "lsp-lines_plugin": "lsp-lines_plugin",
         "lualine_plugin": "lualine_plugin",
         "luasnip_plugin": "luasnip_plugin",
         "markview_plugin": "markview_plugin",
@@ -597,7 +562,6 @@
         "theme": "theme",
         "tokyodark_plugin": "tokyodark_plugin",
         "treesitter_plugin": "treesitter_plugin",
-        "treewalker_plugin": "treewalker_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
         "zk-nvim_plugin": "zk-nvim_plugin"
       }
@@ -744,22 +708,6 @@
       "original": {
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "type": "github"
-      }
-    },
-    "treewalker_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1749571919,
-        "narHash": "sha256-t3ZxRtheCv35wB6UCJiibMeQxnKkHXlVi5cqOMR79EU=",
-        "owner": "aaronik",
-        "repo": "treewalker.nvim",
-        "rev": "cfae49dedd041dbe867c2b3d0b081fc381a735e9",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aaronik",
-        "repo": "treewalker.nvim",
         "type": "github"
       }
     },

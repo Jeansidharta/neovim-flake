@@ -28,18 +28,6 @@ require("notify").setup({ background_colour = "#000000" })
 -- The schedule_wrap is due to https://github.com/rcarriga/nvim-notify/issues/205
 vim.notify = vim.schedule_wrap(require("notify"))
 
--- Lsp lines
-require("lsp_lines").setup({})
-vim.diagnostic.config({
-	virtual_lines = false,
-})
-
-require("treewalker").setup({
-	highlight = true,
-	highlight_duration = 250,
-	highlight_group = "CursorLine",
-})
-
 require("fyler").setup({
 	close_on_open = true,
 	default_explorer = true,
@@ -63,8 +51,6 @@ require("substitute").setup({})
 require("bufjump").setup()
 
 require("fidget").setup({})
-
-require("dressing").setup({})
 
 require("overseer").setup()
 

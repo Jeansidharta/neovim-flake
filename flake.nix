@@ -45,10 +45,6 @@
       url = "github:catgoose/nvim-colorizer.lua";
       flake = false;
     };
-    treewalker_plugin = {
-      url = "github:aaronik/treewalker.nvim";
-      flake = false;
-    };
     tokyodark_plugin = {
       url = "github:jeansidharta/tokyodark.nvim";
       flake = false;
@@ -69,10 +65,6 @@
       url = "github:glts/vim-radical";
       flake = false;
     };
-    lsp-lines_plugin = {
-      url = "git+https://git.sr.ht/~whynothugo/lsp_lines.nvim?ref=main";
-      flake = false;
-    };
     substitute_plugin = {
       url = "github:gbprod/substitute.nvim";
       flake = false;
@@ -83,10 +75,6 @@
     };
     fidget_plugin = {
       url = "github:j-hui/fidget.nvim";
-      flake = false;
-    };
-    dressing_plugin = {
-      url = "github:stevearc/dressing.nvim";
       flake = false;
     };
     git-signs_plugin = {
