@@ -224,107 +224,112 @@
               ${fd-bin} . -e md -t f --strip-cwd-prefix -x ${literate-markdown-bin} "{}" "$out/{.}.lua" \;
             '';
 
-          plugins_dir = (
+          plugins_list =
             let
               inherit (lib.strings) hasSuffix removeSuffix;
               inherit (lib.attrsets) mapAttrs' filterAttrs nameValuePair;
               plugins_attr = filterAttrs (name: _: hasSuffix "_plugin" name) inputs;
-              plugins = mapAttrs' (
-                name: value: nameValuePair (removeSuffix "_plugin" name) value.outPath
-              ) plugins_attr;
-              plugins_with_config = plugins // {
-                personal-config = "${parsed_config}";
-                # These we had to build before adding
-                parinfer = "${parinfer}/share/vim-plugins/parinfer-rust";
-                blink = "${blink}";
-              };
             in
-            pkgs.linkFarm "neovim-plugins" plugins_with_config
-          );
+            mapAttrs' (name: value: nameValuePair (removeSuffix "_plugin" name) value.outPath) plugins_attr
+            // {
+              personal-config = "${parsed_config}";
+              # These we had to build before adding
+              parinfer = "${parinfer}/share/vim-plugins/parinfer-rust";
+              blink = "${blink}";
+            };
+
           sqlite_lib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so";
         in
         {
-          plugins_dir = plugins_dir;
-          default = pkgs.writeShellApplication {
-            name = "nvim";
-
-            runtimeInputs = with pkgs; [
-              neovim
-
-              # Tools
-              ripgrep
-              unixtools.xxd
-
-              # Language servers
-              lua-language-server
-              gleam
-              # zls-master
-              astro-language-server
-              nodePackages_latest.typescript-language-server
-              nodePackages_latest.bash-language-server
-              vscode-langservers-extracted
-              nginx-language-server
-              emmet-language-server
-              nodejs
-              sqls
-              marksman
-              svelte-language-server
-              terraform-ls
-              zk
-              nil
-              rust-analyzer
-              clang-tools
-              (pkgs.callPackage (
-                {
-                  lib,
-                  rustPlatform,
-                }:
-                rustPlatform.buildRustPackage {
-                  pname = "openscad-lsp";
-                  version = "1.2.5";
-                  src = inputs.openscad-lsp;
-                  useFetchCargoVendor = true;
-                  cargoHash = "sha256-2L3LBwcCsNMXaLYbs9j2aOnfqTPudRGWTcw5pwmtdxQ=";
-                  # no tests exist
-                  doCheck = false;
-
-                  meta = with lib; {
-                    description = "A LSP (Language Server Protocol) server for OpenSCAD";
-                    mainProgram = "openscad-lsp";
-                    homepage = "https://github.com/Leathong/openscad-LSP";
-                    license = licenses.asl20;
-                  };
-                }
-              ) { })
-
-              # Null ls programs
-              prettierd
-              stylua
-              leptosfmt
-              selene
-              nixfmt-rfc-style
-              nixpkgs-stable.legacyPackages.${system}.eslint
-
-              # For treesitter
-              gcc
-            ];
-
-            runtimeEnv = {
-              # Provides a config file for prettierd
-              PRETTIERD_DEFAULT_CONFIG = ./prettierrc.json;
-              # For the zk plugin. This should be your ZK notebook directory
-              ZK_NOTEBOOK_DIR = "/home/sidharta/notes";
-            };
-
-            text = ''
-              export TREESITTER_INSTALL_DIR=~/.local/state/treesitter
-
-              nvim \
-                --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
-                --cmd "let &runtimepath.=',' .. \"${plugins_dir.outPath}/*\"" \
-                -u ${parsed_config}/init.lua "$@"
-            '';
+          plugins_dir = pkgs.lib.makeOverridable ({ plugins }: pkgs.linkFarm "neovim-plugins" plugins) {
+            plugins = plugins_list;
           };
+          default = pkgs.lib.makeOverridable (
+            { plugins }:
+            let
+              plugins_dir = pkgs.linkFarm "neovim-plugins" plugins;
+            in
+            pkgs.writeShellApplication {
+              name = "nvim";
+
+              runtimeInputs = with pkgs; [
+                neovim
+
+                # Tools
+                ripgrep
+                unixtools.xxd
+
+                # Language servers
+                lua-language-server
+                gleam
+                # zls-master
+                astro-language-server
+                nodePackages_latest.typescript-language-server
+                nodePackages_latest.bash-language-server
+                vscode-langservers-extracted
+                nginx-language-server
+                emmet-language-server
+                nodejs
+                sqls
+                marksman
+                svelte-language-server
+                terraform-ls
+                zk
+                nil
+                rust-analyzer
+                clang-tools
+                (pkgs.callPackage (
+                  {
+                    lib,
+                    rustPlatform,
+                  }:
+                  rustPlatform.buildRustPackage {
+                    pname = "openscad-lsp";
+                    version = "1.2.5";
+                    src = inputs.openscad-lsp;
+                    useFetchCargoVendor = true;
+                    cargoHash = "sha256-2L3LBwcCsNMXaLYbs9j2aOnfqTPudRGWTcw5pwmtdxQ=";
+                    # no tests exist
+                    doCheck = false;
+
+                    meta = with lib; {
+                      description = "A LSP (Language Server Protocol) server for OpenSCAD";
+                      mainProgram = "openscad-lsp";
+                      homepage = "https://github.com/Leathong/openscad-LSP";
+                      license = licenses.asl20;
+                    };
+                  }
+                ) { })
+
+                # Null ls programs
+                prettierd
+                stylua
+                leptosfmt
+                selene
+                nixfmt-rfc-style
+                nixpkgs-stable.legacyPackages.${system}.eslint
+
+                # For treesitter
+                gcc
+              ];
+
+              runtimeEnv = {
+                # Provides a config file for prettierd
+                PRETTIERD_DEFAULT_CONFIG = ./prettierrc.json;
+                # For the zk plugin. This should be your ZK notebook directory
+                ZK_NOTEBOOK_DIR = "/home/sidharta/notes";
+              };
+
+              text = ''
+                export TREESITTER_INSTALL_DIR=~/.local/state/treesitter
+
+                nvim \
+                  --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
+                  --cmd "let &runtimepath.=',' .. \"${plugins_dir.outPath}/*\"" \
+                  -u ${parsed_config}/init.lua "$@"
+              '';
+            }
+          ) { plugins = plugins_list; };
         }
       );
     };

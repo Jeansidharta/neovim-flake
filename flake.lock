@@ -293,11 +293,11 @@
     "mdeval_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1747006435,
-        "narHash": "sha256-yx0Hmf5A3tUX7DCVw4O8fH5m4in06lxOi+C9xUW7VTY=",
+        "lastModified": 1750143886,
+        "narHash": "sha256-U+PPT7I8UOGtBxLN1zhYWglKwnZNiXIpb+u9/0FgESk=",
         "owner": "jeansidharta",
         "repo": "mdeval.nvim",
-        "rev": "ea9083d33023f65244411d0748cb2a245a81352c",
+        "rev": "19d7ab577c5afbd8dbe4ab38d2f933437c9237bc",
         "type": "github"
       },
       "original": {
