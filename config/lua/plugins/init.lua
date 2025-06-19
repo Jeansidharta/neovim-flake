@@ -28,6 +28,13 @@ require("notify").setup({ background_colour = "#000000" })
 -- The schedule_wrap is due to https://github.com/rcarriga/nvim-notify/issues/205
 vim.notify = vim.schedule_wrap(require("notify"))
 
+require("snacks").setup({
+	input = {},
+	picker = {
+		ui_select = true,
+	},
+})
+
 require("fyler").setup({
 	close_on_open = true,
 	default_explorer = true,

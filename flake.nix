@@ -32,6 +32,10 @@
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
     };
+    snacks_plugin = {
+      url = "github:folke/snacks.nvim";
+      flake = false;
+    };
     fyler_plugin = {
       url = "github:A7Lavinraj/fyler.nvim";
       flake = false;
