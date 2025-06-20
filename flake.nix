@@ -37,7 +37,7 @@
       flake = false;
     };
     fyler_plugin = {
-      url = "github:A7Lavinraj/fyler.nvim";
+      url = "github:jeansidharta/fyler.nvim/feat-follow-current-path";
       flake = false;
     };
     # Dependency for fyler.nvim
