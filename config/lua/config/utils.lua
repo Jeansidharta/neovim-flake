@@ -1,9 +1,9 @@
 local function open_editor_temp_window(initial_lines, filetype)
 	local temp_buffer = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(temp_buffer, 0, -1, false, initial_lines)
-	vim.api.nvim_buf_set_option(temp_buffer, "filetype", filetype or "")
+	vim.api.nvim_set_option_value("filetype", filetype or "", { buf = temp_buffer })
 	-- Requires a 'BufWriteCmd' or "FileWriteCmd" autocmd to write
-	vim.api.nvim_buf_set_option(temp_buffer, "buftype", "acwrite")
+	vim.api.nvim_set_option_value("buftype", "acwrite", { buf = temp_buffer })
 	-- Allows the user to call :write
 	vim.api.nvim_buf_set_name(temp_buffer, "neoclip-temp")
 
@@ -39,7 +39,7 @@ local function open_editor_temp_window(initial_lines, filetype)
 	vim.api.nvim_create_autocmd({ "BufWriteCmd", "FileWriteCmd" }, {
 		buffer = temp_buffer,
 		callback = function()
-			vim.api.nvim_buf_set_option(temp_buffer, "modified", false)
+			vim.api.nvim_set_option_value("modifier", false, { buf = temp_buffer })
 		end,
 	})
 

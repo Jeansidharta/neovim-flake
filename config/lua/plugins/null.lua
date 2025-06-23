@@ -9,7 +9,7 @@ nls.setup({
 		-- end, { noremap = true, desc = "Format buffer" })
 	end,
 	should_attach = function(bufnr)
-		local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+		local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
 		return filetype ~= "text-image"
 	end,
 	sources = {

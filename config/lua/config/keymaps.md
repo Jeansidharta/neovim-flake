@@ -138,9 +138,11 @@ end
 ### Misc
 
 ```lua
-utils.keymaps({	{ "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
+utils.keymaps({
+    { "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
 	{ "<leader>l",        ":messages<CR>",                  desc = "Show messages" },
 	{ "<leader>n",        clear_notifications,              desc = "Clear all notifications" },
+    { '/',                '<esc>/\\%V',        mode = 'v', desc = "search within selection" },
 	{ "<S-Tab>",          function ()
         vim.lsp.buf.format()
         -- For some reason, format will sometimes disable diagnostic?
