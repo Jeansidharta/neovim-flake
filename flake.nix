@@ -37,7 +37,7 @@
       flake = false;
     };
     fyler_plugin = {
-      url = "github:jeansidharta/fyler.nvim/feat-follow-current-path";
+      url = "github:jeansidharta/fyler.nvim/feat-recursive-open";
       flake = false;
     };
     # Dependency for fyler.nvim
