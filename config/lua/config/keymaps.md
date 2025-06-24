@@ -298,10 +298,7 @@ utils.keymaps({
         if vim.tbl_isempty(bufs) then
             require("fyler").open()
         else
-            local wins = utils.get_wins_with_bufs(bufs)
-            for _, win in pairs(wins) do
-                vim.api.nvim_win_close(win, true)
-            end
+            vim.iter(bufs):map(function (buf) vim.api.nvim_buf_delete(buf, { force = true }) end)
         end
     end,               desc = "Toggle fyler.nvim" },
 ```
