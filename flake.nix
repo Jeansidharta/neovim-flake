@@ -134,13 +134,6 @@
       url = "github:chrisgrieser/nvim-various-textobjs";
       flake = false;
     };
-    # This is a plugin, but wont have the plugin prefix because it has
-    # to be built before being used, and because the plugin directory
-    # is weird, so we must handle that separately
-    parinfer-rust = {
-      url = "github:eraserhd/parinfer-rust";
-      flake = false;
-    };
     markview_plugin = {
       url = "github:OXY2DEV/markview.nvim";
       flake = false;
@@ -153,15 +146,6 @@
       url = "github:hedyhli/outline.nvim";
       flake = false;
     };
-
-    # LSPs
-    openscad-lsp = {
-      url = "github:Leathong/openscad-LSP";
-      flake = false;
-    };
-    # zls = {
-    #   url = "github:zigtools/zls";
-    # };
   };
 
   outputs =
@@ -197,7 +181,6 @@
           lib = pkgs.lib;
 
           # These plugins need to be built before being used.
-          parinfer = pkgs.callPackage (import "${inputs.parinfer-rust}/derivation.nix") { };
           blink = inputs.blink.outputs.packages.${system}.default;
           # The master version of the Zig Language Server
           # zls-master = inputs.zls.outputs.packages.${system}.default;
@@ -225,22 +208,61 @@
             mapAttrs' (name: value: nameValuePair (removeSuffix "_plugin" name) value.outPath) plugins_attr
             // {
               personal-config = "${parsed_config}";
-              # These we had to build before adding
-              parinfer = "${parinfer}/share/vim-plugins/parinfer-rust";
+              parinfer = "${pkgs.kakounePlugins.parinfer-rust}/plugin/parinfer.vim";
               blink = "${blink}";
             };
+          lsps = [
+            pkgs.rust-analyzer
+            pkgs.openscad-lsp
+            pkgs.svelte-language-server
+            pkgs.emmet-language-server
+            pkgs.nodejs
+            pkgs.vscode-langservers-extracted
+            pkgs.astro-language-server
+            pkgs.nodePackages_latest.typescript-language-server
+            pkgs.nodePackages_latest.bash-language-server
+            pkgs.gleam
+            pkgs.kakounePlugins.parinfer-rust
+            pkgs.terraform-ls
+            pkgs.lua-language-server
+            pkgs.sqls
+            pkgs.nginx-language-server
+            pkgs.nil
+          ];
+          formatters = [
+            pkgs.eslint
+            pkgs.stylua
+            pkgs.selene
+            pkgs.nixfmt-rfc-style
+            pkgs.prettierd
+          ];
+          misc-tools = [
+            pkgs.prettierd
+            pkgs.ripgrep
+            pkgs.unixtools.xxd
+            pkgs.marksman
+            pkgs.zk
+          ];
         in
-        {
+        rec {
           plugins_dir = pkgs.lib.makeOverridable ({ plugins }: pkgs.linkFarm "neovim-plugins" plugins) {
             plugins = plugins_list;
           };
-          default = lib.makeOverridable (final: pkgs.callPackage (import ./derivation.nix) final) {
+          base = lib.makeOverridable (final: pkgs.callPackage (import ./derivation.nix) final) {
             plugins = plugins_list;
             init_lua = "${parsed_config}/init.lua";
-            openscad-lsp = pkgs.callPackage (import ./openscad-derivation.nix) {
-              openscad-lsp = inputs.openscad-lsp;
-            };
+            extraPackages = [ ];
           };
+          simple = base.override (prev: {
+            extraPackages = prev.extraPackages ++ misc-tools;
+          });
+          with-lsps = base.override (prev: {
+            extraPackages = prev.extraPackages ++ misc-tools ++ lsps;
+          });
+          full = base.override (prev: {
+            extraPackages = prev.extraPackages ++ misc-tools ++ lsps ++ formatters;
+          });
+          default = full;
         }
       );
     };

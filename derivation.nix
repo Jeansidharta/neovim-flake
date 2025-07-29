@@ -7,31 +7,7 @@
 
   neovim,
   sqlite,
-  ripgrep,
-  unixtools,
-  lua-language-server,
-  gleam,
-  astro-language-server,
-  nodePackages_latest,
-  vscode-langservers-extracted,
-  nginx-language-server,
-  emmet-language-server,
-  nodejs,
-  sqls,
-  marksman,
-  svelte-language-server,
-  terraform-ls,
-  zk,
-  nil,
-  rust-analyzer,
-  clang-tools,
-  openscad-lsp,
-  prettierd,
-  stylua,
-  leptosfmt,
-  selene,
-  nixfmt-rfc-style,
-  eslint,
+  extraPackages,
 
   # For treesitter
   gcc,
@@ -46,43 +22,9 @@ writeShellApplication {
 
   runtimeInputs = [
     neovim
-
-    # Tools
-    ripgrep
-    unixtools.xxd
-
-    # Language servers
-    lua-language-server
-    gleam
-    # zls-master
-    astro-language-server
-    nodePackages_latest.typescript-language-server
-    nodePackages_latest.bash-language-server
-    vscode-langservers-extracted
-    nginx-language-server
-    emmet-language-server
-    nodejs
-    sqls
-    marksman
-    svelte-language-server
-    terraform-ls
-    zk
-    nil
-    rust-analyzer
-    clang-tools
-    openscad-lsp
-
-    # Null ls programs
-    prettierd
-    stylua
-    leptosfmt
-    selene
-    nixfmt-rfc-style
-    eslint
-
     # For treesitter
     gcc
-  ];
+  ] ++ extraPackages;
 
   runtimeEnv = {
     # Provides a config file for prettierd
