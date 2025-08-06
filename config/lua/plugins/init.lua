@@ -37,18 +37,9 @@ require("snacks").setup({
 
 require("fyler").setup({
 	close_on_open = true,
-	default_explorer = true,
-	window_config = {
-		width = 0.3,
-		split = "left",
-	},
-	window_options = {
-		number = true,
-		relativenumber = true,
-	},
-	view_config = {
-		git_status = {
-			enable = true,
+	views = {
+		explorer = {
+			default_explorer = true,
 		},
 	},
 })
