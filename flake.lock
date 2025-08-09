@@ -7,11 +7,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1754431117,
-        "narHash": "sha256-JiLfYUQ26QOOXFpTQMe8ilOSjuHyvoJcMedRA6kIJZQ=",
+        "lastModified": 1754736680,
+        "narHash": "sha256-L2VoT7qSVUYbUTSZECICBguVWhArXn1bvtYQodvCQIs=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "54cc5219b9307a5a261fac6978c1bdce492e8500",
+        "rev": "10f2ebe48849726608f79e21bc9eb89c567a22f3",
         "type": "github"
       },
       "original": {
@@ -61,11 +61,11 @@
     "fidget_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1753856493,
-        "narHash": "sha256-bg97TCl2JfyYe11hG6LBn4k7JVkw6bdOl5NN2iKDIA8=",
+        "lastModified": 1754718317,
+        "narHash": "sha256-znfyLUDmB/5wrEXvYyls5n6n66xXGyNsi5x9yuRDE0A=",
         "owner": "j-hui",
         "repo": "fidget.nvim",
-        "rev": "4ec7bed6c86b671ddde03ca1b227343cfa3e65fa",
+        "rev": "dafd592c7bdbb6cd6d17d3c9a1a8abf3930138c1",
         "type": "github"
       },
       "original": {
@@ -95,11 +95,11 @@
     "fyler_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1754474566,
-        "narHash": "sha256-uCwdl4K9EFS3qU7bhb2iJqyb5Ip1qnkP36bzkuu7IkY=",
+        "lastModified": 1754656765,
+        "narHash": "sha256-X2uxwmxF5Yu9ADBEK3mv85KQOWEEEu+EbCUWVD7Ne68=",
         "owner": "A7Lavinraj",
         "repo": "fyler.nvim",
-        "rev": "fe413ab9c8587d98321683828d01a465fe456831",
+        "rev": "6d1be02c824918a31e7becf0676e76275a64b910",
         "type": "github"
       },
       "original": {
@@ -159,11 +159,11 @@
     "git-signs_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1754390608,
-        "narHash": "sha256-Wq8P4QQPmmtccguq/5o700V+e5xBcbSGVtz6xdUbqno=",
+        "lastModified": 1754664980,
+        "narHash": "sha256-x51Pkh+dGgZ1Qpmb9AaYzO5l+ZBMdV4mTSNmFRU6Prw=",
         "owner": "lewis6991",
         "repo": "gitsigns.nvim",
-        "rev": "736f51d2bb684c06f39a2032f064d7244f549981",
+        "rev": "c7d37ca22b461f64e26f8f6701b2586128ed0bef",
         "type": "github"
       },
       "original": {
@@ -335,11 +335,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1754292888,
-        "narHash": "sha256-1ziydHSiDuSnaiPzCQh1mRFBsM2d2yRX9I+5OPGEmIE=",
+        "lastModified": 1754689972,
+        "narHash": "sha256-eogqv6FqZXHgqrbZzHnq43GalnRbLTkbBbFtEfm1RSc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ce01daebf8489ba97bd1609d185ea276efdeb121",
+        "rev": "fc756aa6f5d3e2e5666efcf865d190701fef150a",
         "type": "github"
       },
       "original": {
@@ -351,11 +351,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1754214453,
-        "narHash": "sha256-Q/I2xJn/j1wpkGhWkQnm20nShYnG7TI99foDBpXm1SY=",
+        "lastModified": 1754498491,
+        "narHash": "sha256-erbiH2agUTD0Z30xcVSFcDHzkRvkRXOQ3lb887bcVrs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5b09dc45f24cf32316283e62aec81ffee3c3e376",
+        "rev": "c2ae88e026f9525daf89587f3cbee584b92b6134",
         "type": "github"
       },
       "original": {
@@ -416,11 +416,11 @@
     "nvim-lspconfig_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1754445803,
-        "narHash": "sha256-FJGFwDeA0HxEEawnytdH663aFdf7lKKTwDZw9XX3Jxg=",
+        "lastModified": 1754689231,
+        "narHash": "sha256-DOQGwlJS4rgHHFDvMFJpYasznOYgFji3iO1KVMfkFqE=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "9141be4c1332afc83bdf1b0278dbb030f75ff8e3",
+        "rev": "276ce3bc878243dc63c32b75790c4296d11848f6",
         "type": "github"
       },
       "original": {
@@ -715,11 +715,11 @@
     "various-textobjs_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1754137882,
-        "narHash": "sha256-i/cMmE9isOCF22bfmNeAORk+mFYmhobf05+OQAFcDCo=",
+        "lastModified": 1754562402,
+        "narHash": "sha256-XvhBXAvG0yxPDY2g79hRoR2R5RJTZS7h3747vJWMCEc=",
         "owner": "chrisgrieser",
         "repo": "nvim-various-textobjs",
-        "rev": "3533004ecdc61cdee21bec3df2efbaeaba536346",
+        "rev": "dd6d862dd9a782f96eec21a26dfbebbbc79b7d4d",
         "type": "github"
       },
       "original": {
