@@ -95,11 +95,11 @@
     "fyler_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1755250178,
-        "narHash": "sha256-+wyNeO3O03Dbvf4iJ3pFfoyJsjZ/SjIJaw5IgcqHd0g=",
+        "lastModified": 1755412072,
+        "narHash": "sha256-Cw0rJV10/6W8Y+N+H5eU1NFRHDQtLn8bQCGu8bXnWfg=",
         "owner": "A7Lavinraj",
         "repo": "fyler.nvim",
-        "rev": "dd56526d2b5c3b11d648b1611c3286def914e8e3",
+        "rev": "42d7d465bdc85f30404341f3358392dcba9018e6",
         "type": "github"
       },
       "original": {
@@ -244,11 +244,11 @@
     "markview_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1754313191,
-        "narHash": "sha256-LKyHZ3mF2pivjAwXxjBVYNbSZ6a65D/u95HWH8vOe6A=",
+        "lastModified": 1755389140,
+        "narHash": "sha256-yASh0Gi5o+vzTTHxGe74WXR4fzykBupIF9hjLnpRRfc=",
         "owner": "OXY2DEV",
         "repo": "markview.nvim",
-        "rev": "2d68c060ad4387d9895577af43c3ace41a80de5d",
+        "rev": "ea7e9d6e8107d9226426fc9a34cce0413c22e8c2",
         "type": "github"
       },
       "original": {
@@ -335,11 +335,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1755078291,
-        "narHash": "sha256-Hu/gTDoi4uy6TAKISPHQusSMy8U6xUbLSDjKBYdhDIY=",
+        "lastModified": 1755274400,
+        "narHash": "sha256-rTInmnp/xYrfcMZyFMH3kc8oko5zYfxsowaLv1LVobY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3385ca0cd7e14c1a1eb80401fe011705ff012323",
+        "rev": "ad7196ae55c295f53a7d1ec39e4a06d922f3b899",
         "type": "github"
       },
       "original": {
