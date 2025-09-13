@@ -13,6 +13,16 @@ snippet debug
 snippet print
   std.debug.print("$1", .{});
 
+snippet stderr
+  var stderr_buf: [1024]u8 = undefined;
+  var stderr_writer = std.fs.File.stderr().writer(&stderr_buf);
+  const stderr = &stderr_writer.interface;
+
+snippet stdout
+  var stdout_buf: [1024]u8 = undefined;
+  var stdout_writer = std.fs.File.stdout().writer(&stdout_buf);
+  const stdout = &stdout_writer.interface;
+
 snippet gpa
   var gpa = std.heap.GeneralPurposeAllocator(.{}).init;
   const alloc = gpa.allocator();
@@ -22,15 +32,11 @@ snippet gpa
     }
   }
 
-snippet std
-  const std = @import("std");
-
-snippet req
-  const $1 = @import("$2");
+snippet import
+  const $1 = @import("$1");
 
 snippet format
-  pub fn format(self: @This(), comptime fmt: []const u8, options: std.fmt.FormatOptions, writer: anytype) !void {
-    _ = fmt;
-    _ = options;
-    try writer.print("{any}", .{ self });
+  pub fn format(self: @This(), writer: *std.Io.Writer) !void {
+    try writer.print("{f}", .{ self });
+	try writer.flush();
   }

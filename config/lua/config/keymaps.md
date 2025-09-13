@@ -296,7 +296,7 @@ utils.keymaps({
             :totable()
 
         if vim.tbl_isempty(bufs) then
-            require("fyler").open()
+            require("fyler").open({})
         else
             vim.iter(bufs):map(function (buf) vim.api.nvim_buf_delete(buf, { force = true }) end)
         end
