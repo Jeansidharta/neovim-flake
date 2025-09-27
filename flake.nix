@@ -10,6 +10,7 @@
     # Literate programming builder
     literate-markdown = {
       url = "github:jeansidharta/literate-markdown";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Libraries

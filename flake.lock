@@ -190,15 +190,17 @@
     },
     "literate-markdown": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1735603933,
-        "narHash": "sha256-HyMHPFjbNvcfxc59qE83hlHL8zjTiGQDWCCP2XqlW/4=",
+        "lastModified": 1758940325,
+        "narHash": "sha256-F3WHFaarGe84lmzZgX1s2XO9jmUxwVZ1Pe//pUBk9/0=",
         "owner": "jeansidharta",
         "repo": "literate-markdown",
-        "rev": "e9c45ee1c9d978264ad03ac8783f3489021c28f3",
+        "rev": "47401bf3271a1f57b398f15ed4bf88c635ca0047",
         "type": "github"
       },
       "original": {
@@ -348,22 +350,6 @@
       }
     },
     "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1735471104,
-        "narHash": "sha256-0q9NGQySwDQc7RhAV2ukfnu7Gxa5/ybJ2ANT8DQrQrs=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "88195a94f390381c6afcdaa933c2f6ff93959cb4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
       "locked": {
         "lastModified": 1758690382,
         "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
@@ -525,7 +511,7 @@
         "mdeval_plugin": "mdeval_plugin",
         "mini-icons_plugin": "mini-icons_plugin",
         "neoclip_plugin": "neoclip_plugin",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable",
         "none-ls_plugin": "none-ls_plugin",
         "nvim-colorizer_plugin": "nvim-colorizer_plugin",
