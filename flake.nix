@@ -263,6 +263,19 @@
             extraPackages = prev.extraPackages ++ misc-tools ++ lsps ++ formatters;
           });
           default = full;
+
+        }
+      );
+      devShell = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgsStableFor.${system};
+        in
+        pkgs.mkShell {
+          buildInputs = [
+            pkgs.stylua
+            pkgs.lua-language-server
+          ];
         }
       );
     };
