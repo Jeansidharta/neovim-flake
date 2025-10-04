@@ -78,6 +78,7 @@ vim.lsp.enable("nil_ls")
 vim.lsp.enable("rust_analyzer")
 vim.lsp.enable("emmet_language_server")
 vim.lsp.enable("astro")
+vim.lsp.enable("qmlls")
 vim.lsp.config("zls", {
 	settings = {
 		zls = {
