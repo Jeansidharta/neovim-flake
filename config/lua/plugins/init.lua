@@ -37,11 +37,8 @@ require("snacks").setup({
 
 require("fyler").setup({
 	close_on_open = true,
-	views = {
-		explorer = {
-			default_explorer = true,
-		},
-	},
+	default_explorer = true,
+	close_on_select = true,
 })
 
 require("substitute").setup({})
