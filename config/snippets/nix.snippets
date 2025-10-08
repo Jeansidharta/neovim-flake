@@ -1,0 +1,8 @@
+snippet nixpkgs
+  nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+
+snippet nixpkgs-unstable
+  nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+snippet pkgs
+  pkgs = nixpkgs.legacyPackages.${system};
