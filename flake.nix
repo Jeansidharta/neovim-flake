@@ -196,7 +196,7 @@
               mkdir $out
               cd ${./config}
               cp -r --no-preserve=mode . $out
-              ${fd-bin} . -e md -t f --strip-cwd-prefix -x ${literate-markdown-bin} "{}" "$out/{.}.lua" \;
+              ${fd-bin} . -e md -t f --strip-cwd-prefix -x ${literate-markdown-bin} "{}" "$out/{.}.lua" ";"
             '';
 
           plugins_list =
