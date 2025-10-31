@@ -146,6 +146,10 @@
       url = "github:hedyhli/outline.nvim";
       flake = false;
     };
+    attone_plugin = {
+      url = "github:XXiaoA/atone.nvim";
+      flake = false;
+    };
   };
 
   outputs =

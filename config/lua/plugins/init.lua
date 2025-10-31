@@ -41,6 +41,15 @@ require("fyler").setup({
 	close_on_select = true,
 })
 
+require("atone").setup({
+	keymaps = {
+		tree = {
+			next_node = "<Down>",
+			pre_node = "<Up>",
+		},
+	},
+})
+
 require("substitute").setup({})
 
 require("bufjump").setup()

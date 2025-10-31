@@ -210,6 +210,12 @@ utils.keymaps({
 
 ### Plugins
 
+#### Atone.nvim
+
+```lua
+	{ "<leader>u",  ":Atone toggle<CR>",                                desc = "Toggle Atone" },
+```
+
 #### Telescope Pickers
 
 ```lua
