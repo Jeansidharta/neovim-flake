@@ -338,8 +338,8 @@ utils.keymaps({
 ```lua
 	{ "<C-i>", require('bufjump').forward,             desc = "Jump to the next buffer in the jump list" },
 	{ "<C-o>", require('bufjump').backward,            desc = "Jump to the previous buffer in the jump list" },
-	{ "<C-.>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
-	{ "<C-,>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
+	{ "<C-S-o>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
+	{ "<C-S-i>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
 ```
 
 #### outline
