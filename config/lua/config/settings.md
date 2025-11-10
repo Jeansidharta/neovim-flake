@@ -246,3 +246,13 @@ vim.api.nvim_create_autocmd({ 'VimEnter', 'VimResized' }, {
   end,
 })
 ```
+
+Add filetypes detaction
+
+```lua
+vim.filetype.add({
+    extension = {
+        mdx = 'markdown',
+    },
+})
+```
