@@ -37,7 +37,7 @@
       flake = false;
     };
     fyler_plugin = {
-      url = "github:A7Lavinraj/fyler.nvim";
+      url = "github:A7Lavinraj/fyler.nvim/v1.1.0";
       flake = false;
     };
     # Dependency for fyler.nvim
