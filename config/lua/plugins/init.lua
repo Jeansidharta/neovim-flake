@@ -39,6 +39,7 @@ require("fyler").setup({
 	close_on_open = true,
 	default_explorer = true,
 	close_on_select = true,
+	icon_provider = "nvim_web_devicons",
 })
 
 require("atone").setup({

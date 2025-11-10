@@ -45,6 +45,10 @@
       url = "github:echasnovski/mini.icons";
       flake = false;
     };
+    nvim-web-devicons_plugin = {
+      url = "github:nvim-tree/nvim-web-devicons";
+      flake = false;
+    };
     nvim-colorizer_plugin = {
       url = "github:catgoose/nvim-colorizer.lua";
       flake = false;

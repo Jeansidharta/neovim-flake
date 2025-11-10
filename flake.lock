@@ -495,6 +495,22 @@
         "type": "github"
       }
     },
+    "nvim-web-devicons_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761440007,
+        "narHash": "sha256-klBjUtj0AvarN5a6O8Hh2t5BuOTe/m3ps2cHnlxVJvE=",
+        "owner": "nvim-tree",
+        "repo": "nvim-web-devicons",
+        "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-tree",
+        "repo": "nvim-web-devicons",
+        "type": "github"
+      }
+    },
     "outline_plugin": {
       "flake": false,
       "locked": {
@@ -569,6 +585,7 @@
         "nvim-illuminate_plugin": "nvim-illuminate_plugin",
         "nvim-lspconfig_plugin": "nvim-lspconfig_plugin",
         "nvim-notify_plugin": "nvim-notify_plugin",
+        "nvim-web-devicons_plugin": "nvim-web-devicons_plugin",
         "outline_plugin": "outline_plugin",
         "overseer_plugin": "overseer_plugin",
         "plenary_plugin": "plenary_plugin",
