@@ -368,22 +368,6 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5487e69da40cbd611ab2cadee0b4637225f7cfae.tar.gz"
       }
     },
-    "nixpkgs-stable": {
-      "locked": {
-        "lastModified": 1763948260,
-        "narHash": "sha256-dY9qLD0H0zOUgU3vWacPY6Qc421BeQAfm8kBuBtPVE0=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "1c8ba8d3f7634acac4a2094eef7c32ad9106532c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-25.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1760577653,
@@ -401,18 +385,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1763966396,
-        "narHash": "sha256-6eeL1YPcY1MV3DDStIDIdy/zZCDKgHdkCmsrLJFiZf0=",
-        "owner": "nixos",
+        "lastModified": 1766410818,
+        "narHash": "sha256-ruVneSx6wFy5PMw1ow3BE+znl653TJ6+eeNUj4B/9y8=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5ae3b07d8d6527c42f17c876e404993199144b6a",
+        "rev": "3a7affa77a5a539afa1c7859e2c31abdb1aeadf3",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "id": "nixpkgs",
+        "type": "indirect"
       }
     },
     "none-ls_plugin": {
@@ -579,7 +561,6 @@
         "mini-icons_plugin": "mini-icons_plugin",
         "neoclip_plugin": "neoclip_plugin",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-stable": "nixpkgs-stable",
         "none-ls_plugin": "none-ls_plugin",
         "nvim-colorizer_plugin": "nvim-colorizer_plugin",
         "nvim-illuminate_plugin": "nvim-illuminate_plugin",
@@ -596,7 +577,6 @@
         "substitute_plugin": "substitute_plugin",
         "telescope_plugin": "telescope_plugin",
         "theme": "theme",
-        "tokyodark_plugin": "tokyodark_plugin",
         "treesitter_plugin": "treesitter_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
         "zk-nvim_plugin": "zk-nvim_plugin"
@@ -744,22 +724,6 @@
         "dir": "theming",
         "owner": "jeansidharta",
         "repo": "configuration.nix",
-        "type": "github"
-      }
-    },
-    "tokyodark_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1674409919,
-        "narHash": "sha256-jgXhBviV2VCr+8U8y8eKrLYAU4LZtCofWtYXvbKBbiA=",
-        "owner": "jeansidharta",
-        "repo": "tokyodark.nvim",
-        "rev": "a8a1c4d27601d70b93a16faccd2e2bcc8011191b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jeansidharta",
-        "repo": "tokyodark.nvim",
         "type": "github"
       }
     },

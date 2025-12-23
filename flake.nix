@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
 
     theme.url = "github:jeansidharta/configuration.nix?dir=theming";
 
@@ -160,7 +159,6 @@
     {
       self,
       nixpkgs,
-      nixpkgs-stable,
       theme,
       ...
     }@inputs:
@@ -178,14 +176,12 @@
 
       # Nixpkgs instantiated for supported system types.
       nixpkgsFor = forAllSystems (system: nixpkgs.legacyPackages.${system});
-      nixpkgsStableFor = forAllSystems (system: nixpkgs-stable.legacyPackages.${system});
     in
     {
       packages = forAllSystems (
         system:
         let
-          pkgs-stable = nixpkgsStableFor.${system};
-          pkgs = nixpkgsFor.${system}.extend (final: prev: { deno = pkgs-stable.deno; });
+          pkgs = nixpkgsFor.${system};
           lib = pkgs.lib;
 
           # These plugins need to be built before being used.
@@ -277,7 +273,7 @@
       devShell = forAllSystems (
         system:
         let
-          pkgs = nixpkgsStableFor.${system};
+          pkgs = nixpkgsFor.${system};
         in
         pkgs.mkShell {
           buildInputs = [
