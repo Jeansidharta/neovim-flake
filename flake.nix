@@ -40,6 +40,10 @@
       url = "github:A7Lavinraj/fyler.nvim/v2.0.0";
       flake = false;
     };
+    silkcircuit_plugin = {
+      url = "github:hyperb1iss/silkcircuit-nvim";
+      flake = false;
+    };
     # Dependency for fyler.nvim
     mini-icons_plugin = {
       url = "github:echasnovski/mini.icons";
@@ -51,10 +55,6 @@
     };
     nvim-colorizer_plugin = {
       url = "github:catgoose/nvim-colorizer.lua";
-      flake = false;
-    };
-    tokyodark_plugin = {
-      url = "github:jeansidharta/tokyodark.nvim";
       flake = false;
     };
     telescope_plugin = {

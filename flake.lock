@@ -589,6 +589,7 @@
         "outline_plugin": "outline_plugin",
         "overseer_plugin": "overseer_plugin",
         "plenary_plugin": "plenary_plugin",
+        "silkcircuit_plugin": "silkcircuit_plugin",
         "snacks_plugin": "snacks_plugin",
         "sqlite_plugin": "sqlite_plugin",
         "status-col_plugin": "status-col_plugin",
@@ -615,6 +616,22 @@
         "owner": "rust-lang",
         "ref": "nightly",
         "repo": "rust-analyzer",
+        "type": "github"
+      }
+    },
+    "silkcircuit_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765351444,
+        "narHash": "sha256-PZ5NvgLOznHBU997Q52HnLshT8Gc+t0ZhSeWKyuMmo0=",
+        "owner": "hyperb1iss",
+        "repo": "silkcircuit-nvim",
+        "rev": "c6711f8ecdf75d8efb2da0317c4a291522343203",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyperb1iss",
+        "repo": "silkcircuit-nvim",
         "type": "github"
       }
     },

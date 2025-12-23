@@ -15,8 +15,8 @@ require("plugins.neoclip")
 require("plugins.mdeval")
 
 -- Set colorscheme
-vim.g.tokyodark_transparent_background = true
-vim.cmd([[colorscheme tokyodark]])
+require("silkcircuit").setup ({ transparent = true })
+vim.cmd([[colorscheme silkcircuit]])
 
 require("various-textobjs").setup({
 	keymaps = { useDefaults = true },
