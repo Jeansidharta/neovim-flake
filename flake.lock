@@ -36,6 +36,22 @@
         "type": "github"
       }
     },
+    "blink-cmp-words_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754443982,
+        "narHash": "sha256-x4VSBDdcij4BkvIzkFnGVtJvq+ow1rTtZk9MWeTlzpE=",
+        "owner": "archie-judd",
+        "repo": "blink-cmp-words",
+        "rev": "d6a56f532a1826b4f3aeed4d5e2fe7b8743a9244",
+        "type": "github"
+      },
+      "original": {
+        "owner": "archie-judd",
+        "repo": "blink-cmp-words",
+        "type": "github"
+      }
+    },
     "bufjump_plugin": {
       "flake": false,
       "locked": {
@@ -297,15 +313,16 @@
     "markview_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1764245529,
-        "narHash": "sha256-++my4xuBIPSqOdXWW6975rzQdnzDqc4KML3bseR0NVc=",
-        "owner": "OXY2DEV",
+        "lastModified": 1766561123,
+        "narHash": "sha256-mRV8WKZ3azIZeQLJqNejdE6UJvXpmbnuW9Fcc2ORoI4=",
+        "owner": "jeansidharta",
         "repo": "markview.nvim",
-        "rev": "bf62f7d173f4b42cd02794c6c5f5a8bd3047a58a",
+        "rev": "cd0fb6372d91823ec74c7bbd91084cb86efeb807",
         "type": "github"
       },
       "original": {
-        "owner": "OXY2DEV",
+        "owner": "jeansidharta",
+        "ref": "fix-blink-cmp-sources",
         "repo": "markview.nvim",
         "type": "github"
       }
@@ -565,6 +582,7 @@
       "inputs": {
         "attone_plugin": "attone_plugin",
         "blink": "blink",
+        "blink-cmp-words_plugin": "blink-cmp-words_plugin",
         "bufjump_plugin": "bufjump_plugin",
         "fidget_plugin": "fidget_plugin",
         "fyler_plugin": "fyler_plugin",

@@ -118,6 +118,10 @@
     blink = {
       url = "github:Saghen/blink.cmp";
     };
+    blink-cmp-words_plugin = {
+      url = "github:archie-judd/blink-cmp-words";
+      flake = false;
+    };
     nvim-lspconfig_plugin = {
       url = "github:neovim/nvim-lspconfig";
       flake = false;
@@ -143,7 +147,7 @@
       flake = false;
     };
     markview_plugin = {
-      url = "github:OXY2DEV/markview.nvim";
+      url = "github:jeansidharta/markview.nvim/fix-blink-cmp-sources";
       flake = false;
     };
     zk-nvim_plugin = {
