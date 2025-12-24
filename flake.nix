@@ -6,6 +6,11 @@
 
     theme.url = "github:jeansidharta/configuration.nix?dir=theming";
 
+    systemd-lsp = {
+      url = "github:JFryy/systemd-lsp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Literate programming builder
     literate-markdown = {
       url = "github:jeansidharta/literate-markdown";
@@ -221,6 +226,7 @@
             pkgs.nixfmt-rfc-style
             pkgs.prettierd
             pkgs.zk
+            inputs.systemd-lsp.outputs.packages.${pkgs.system}.default
           ];
           lsps = [
             pkgs.rust-analyzer
