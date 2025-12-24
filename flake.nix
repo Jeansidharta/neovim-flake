@@ -215,6 +215,13 @@
               parinfer = "${pkgs.kakounePlugins.parinfer-rust}/plugin/parinfer.vim";
               blink = "${blink}";
             };
+          global-lsps = [
+            pkgs.nil
+            pkgs.nodePackages_latest.bash-language-server
+            pkgs.nixfmt-rfc-style
+            pkgs.prettierd
+            pkgs.zk
+          ];
           lsps = [
             pkgs.rust-analyzer
             pkgs.openscad-lsp
@@ -224,14 +231,12 @@
             pkgs.vscode-langservers-extracted
             pkgs.astro-language-server
             pkgs.nodePackages_latest.typescript-language-server
-            pkgs.nodePackages_latest.bash-language-server
             pkgs.gleam
             pkgs.kakounePlugins.parinfer-rust
             pkgs.terraform-ls
             pkgs.lua-language-server
             pkgs.sqls
             pkgs.nginx-language-server
-            pkgs.nil
           ];
           formatters = [
             pkgs.eslint
@@ -241,11 +246,9 @@
             pkgs.prettierd
           ];
           misc-tools = [
-            pkgs.prettierd
             pkgs.ripgrep
             pkgs.unixtools.xxd
             pkgs.marksman
-            pkgs.zk
           ];
         in
         rec {
@@ -260,13 +263,16 @@
           simple = base.override (prev: {
             extraPackages = prev.extraPackages ++ misc-tools;
           });
+          with-global-lsps = base.override (prev: {
+            extraPackages = prev.extraPackages ++ misc-tools ++ global-lsps;
+          });
           with-lsps = base.override (prev: {
             extraPackages = prev.extraPackages ++ misc-tools ++ lsps;
           });
           full = base.override (prev: {
             extraPackages = prev.extraPackages ++ misc-tools ++ lsps ++ formatters;
           });
-          default = full;
+          default = with-global-lsps;
 
         }
       );

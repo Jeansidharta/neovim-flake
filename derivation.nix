@@ -24,7 +24,8 @@ writeShellApplication {
     neovim
     # For treesitter
     gcc
-  ] ++ extraPackages;
+  ]
+  ++ extraPackages;
 
   runtimeEnv = {
     # Provides a config file for prettierd
