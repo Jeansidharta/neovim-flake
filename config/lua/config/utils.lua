@@ -1,3 +1,5 @@
+local last_zindex = 1
+
 local function open_editor_temp_window(initial_lines, filetype)
 	local temp_buffer = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(temp_buffer, 0, -1, false, initial_lines)
@@ -5,7 +7,13 @@ local function open_editor_temp_window(initial_lines, filetype)
 	-- Requires a 'BufWriteCmd' or "FileWriteCmd" autocmd to write
 	vim.api.nvim_set_option_value("buftype", "acwrite", { buf = temp_buffer })
 	-- Allows the user to call :write
-	vim.api.nvim_buf_set_name(temp_buffer, "neoclip-temp")
+	vim.api.nvim_buf_set_name(temp_buffer, "temp-buf-" .. tostring(math.random(100000)))
+
+	local zindex = last_zindex
+	last_zindex = last_zindex + 1
+	if last_zindex >= 100 then
+		last_zindex = 1
+	end
 
 	local function make_ideal_win_config()
 		-- Default values are in case neovim is running in headless mode (e.g. during tests)
@@ -22,6 +30,7 @@ local function open_editor_temp_window(initial_lines, filetype)
 			height = winHeight,
 			col = math.ceil((width - winWidth) / 2),
 			row = math.ceil((height - winHeight) / 2) - 1,
+			zindex = zindex,
 		}
 	end
 
@@ -39,11 +48,11 @@ local function open_editor_temp_window(initial_lines, filetype)
 	vim.api.nvim_create_autocmd({ "BufWriteCmd", "FileWriteCmd" }, {
 		buffer = temp_buffer,
 		callback = function()
-			vim.api.nvim_set_option_value("modifier", false, { buf = temp_buffer })
+			vim.api.nvim_set_option_value("modified", false, { buf = temp_buffer })
 		end,
 	})
 
-	vim.api.nvim_create_autocmd({ "WinClosed", "WinLeave" }, {
+	vim.api.nvim_create_autocmd({ "WinClosed" }, {
 		buffer = temp_buffer,
 		callback = function()
 			vim.api.nvim_buf_delete(temp_buffer, { force = true })
