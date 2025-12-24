@@ -8,6 +8,7 @@
   neovim,
   sqlite,
   extraPackages,
+  git,
 
   # For treesitter
   gcc,
@@ -22,6 +23,7 @@ writeShellApplication {
 
   runtimeInputs = [
     neovim
+    git
     # For treesitter
     gcc
   ]
