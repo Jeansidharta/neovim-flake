@@ -1,5 +1,26 @@
 require("blink.cmp").setup({
-	keymap = { preset = "super-tab" },
+	keymap = {
+		preset = "super-tab",
+		["<C-space>"] = {
+			"show",
+			"show_documentation",
+			function(cmp)
+				local doc = require("blink.cmp.completion.windows.documentation")
+				if doc and doc.win and doc.win.buf then
+					vim.schedule(function()
+						require("config.utils").open_editor_temp_window(
+							vim.api.nvim_buf_get_lines(doc.win.buf, 0, -1, false),
+							"markdown"
+						)
+					end)
+					return true
+				else
+					return false
+				end
+			end,
+			"fallback",
+		},
+	},
 
 	signature = {
 		enabled = true,
