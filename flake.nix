@@ -230,7 +230,7 @@
             pkgs.nixfmt-rfc-style
             pkgs.prettierd
             pkgs.zk
-            inputs.systemd-lsp.outputs.packages.${pkgs.system}.default
+            inputs.systemd-lsp.outputs.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
           lsps = [
             pkgs.rust-analyzer
