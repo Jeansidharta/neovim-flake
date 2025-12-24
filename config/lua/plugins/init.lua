@@ -15,7 +15,7 @@ require("plugins.neoclip")
 require("plugins.mdeval")
 
 -- Set colorscheme
-require("silkcircuit").setup ({ transparent = true })
+require("silkcircuit").setup({ transparent = true })
 vim.cmd([[colorscheme silkcircuit]])
 
 require("various-textobjs").setup({
@@ -36,10 +36,21 @@ require("snacks").setup({
 })
 
 require("fyler").setup({
-	close_on_open = true,
-	default_explorer = true,
-	close_on_select = true,
-	icon_provider = "nvim_web_devicons",
+	integrations = {
+		icon_provider = "nvim_web_devicons",
+	},
+	views = {
+		finder = {
+			default_explorer = true,
+			win = {
+				win_opts = {
+					number = true,
+					relativenumber = true,
+					signcolumn = "yes",
+				},
+			},
+		},
+	},
 })
 
 require("atone").setup({
