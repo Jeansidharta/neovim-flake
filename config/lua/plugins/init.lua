@@ -79,7 +79,15 @@ require("substitute").setup({})
 
 require("bufjump").setup()
 
-require("fidget").setup({})
+require("fidget").setup({
+	notification = {
+		window = {
+			-- Make window's background transparent
+			winblend = 0,
+			border = "rounded",
+		},
+	},
+})
 
 require("overseer").setup()
 
