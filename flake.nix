@@ -147,7 +147,7 @@
       flake = false;
     };
     markview_plugin = {
-      url = "github:jeansidharta/markview.nvim/fix-blink-cmp-sources";
+      url = "github:OXY2DEV/markview.nvim";
       flake = false;
     };
     zk-nvim_plugin = {
