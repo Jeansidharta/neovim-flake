@@ -313,11 +313,11 @@
     "markview_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1766561123,
-        "narHash": "sha256-mRV8WKZ3azIZeQLJqNejdE6UJvXpmbnuW9Fcc2ORoI4=",
+        "lastModified": 1766784400,
+        "narHash": "sha256-txc3rG875qM0CeYzKteawjFFmXjxXOJbJUxReIPMbdg=",
         "owner": "jeansidharta",
         "repo": "markview.nvim",
-        "rev": "cd0fb6372d91823ec74c7bbd91084cb86efeb807",
+        "rev": "99fccaa4ae68ddea330a89a37326ef9237744a91",
         "type": "github"
       },
       "original": {
