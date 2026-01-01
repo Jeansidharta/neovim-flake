@@ -256,3 +256,14 @@ vim.filetype.add({
     },
 })
 ```
+
+Fix nix expandtab
+
+```lua
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { 'nix' },
+    callback = function (_)
+        vim.bo.expandtab = true
+    end
+})
+```
