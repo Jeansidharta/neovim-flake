@@ -1,7 +1,7 @@
 vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 
 local dap = require("dap")
-dap.defaults.fallback.exception_breakpoints = { "raised", "uncaught" }
+dap.defaults.fallback.exception_breakpoints = { "uncaught" }
 dap.defaults.fallback.switchbuf = "usevisible,usetab,uselast"
 
 dap.adapters.python = function(cb, config)
