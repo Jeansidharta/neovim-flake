@@ -8,11 +8,13 @@ require("plugins.indent-blankline")
 require("plugins.lualine")
 require("plugins.luasnip")
 require("plugins.null")
-require("plugins.statuscol")
 require("plugins.treesitter")
 require("plugins.vim-illuminate")
 require("plugins.neoclip")
 require("plugins.mdeval")
+require("plugins.dap")
+
+require("marks")
 
 -- Set colorscheme
 require("silkcircuit").setup({ transparent = true })

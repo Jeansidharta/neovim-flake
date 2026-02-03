@@ -62,6 +62,7 @@ vim.lsp.config("lua_ls", {
 	},
 })
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("basedpyright")
 vim.lsp.enable("bashls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("eslint")

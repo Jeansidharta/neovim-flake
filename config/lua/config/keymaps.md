@@ -342,6 +342,36 @@ utils.keymaps({
 	{ "<C-S-i>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
 ```
 
+#### dap
+
+```lua
+    { '<F5>', require('dap').continue, desc = "Start debug session" },
+    { '<F10>', require('dap').step_over, desc = "Step over" },
+    { '<F11>', require('dap').step_into, desc = "Step into" },
+    { '<F12>', require('dap').step_out, desc = "Step out" },
+    { '<Leader>;a', require('dap').set_exception_breakpoints, desc = "Set Exception Breakpoints" },
+    { '<Leader>;b', require('dap').toggle_breakpoint, desc = "Toggle Breakpoint" },
+    { '<Leader>;B', function ()
+        require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
+    end, desc = "Set Logging Breakpoint" },
+    { '<Leader>;l', function()
+        require('dap').list_breakpoints()
+		vim.cmd("copen")
+    end, desc = "List Breakpoints" },
+    { '<Leader>;;', require('dap').repl.toggle, desc = "Toggle Repl" },
+    { '<Leader>;k', function ()
+        require('dap.ui.widgets').hover(nil, { border = "rounded" })
+    end, desc = "DAP hover" },
+    { '<Leader>;f', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.frames, { border = "rounded" })
+    end, desc = "" },
+    { '<Leader>;s', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.scopes, { border = "rounded" })
+    end, desc = "" },
+```
+
 #### outline
 
 ```lua

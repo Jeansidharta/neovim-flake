@@ -91,6 +91,8 @@ settings define what characters should be associate with which information
 
 ```lua
 vim.o.signcolumn = "yes"
+vim.o.statuscolumn = "%l%s%C"
+vim.o.numberwidth = 1
 vim.opt.fillchars:append("foldclose:▾")
 vim.opt.fillchars:append("foldopen:▸")
 vim.opt.fillchars:append("foldsep: ")

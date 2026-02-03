@@ -48,6 +48,10 @@
       url = "github:echasnovski/mini.icons";
       flake = false;
     };
+    neovim-dap_plugin = {
+        url = "github:mfussenegger/nvim-dap";
+        flake = false;
+    };
     nvim-web-devicons_plugin = {
       url = "github:nvim-tree/nvim-web-devicons";
       flake = false;
@@ -123,10 +127,6 @@
     };
     overseer_plugin = {
       url = "github:stevearc/overseer.nvim";
-      flake = false;
-    };
-    status-col_plugin = {
-      url = "github:luukvbaal/statuscol.nvim";
       flake = false;
     };
     treesitter_plugin = {

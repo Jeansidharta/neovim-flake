@@ -391,6 +391,22 @@
         "type": "github"
       }
     },
+    "neovim-dap_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1769608142,
+        "narHash": "sha256-JA5dUhm3sQYlAmQpBLCtXj2r0RM3G/JWdcZWTrLJ4DY=",
+        "owner": "mfussenegger",
+        "repo": "nvim-dap",
+        "rev": "e47878dcf1ccc30136b30d19ab19fe76946d61cd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mfussenegger",
+        "repo": "nvim-dap",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1736166416,
@@ -599,6 +615,7 @@
         "mdeval_plugin": "mdeval_plugin",
         "mini-icons_plugin": "mini-icons_plugin",
         "neoclip_plugin": "neoclip_plugin",
+        "neovim-dap_plugin": "neovim-dap_plugin",
         "nixpkgs": "nixpkgs_2",
         "none-ls_plugin": "none-ls_plugin",
         "nvim-colorizer_plugin": "nvim-colorizer_plugin",
@@ -612,7 +629,6 @@
         "silkcircuit_plugin": "silkcircuit_plugin",
         "snacks_plugin": "snacks_plugin",
         "sqlite_plugin": "sqlite_plugin",
-        "status-col_plugin": "status-col_plugin",
         "substitute_plugin": "substitute_plugin",
         "telescope_plugin": "telescope_plugin",
         "theme": "theme",
@@ -683,22 +699,6 @@
       "original": {
         "owner": "kkharji",
         "repo": "sqlite.lua",
-        "type": "github"
-      }
-    },
-    "status-col_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748881224,
-        "narHash": "sha256-nFEQRJ5V+0RskJoAVRPAe2yrkORMTg9Jm13ClTmTSgk=",
-        "owner": "luukvbaal",
-        "repo": "statuscol.nvim",
-        "rev": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "luukvbaal",
-        "repo": "statuscol.nvim",
         "type": "github"
       }
     },
