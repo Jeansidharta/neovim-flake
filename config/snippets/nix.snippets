@@ -6,3 +6,14 @@ snippet nixpkgs-unstable
 
 snippet pkgs
   pkgs = nixpkgs.legacyPackages.${system};
+
+snippet forAllSystems
+	forAllSystems =
+		f:
+		nixpkgs.lib.genAttrs (nixpkgs.lib.systems.flakeExposed) (
+		  system:
+		  f {
+			inherit system;
+			pkgs = nixpkgs.legacyPackages.${system};
+		  }
+		);
