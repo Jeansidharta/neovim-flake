@@ -179,16 +179,15 @@
     "fyler_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1763889808,
-        "narHash": "sha256-Caf1dJiIATbs0PNjSANjA3QgHg7PdeMz9Pjoc0Ti7G4=",
+        "lastModified": 1769694622,
+        "narHash": "sha256-zPsm9sZUVkXs3Vq4K1uGAX4JOTxikzrTb1pebfeu8iM=",
         "owner": "A7Lavinraj",
         "repo": "fyler.nvim",
-        "rev": "bb8b9f30c652c948d35211958b0deec3496bcc08",
+        "rev": "648f4eae2a01669ee618d5a24f407317ba2c4c47",
         "type": "github"
       },
       "original": {
         "owner": "A7Lavinraj",
-        "ref": "v2.0.0",
         "repo": "fyler.nvim",
         "type": "github"
       }

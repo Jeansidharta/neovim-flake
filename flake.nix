@@ -36,7 +36,7 @@
       flake = false;
     };
     fyler_plugin = {
-      url = "github:A7Lavinraj/fyler.nvim/v2.0.0";
+      url = "github:A7Lavinraj/fyler.nvim";
       flake = false;
     };
     silkcircuit_plugin = {
