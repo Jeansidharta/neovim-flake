@@ -50,9 +50,9 @@ require("lualine").setup({
 				colored = true, -- Displays a colored diff status if set to true
 				diff_color = {
 					-- Same color values as the general color option can be used here.
-					added = "DiffAdd",                                  -- Changes the diff's added color
-					modified = "DiffChange",                            -- Changes the diff's modified color
-					removed = "DiffDelete",                             -- Changes the diff's removed color you
+					added = "DiffAdd", -- Changes the diff's added color
+					modified = "DiffChange", -- Changes the diff's modified color
+					removed = "DiffDelete", -- Changes the diff's removed color you
 				},
 				symbols = { added = "+", modified = "~", removed = "-" }, -- Changes the symbols used by the diff.
 				source = function()
@@ -86,7 +86,24 @@ require("lualine").setup({
 			"filename",
 			"overseer",
 		},
-		lualine_x = { { filesize }, "fileformat", "filetype" },
+		lualine_x = {
+			{
+				function()
+					return require("dap").status()
+				end,
+				icon = { "", color = { fg = "#e7c664" } }, -- nerd icon.
+				cond = function()
+					if not package.loaded.dap then
+						return false
+					end
+					local session = require("dap").session()
+					return session ~= nil
+				end,
+			},
+			{ filesize },
+			"fileformat",
+			"filetype",
+		},
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
 	},
