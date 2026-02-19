@@ -6,12 +6,6 @@
 
     theme.url = "github:jeansidharta/configuration.nix?dir=theming";
 
-    # Literate programming builder
-    literate-markdown = {
-      url = "github:jeansidharta/literate-markdown";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Libraries
     plenary_plugin = {
       url = "github:nvim-lua/plenary.nvim";
@@ -49,8 +43,8 @@
       flake = false;
     };
     neovim-dap_plugin = {
-        url = "github:mfussenegger/nvim-dap";
-        flake = false;
+      url = "github:mfussenegger/nvim-dap";
+      flake = false;
     };
     nvim-web-devicons_plugin = {
       url = "github:nvim-tree/nvim-web-devicons";
@@ -193,20 +187,6 @@
           # The master version of the Zig Language Server
           # zls-master = inputs.zls.outputs.packages.${system}.default;
 
-          parsed_config =
-            let
-              literate-markdown-bin = "${
-                inputs.literate-markdown.outputs.packages.${system}.default
-              }/bin/literate-markdown";
-              fd-bin = "${pkgs.fd}/bin/fd";
-            in
-            pkgs.runCommand "parsed-config" { } ''
-              mkdir $out
-              cd ${./config}
-              cp -r --no-preserve=mode . $out
-              ${fd-bin} . -e md -t f --strip-cwd-prefix -x ${literate-markdown-bin} "{}" "$out/{.}.lua" ";"
-            '';
-
           plugins_list =
             let
               inherit (lib.strings) hasSuffix removeSuffix;
@@ -215,7 +195,7 @@
             in
             mapAttrs' (name: value: nameValuePair (removeSuffix "_plugin" name) value.outPath) plugins_attr
             // {
-              personal-config = "${parsed_config}";
+              personal-config = ./config;
               parinfer = "${pkgs.kakounePlugins.parinfer-rust}/plugin/parinfer.vim";
               blink = "${blink}";
             };
@@ -261,7 +241,7 @@
           };
           base = lib.makeOverridable (final: pkgs.callPackage (import ./derivation.nix) final) {
             plugins = plugins_list;
-            init_lua = "${parsed_config}/init.lua";
+            init_lua = ./config/init.lua;
             extraPackages = [ ];
           };
           simple = base.override (prev: {
