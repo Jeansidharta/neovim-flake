@@ -144,6 +144,11 @@ vim.o.updatetime = 300
 vim.opt.autoread = true
 vim.opt.swapfile = false
 
+-- Do not autoamtically append newline to files
+vim.opt.fixendofline = false
+vim.opt.endofline = false
+vim.opt.endoffile = false
+
 -- Make prettier hover windows
 vim.api.nvim_create_autocmd({ "VimEnter", "VimResized" }, {
 	desc = "Setup LSP hover window",
