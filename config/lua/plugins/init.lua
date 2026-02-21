@@ -91,8 +91,6 @@ require("fidget").setup({
 	},
 })
 
-require("overseer").setup()
-
 require("colorizer").setup({})
 
 require("zk").setup({})

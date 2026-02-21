@@ -119,10 +119,6 @@
       url = "github:neovim/nvim-lspconfig";
       flake = false;
     };
-    overseer_plugin = {
-      url = "github:stevearc/overseer.nvim";
-      flake = false;
-    };
     treesitter_plugin = {
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
