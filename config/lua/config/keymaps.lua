@@ -1,13 +1,3 @@
-# Keymaps
-
-This file is supposed to contain all of the user's keybinds. This is so it's
-easy to find or grep for a keybind.
-
-## Misc actions
-
-Some actions that are at some point attached to a keybind.
-
-```lua
 local utils = require("config.utils")
 
 local function clear_notifications()
@@ -131,14 +121,9 @@ local function toggle_lsp_lines ()
 		})
 	end
 end
-```
 
-## Actual keymaps
-
-### Misc
-
-```lua
 utils.keymaps({
+-- ========== Misc ==========
     { "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
 	{ "<leader>l",        ":messages<CR>",                  desc = "Show messages" },
 	{ "<leader>n",        clear_notifications,              desc = "Clear all notifications" },
@@ -148,43 +133,26 @@ utils.keymaps({
         -- For some reason, format will sometimes disable diagnostic?
         vim.diagnostic.enable()
     end,  desc = "Format buffer" },
-```
 
-### Splits
-
-```lua
+-- ========== Splits ===========
 	{ "<leader>s<Up>",    ":split<CR><c-w>k<CR>",           desc = "Split up" },
 	{ "<leader>s<Down>",  ":split<CR>",                     desc = "Split down" },
 	{ "<leader>s<Left>",  ":vsplit<CR><c-w>h<CR>",          desc = "Split left" },
 	{ "<leader>s<Right>", ":vsplit<CR>",                    desc = "Split right" },
-
-```
-
-### Diagnostics
-
-```lua
+-- ========== Diagnostics ==========
 	{ "<leader>dn",       vim.diagnostic.goto_next,         desc = "Go to next diagnostics" },
 	{ "<leader>dN",       vim.diagnostic.goto_prev,         desc = "Go to prev diagnostics" },
 	{ "<leader>do",       vim.diagnostic.open_float,        desc = "Open diagnostics float" },
 	{ "<leader>dq",       vim.diagnostic.setloclist,        desc = "Send diagnostics to qf list" },
 	{ "<leader>di",       toggle_inlay_hints,               desc = "Toggle inlay hints" },
-
-```
-
-### Quick Fix
-
-```lua
+-- ========== Quick Fix ==========
 	{ "<leader>qt",       toggle_quick_fix,                 desc = "Toggle Quick Fix" },
 	{ "<leader>qo",       ":copen<CR>",                     desc = "Open Quick Fix" },
 	{ "<leader>qn",       ":cnext<CR>",                     desc = "Next Quick Fix" },
 	{ "<leader>qN",       ":cprev<CR>",                     desc = "Prev Quick Fix" },
 	{ "<leader>qf",       ":cfirst<CR>",                    desc = "First item in Quick Fix" },
 	{ "<leader>ql",       ":clast<CR>",                     desc = "Last item in Quick Fix" },
-```
-
-### LSP
-
-```lua
+-- ========== LSP ==========
 	{ "gD",               vim.lsp.buf.declaration,          desc = "Go to declaration" },
 	{ "gd",               vim.lsp.buf.definition,           desc = "Go to definition" },
 	{ "gt",               vim.lsp.buf.type_definition,      desc = "Go to type definition" },
@@ -194,100 +162,50 @@ utils.keymaps({
 	{ "<space>a",         vim.lsp.buf.code_action,          desc = "Code action" },
 	{ "<space>wl",        list_workspace_folders,           desc = "List workspace folders" },
 	{ "<space>rn",        vim.lsp.buf.rename,               desc = "Rename symbol" },
-
-```
-
-### Other
-
-````lua
+-- ========== Other ==========
 	{ "++",               "\"zyymzo```<ESC>'z==O```<ESC>\"zP", desc = "Run current line" },
 	{ "<leader>io",       new_file_selector,                desc = "New file selector" },
 	{ "<leader>df",       function ()
         vim.diagnostic.open_float({ border = "rounded", source = "if_many" })
     end, desc = "Run current line" },
 	{ "<C-H>",            ":nohlsearch<CR>",                desc = "Remove highlights" },
-````
-
-### Plugins
-
-#### Atone.nvim
-
-```lua
+-- ========== Plugins ==========
+-- ========== Atone.nvim ==========
 	{ "<leader>u",  ":Atone toggle<CR>",                                desc = "Toggle Atone" },
-```
-
-#### Telescope Pickers
-
-```lua
+-- ========== Telescope Pickers ==========
 	{ "<leader>tt",  ":Telescope<CR>",                                desc = "Open telescope pickers" },
 	{ "<leader>twt", ":Telescope live_grep<CR>",                      desc = "Open live grep" },
 	{ "<leader>th",  ":Telescope help_tags<CR>",                      desc = "Open help window" },
 	{ "<leader>tp",  require("telescope.builtin").resume,             desc = "Resume last picker" },
 	{ "<leader>tr", ":Telescope lsp_references<CR>", noremap = true, desc = "Open LSP references", },
-```
-
-##### Diagnostics
-
-```lua
+-- ========== Diagnostics ==========
 	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>",                desc = "Open diagnostics" },
 	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>",                desc = "Open diagnostics" },
 	{ "<leader>tdh", "<cmd>Telescope diagnostics severity=HINT<cr>",  desc = "Open diagnostics for errors" },
 	{ "<leader>tdi", "<cmd>Telescope diagnostics severity=INFO<cr>",  desc = "Open diagnostics for errors" },
 	{ "<leader>tdw", "<cmd>Telescope diagnostics severity=WARN<cr>",  desc = "Open diagnostics for errors" },
 	{ "<leader>tde", "<cmd>Telescope diagnostics severity=ERROR<cr>", desc = "Open diagnostics for errors" },
-```
-
-##### Notify
-
-```lua
+-- ========== Notify ==========
 	{ "<leader>tn",  ":Telescope notify<CR>",                         desc = "Open notifications history" },
-```
-
-##### Git
-
-```lua
+-- ========== Git ==========
 	{ "<leader>tgb", ":Telescope telescope_git all_branches<CR>",     desc = "Open branch list" },
 	{ "<leader>tgd", ":Telescope git_bcommits<CR>",                   desc = "Open git commits for current file" },
 	{ "<leader>tgc", ":Telescope git_commits<CR>",                    desc = "Open git commits" },
 	{ "<leader>tgs", ":Telescope git_status<CR>",                     desc = "Open git status" },
 	{ "<leader>tgf", ":Telescope git_files<CR>",                      desc = "Open git files" },
-```
-
-#### Neoclip
-
-```lua
+-- ========== Neoclip ==========
 	{ "<leader>tc",       ":Telescope neoclip<Return>",     desc = "Open neoclip in telescope" },
 	{ "<leader>tm", require("telescope").extensions.macroscope.default, desc = "Open macroscope in telescope", },
-```
-
-#### Hover
-
-```lua
+-- ========== Hover ==========
 	{ "K", function () vim.lsp.buf.hover({ border = "rounded" }) end, desc = "hover.nvim" },
-```
-
-#### Luasnip
-
-```lua
+-- ========== Luasnip ==========
 	-- { "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
 	-- { "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
-```
-
-#### Mdeval
-
-```lua
+-- ========== Mdeval ==========
 	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
-```
-
-#### Lsp lines
-
-```lua
+-- ========== Lsp lines ==========
 	{ "<leader>dl", toggle_lsp_lines, desc = "Toggle lsp_lines", },
-```
-
-#### Fyler
-
-```lua
+-- ========== Fyler ==========
 	{ "-",          function()
         if vim.startswith(vim.api.nvim_buf_get_name(0), "fyler://") then
             local old_cwd = vim.api.nvim_buf_get_name(0):gsub("^fyler://", "")
@@ -307,44 +225,24 @@ utils.keymaps({
             vim.iter(bufs):map(function (buf) vim.api.nvim_buf_delete(buf, { force = true }) end)
         end
     end,               desc = "Toggle fyler.nvim" },
-```
-
-#### Substitute
-
-```lua
+-- ========== Substitute ==========
 	{ "<Leader>r",  require("substitute").operator,    desc = "Substitution operator" },
 	{ "<Leader>rr", require("substitute").line,        desc = "Substitute line with register" },
 	{ "<Leader>R",  require("substitute").eol,         desc = "Substitute until EOL with register" },
-```
-
-#### Overseer
-
-```lua
+-- ========== Overseer ==========
 	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
 	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
-```
-
-#### ZK: zettelkasten
-
-```lua
+-- ========== ZK: zettelkasten ==========
 	{ "<leader>zo", ":Telescope zk notes<Return>",     desc = "Open a zk note" },
 	{ "<leader>zn", ":ZkNew<Return>",                  desc = "Create a new zk note" },
 	{ "<leader>zt", ":Telescope zk tags<Return>",      desc = "List all tags" },
 	{ "<leader>zn", turnSelectionIntoZkLink ,          desc = "Create note with visual selection", mode = "v" },
-```
-
-#### bufjump
-
-```lua
+-- ========== bufjump ==========
 	{ "<C-i>", require('bufjump').forward,             desc = "Jump to the next buffer in the jump list" },
 	{ "<C-o>", require('bufjump').backward,            desc = "Jump to the previous buffer in the jump list" },
 	{ "<C-S-o>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
 	{ "<C-S-i>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
-```
-
-#### dap
-
-```lua
+-- ========== dap ==========
     { '<F5>', require('dap').continue, desc = "Start debug session" },
     { '<F10>', require('dap').step_over, desc = "Step over" },
     { '<F11>', require('dap').step_into, desc = "Step into" },
@@ -370,18 +268,10 @@ utils.keymaps({
       local widgets = require('dap.ui.widgets')
       widgets.centered_float(widgets.scopes, { border = "rounded" })
     end, desc = "" },
-```
-
-#### outline
-
-```lua
+-- ========== outline ==========
 	{ "<leader>/", "<cmd>Outline<CR>", desc = "Toggle outline"},
 })
-```
-
-## Filetype specific keybinds
-
-```lua
+-- ========== Filetype specific keybinds ==========
 vim.api.nvim_create_autocmd("Filetype", {
 	pattern = "openscad",
 	callback = function()
@@ -395,11 +285,7 @@ vim.api.nvim_create_autocmd("Filetype", {
 	end,
 })
 
-```
-
-Run an entire lua file through neovim. Good for testing new plugins
-
-```lua
+-- Run an entire lua file through neovim. Good for testing new plugins
 vim.api.nvim_create_autocmd("filetype", {
 	pattern = { "lua" },
 	callback = function()
@@ -409,14 +295,9 @@ vim.api.nvim_create_autocmd("filetype", {
 	end,
 })
 
-```
-
-Forces neovim to add a jumplist entry whenever the user jumps more than
-`max_distance` up or down using a could (e.g. in normal mode: `10j`)
-
-```lua
+-- Forces neovim to add a jumplist entry whenever the user jumps more than
+-- `max_distance` up or down using a could (e.g. in normal mode: `10j`)
 local max_distance = 3
-
 for _, key in pairs({ "<Down>", "<Up>", "j", "k" }) do
 	vim.keymap.set({ "n", "v" }, key, function()
 		if vim.v.count > max_distance then
@@ -425,15 +306,9 @@ for _, key in pairs({ "<Down>", "<Up>", "j", "k" }) do
 		return key
 	end, { expr = true })
 end
-```
 
-Set some bindings to run SQL queries using the `usql` cli program.
-
-```lua
-
-local utils = require("config.utils")
+-- Set some bindings to run SQL queries using the `usql` cli program.
 local custom_sql_group = vim.api.nvim_create_augroup("custom_sql", { clear = true })
-
 vim.api.nvim_create_autocmd("filetype", {
 	group = custom_sql_group,
 	pattern = "sql",
@@ -464,4 +339,3 @@ vim.api.nvim_create_autocmd("filetype", {
 		})
 	end,
 })
-```

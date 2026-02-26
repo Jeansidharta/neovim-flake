@@ -18,7 +18,7 @@ nls.setup({
 		nls.builtins.formatting.stylua,
 		nls.builtins.formatting.gleam_format,
 		nls.builtins.formatting.nixfmt,
-		nls.builtins.formatting.terraform_fmt,
+		nls.builtins.formatting.opentofu_fmt,
 		nls.builtins.diagnostics.selene.with({
 			condition = function(utils)
 				return utils.root_has_file({ "selene.toml" })
