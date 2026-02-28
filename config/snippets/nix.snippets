@@ -14,6 +14,6 @@ snippet forAllSystems
 		  system:
 		  f {
 			inherit system;
-			pkgs = nixpkgs.legacyPackages.${system};
+			pkgs = nixpkgs.legacyPackages.`"${system}"`;
 		  }
 		);
