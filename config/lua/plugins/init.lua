@@ -45,6 +45,7 @@ require("fyler").setup({
 		finder = {
 			default_explorer = true,
 			win = {
+				kind = "float",
 				win_opts = {
 					number = true,
 					relativenumber = true,
