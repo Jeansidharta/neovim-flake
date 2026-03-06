@@ -47,7 +47,7 @@ local function new_file_selector()
 		vim.api.nvim_create_autocmd("BufWinEnter", {
 			buffer = commands_buf,
 			callback = function()
-                require("markview").actions.disable()
+				require("markview").actions.disable()
 			end,
 		})
 	end
@@ -67,12 +67,12 @@ end
 -- Should be invoked while on a visual selection
 -- Will take the text selected and create a new zk note with that text as a title.
 -- The originally selected note will be replaced by a link to the note.
-local function turnSelectionIntoZkLink ()
+local function turnSelectionIntoZkLink()
 	local zk = require("zk.api")
 	local title = utils.get_visual_selection_text()
 	if #title > 1 then
-		vim.notify("Cannot create note with a multi-line title", vim.log.levels.WARN);
-		return;
+		vim.notify("Cannot create note with a multi-line title", vim.log.levels.WARN)
+		return
 	end
 	title = vim.trim(title[1])
 	local location = utils.get_visual_selection_position()
@@ -82,13 +82,13 @@ local function turnSelectionIntoZkLink ()
 		-- dryRun makes sure the note is not created in the filesystem. This allows the user to change
 		-- their mind before actually saving the note.
 		{ title = title, dryRun = true },
-		function (err, note)
+		function(err, note)
 			if err ~= nil then
 				vim.notify("Failed to create link", vim.log.levels.ERROR)
 				vim.print(err)
 				return
 			end
-			vim.notify("Created note " .. note.path);
+			vim.notify("Created note " .. note.path)
 			-- Replace the selected text with the link
 			vim.api.nvim_buf_set_text(
 				location.buf,
@@ -96,18 +96,18 @@ local function turnSelectionIntoZkLink ()
 				location.start[2] - 1,
 				location.finish[1] - 1,
 				location.finish[2],
-				{"["..title.."]("..vim.fs.basename(note.path)..")"}
+				{ "[" .. title .. "](" .. vim.fs.basename(note.path) .. ")" }
 			)
-			vim.cmd[[write]] -- Save current buffer. This is to make sure the recently placed link is permanently saved
+			vim.cmd([[write]]) -- Save current buffer. This is to make sure the recently placed link is permanently saved
 			vim.cmd([[edit ]] .. note.path) -- Open new note for editing
 			-- Since the note wasn't saved in the filesystem (because of the dryRun) we have to
 			-- fill its content ourselves.
 			vim.api.nvim_buf_set_lines(0, 0, 0, false, vim.split(note.content, "\n"))
 		end
-	);
+	)
 end
 
-local function toggle_lsp_lines ()
+local function toggle_lsp_lines()
 	local is_lines_set = vim.diagnostic.config().virtual_lines
 	if is_lines_set then
 		vim.diagnostic.config({
@@ -123,153 +123,224 @@ local function toggle_lsp_lines ()
 end
 
 utils.keymaps({
--- ========== Misc ==========
-    { "<Tab>",            ":w<CR>",                         desc = "Save buffer" },
-	{ "<leader>l",        ":messages<CR>",                  desc = "Show messages" },
-	{ "<leader>n",        clear_notifications,              desc = "Clear all notifications" },
-    { '/',                '<esc>/\\%V',        mode = 'v', desc = "search within selection" },
-	{ "<S-Tab>",          function ()
-        vim.lsp.buf.format()
-        -- For some reason, format will sometimes disable diagnostic?
-        vim.diagnostic.enable()
-    end,  desc = "Format buffer" },
+	-- ========== Misc ==========
+	{ "<Tab>", ":w<CR>", desc = "Save buffer" },
+	{ "<leader>l", ":messages<CR>", desc = "Show messages" },
+	{ "<leader>n", clear_notifications, desc = "Clear all notifications" },
+	{ "/", "<esc>/\\%V", mode = "v", desc = "search within selection" },
+	{
+		"<S-Tab>",
+		function()
+			vim.lsp.buf.format()
+			-- For some reason, format will sometimes disable diagnostic?
+			vim.diagnostic.enable()
+		end,
+		desc = "Format buffer",
+	},
 
--- ========== Splits ===========
-	{ "<leader>s<Up>",    ":split<CR><c-w>k<CR>",           desc = "Split up" },
-	{ "<leader>s<Down>",  ":split<CR>",                     desc = "Split down" },
-	{ "<leader>s<Left>",  ":vsplit<CR><c-w>h<CR>",          desc = "Split left" },
-	{ "<leader>s<Right>", ":vsplit<CR>",                    desc = "Split right" },
--- ========== Diagnostics ==========
-	{ "<leader>dn",       vim.diagnostic.goto_next,         desc = "Go to next diagnostics" },
-	{ "<leader>dN",       vim.diagnostic.goto_prev,         desc = "Go to prev diagnostics" },
-	{ "<leader>do",       vim.diagnostic.open_float,        desc = "Open diagnostics float" },
-	{ "<leader>dq",       vim.diagnostic.setloclist,        desc = "Send diagnostics to qf list" },
-	{ "<leader>di",       toggle_inlay_hints,               desc = "Toggle inlay hints" },
--- ========== Quick Fix ==========
-	{ "<leader>qt",       toggle_quick_fix,                 desc = "Toggle Quick Fix" },
-	{ "<leader>qo",       ":copen<CR>",                     desc = "Open Quick Fix" },
-	{ "<leader>qn",       ":cnext<CR>",                     desc = "Next Quick Fix" },
-	{ "<leader>qN",       ":cprev<CR>",                     desc = "Prev Quick Fix" },
-	{ "<leader>qf",       ":cfirst<CR>",                    desc = "First item in Quick Fix" },
-	{ "<leader>ql",       ":clast<CR>",                     desc = "Last item in Quick Fix" },
--- ========== LSP ==========
-	{ "gD",               vim.lsp.buf.declaration,          desc = "Go to declaration" },
-	{ "gd",               vim.lsp.buf.definition,           desc = "Go to definition" },
-	{ "gt",               vim.lsp.buf.type_definition,      desc = "Go to type definition" },
-	{ "gi",               vim.lsp.buf.implementation,       desc = "Go to implementation" },
-	{ "gr",               vim.lsp.buf.references,           desc = "Go to references" },
-	{ "<C-k>",            vim.lsp.buf.signature_help,       desc = "Signature help" },
-	{ "<space>a",         vim.lsp.buf.code_action,          desc = "Code action" },
-	{ "<space>wl",        list_workspace_folders,           desc = "List workspace folders" },
-	{ "<space>rn",        vim.lsp.buf.rename,               desc = "Rename symbol" },
--- ========== Other ==========
-	{ "++",               "\"zyymzo```<ESC>'z==O```<ESC>\"zP", desc = "Run current line" },
-	{ "<leader>io",       new_file_selector,                desc = "New file selector" },
-	{ "<leader>df",       function ()
-        vim.diagnostic.open_float({ border = "rounded", source = "if_many" })
-    end, desc = "Run current line" },
-	{ "<C-H>",            ":nohlsearch<CR>",                desc = "Remove highlights" },
--- ========== Plugins ==========
--- ========== Atone.nvim ==========
-	{ "<leader>u",  ":Atone toggle<CR>",                                desc = "Toggle Atone" },
--- ========== Telescope Pickers ==========
-	{ "<leader>tt",  ":Telescope<CR>",                                desc = "Open telescope pickers" },
-	{ "<leader>twt", ":Telescope live_grep<CR>",                      desc = "Open live grep" },
-	{ "<leader>th",  ":Telescope help_tags<CR>",                      desc = "Open help window" },
-	{ "<leader>tp",  require("telescope.builtin").resume,             desc = "Resume last picker" },
-	{ "<leader>tr", ":Telescope lsp_references<CR>", noremap = true, desc = "Open LSP references", },
--- ========== Diagnostics ==========
-	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>",                desc = "Open diagnostics" },
-	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>",                desc = "Open diagnostics" },
-	{ "<leader>tdh", "<cmd>Telescope diagnostics severity=HINT<cr>",  desc = "Open diagnostics for errors" },
-	{ "<leader>tdi", "<cmd>Telescope diagnostics severity=INFO<cr>",  desc = "Open diagnostics for errors" },
-	{ "<leader>tdw", "<cmd>Telescope diagnostics severity=WARN<cr>",  desc = "Open diagnostics for errors" },
+	-- ========== Splits ===========
+	{ "<leader>s<Up>", ":split<CR><c-w>k<CR>", desc = "Split up" },
+	{ "<leader>s<Down>", ":split<CR>", desc = "Split down" },
+	{ "<leader>s<Left>", ":vsplit<CR><c-w>h<CR>", desc = "Split left" },
+	{ "<leader>s<Right>", ":vsplit<CR>", desc = "Split right" },
+	-- ========== Diagnostics ==========
+	{ "<leader>dn", vim.diagnostic.goto_next, desc = "Go to next diagnostics" },
+	{ "<leader>dN", vim.diagnostic.goto_prev, desc = "Go to prev diagnostics" },
+	{ "<leader>do", vim.diagnostic.open_float, desc = "Open diagnostics float" },
+	{ "<leader>dq", vim.diagnostic.setloclist, desc = "Send diagnostics to qf list" },
+	{ "<leader>di", toggle_inlay_hints, desc = "Toggle inlay hints" },
+	-- ========== Quick Fix ==========
+	{ "<leader>qt", toggle_quick_fix, desc = "Toggle Quick Fix" },
+	{ "<leader>qo", ":copen<CR>", desc = "Open Quick Fix" },
+	{ "<leader>qn", ":cnext<CR>", desc = "Next Quick Fix" },
+	{ "<leader>qN", ":cprev<CR>", desc = "Prev Quick Fix" },
+	{ "<leader>qf", ":cfirst<CR>", desc = "First item in Quick Fix" },
+	{ "<leader>ql", ":clast<CR>", desc = "Last item in Quick Fix" },
+	-- ========== LSP ==========
+	{ "gD", vim.lsp.buf.declaration, desc = "Go to declaration" },
+	{ "gd", vim.lsp.buf.definition, desc = "Go to definition" },
+	{ "gt", vim.lsp.buf.type_definition, desc = "Go to type definition" },
+	{ "gi", vim.lsp.buf.implementation, desc = "Go to implementation" },
+	{ "gr", vim.lsp.buf.references, desc = "Go to references" },
+	{ "<C-k>", vim.lsp.buf.signature_help, desc = "Signature help" },
+	{ "<space>a", vim.lsp.buf.code_action, desc = "Code action" },
+	{ "<space>wl", list_workspace_folders, desc = "List workspace folders" },
+	{ "<space>rn", vim.lsp.buf.rename, desc = "Rename symbol" },
+	-- ========== Other ==========
+	{ "++", '"zyymzo```<ESC>\'z==O```<ESC>"zP', desc = "Run current line" },
+	{ "<leader>io", new_file_selector, desc = "New file selector" },
+	{
+		"<leader>df",
+		function()
+			vim.diagnostic.open_float({ border = "rounded", source = "if_many" })
+		end,
+		desc = "Run current line",
+	},
+	{ "<C-H>", ":nohlsearch<CR>", desc = "Remove highlights" },
+	-- ========== Plugins ==========
+	-- ========== Atone.nvim ==========
+	{ "<leader>u", ":Atone toggle<CR>", desc = "Toggle Atone" },
+	-- ========== Telescope Pickers ==========
+	{ "<leader>tt", ":Telescope<CR>", desc = "Open telescope pickers" },
+	{ "<leader>twt", ":Telescope live_grep<CR>", desc = "Open live grep" },
+	{ "<leader>th", ":Telescope help_tags<CR>", desc = "Open help window" },
+	{ "<leader>tp", require("telescope.builtin").resume, desc = "Resume last picker" },
+	{
+		"<leader>tr",
+		":Telescope lsp_references<CR>",
+		noremap = true,
+		desc = "Open LSP references",
+	},
+	-- ========== Diagnostics ==========
+	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>", desc = "Open diagnostics" },
+	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>", desc = "Open diagnostics" },
+	{ "<leader>tdh", "<cmd>Telescope diagnostics severity=HINT<cr>", desc = "Open diagnostics for errors" },
+	{ "<leader>tdi", "<cmd>Telescope diagnostics severity=INFO<cr>", desc = "Open diagnostics for errors" },
+	{ "<leader>tdw", "<cmd>Telescope diagnostics severity=WARN<cr>", desc = "Open diagnostics for errors" },
 	{ "<leader>tde", "<cmd>Telescope diagnostics severity=ERROR<cr>", desc = "Open diagnostics for errors" },
--- ========== Notify ==========
-	{ "<leader>tn",  ":Telescope notify<CR>",                         desc = "Open notifications history" },
--- ========== Git ==========
-	{ "<leader>tgb", ":Telescope telescope_git all_branches<CR>",     desc = "Open branch list" },
-	{ "<leader>tgd", ":Telescope git_bcommits<CR>",                   desc = "Open git commits for current file" },
-	{ "<leader>tgc", ":Telescope git_commits<CR>",                    desc = "Open git commits" },
-	{ "<leader>tgs", ":Telescope git_status<CR>",                     desc = "Open git status" },
-	{ "<leader>tgf", ":Telescope git_files<CR>",                      desc = "Open git files" },
--- ========== Neoclip ==========
-	{ "<leader>tc",       ":Telescope neoclip<Return>",     desc = "Open neoclip in telescope" },
-	{ "<leader>tm", require("telescope").extensions.macroscope.default, desc = "Open macroscope in telescope", },
--- ========== Hover ==========
-	{ "K", function () vim.lsp.buf.hover({ border = "rounded" }) end, desc = "hover.nvim" },
--- ========== Luasnip ==========
+	-- ========== Notify ==========
+	{ "<leader>tn", ":Telescope notify<CR>", desc = "Open notifications history" },
+	-- ========== Git ==========
+	{ "<leader>tgb", ":Telescope telescope_git all_branches<CR>", desc = "Open branch list" },
+	{
+		"<leader>tgd",
+		":Telescope git_bcommits<CR>",
+		desc = "Open git commits for current file",
+	},
+	{ "<leader>tgc", ":Telescope git_commits<CR>", desc = "Open git commits" },
+	{ "<leader>tgs", ":Telescope git_status<CR>", desc = "Open git status" },
+	{ "<leader>tgf", ":Telescope git_files<CR>", desc = "Open git files" },
+	-- ========== Neoclip ==========
+	{ "<leader>tc", ":Telescope neoclip<Return>", desc = "Open neoclip in telescope" },
+	{
+		"<leader>tm",
+		require("telescope").extensions.macroscope.default,
+		desc = "Open macroscope in telescope",
+	},
+	-- ========== Hover ==========
+	{
+		"K",
+		function()
+			vim.lsp.buf.hover({ border = "rounded" })
+		end,
+		desc = "hover.nvim",
+	},
+	-- ========== Luasnip ==========
 	-- { "<leader>zn", "<Plug>luasnip-jump-next",     noremap = true,              desc = "LuaSnip Next" },
 	-- { "<leader>zN", "<Plug>luasnip-jump-prev",     noremap = true,              desc = "LuaSnip Prev" },
--- ========== Mdeval ==========
+	-- ========== Mdeval ==========
 	{ "<leader>ii", require("mdeval").eval_code_block, desc = "Evaluate code block" },
--- ========== Lsp lines ==========
-	{ "<leader>dl", toggle_lsp_lines, desc = "Toggle lsp_lines", },
--- ========== Fyler ==========
-	{ "-",          function()
-        if vim.startswith(vim.api.nvim_buf_get_name(0), "fyler://") then
-            local old_cwd = vim.api.nvim_buf_get_name(0):gsub("^fyler://", "")
-            require("fyler").open({ cwd = vim.fs.dirname(old_cwd:gsub("(.+)/$", "%1")) })
-            return
-        end
+	-- ========== Lsp lines ==========
+	{ "<leader>dl", toggle_lsp_lines, desc = "Toggle lsp_lines" },
+	-- ========== Fyler ==========
+	{
+		"-",
+		function()
+			if vim.startswith(vim.api.nvim_buf_get_name(0), "fyler://") then
+				local old_cwd = vim.api.nvim_buf_get_name(0):gsub("^fyler://", "")
+				require("fyler").open({ cwd = vim.fs.dirname(old_cwd:gsub("(.+)/$", "%1")) })
+				return
+			end
 
-        local bufs = vim.iter(vim.api.nvim_list_bufs())
-            :filter(function(buf)
-                return vim.startswith(vim.api.nvim_buf_get_name(buf), "fyler://")
-            end)
-            :totable()
+			local bufs = vim.iter(vim.api.nvim_list_bufs())
+				:filter(function(buf)
+					return vim.startswith(vim.api.nvim_buf_get_name(buf), "fyler://")
+				end)
+				:totable()
 
-        if vim.tbl_isempty(bufs) then
-            require("fyler").open({})
-        else
-            vim.iter(bufs):map(function (buf) vim.api.nvim_buf_delete(buf, { force = true }) end)
-        end
-    end,               desc = "Toggle fyler.nvim" },
--- ========== Substitute ==========
-	{ "<Leader>r",  require("substitute").operator,    desc = "Substitution operator" },
-	{ "<Leader>rr", require("substitute").line,        desc = "Substitute line with register" },
-	{ "<Leader>R",  require("substitute").eol,         desc = "Substitute until EOL with register" },
--- ========== Overseer ==========
-	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
-	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
--- ========== ZK: zettelkasten ==========
-	{ "<leader>zo", ":Telescope zk notes<Return>",     desc = "Open a zk note" },
-	{ "<leader>zn", ":ZkNew<Return>",                  desc = "Create a new zk note" },
-	{ "<leader>zt", ":Telescope zk tags<Return>",      desc = "List all tags" },
-	{ "<leader>zn", turnSelectionIntoZkLink ,          desc = "Create note with visual selection", mode = "v" },
--- ========== bufjump ==========
-	{ "<C-i>", require('bufjump').forward,             desc = "Jump to the next buffer in the jump list" },
-	{ "<C-o>", require('bufjump').backward,            desc = "Jump to the previous buffer in the jump list" },
-	{ "<C-S-o>", require('bufjump').backward_same_buf,   desc = "Jump back in the jump list within the same buffer" },
-	{ "<C-S-i>", require('bufjump').forward_same_buf,    desc = "Jump forward in the jump list within the same buffer" },
--- ========== dap ==========
-    { '<F5>', require('dap').continue, desc = "Start debug session" },
-    { '<F10>', require('dap').step_over, desc = "Step over" },
-    { '<F11>', require('dap').step_into, desc = "Step into" },
-    { '<F12>', require('dap').step_out, desc = "Step out" },
-    { '<Leader>;a', require('dap').set_exception_breakpoints, desc = "Set Exception Breakpoints" },
-    { '<Leader>;b', require('dap').toggle_breakpoint, desc = "Toggle Breakpoint" },
-    { '<Leader>;B', function ()
-        require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
-    end, desc = "Set Logging Breakpoint" },
-    { '<Leader>;l', function()
-        require('dap').list_breakpoints()
-		vim.cmd("copen")
-    end, desc = "List Breakpoints" },
-    { '<Leader>;;', require('dap').repl.toggle, desc = "Toggle Repl" },
-    { '<Leader>;k', function ()
-        require('dap.ui.widgets').hover(nil, { border = "rounded" })
-    end, desc = "DAP hover" },
-    { '<Leader>;f', function()
-      local widgets = require('dap.ui.widgets')
-      widgets.centered_float(widgets.frames, { border = "rounded" })
-    end, desc = "" },
-    { '<Leader>;s', function()
-      local widgets = require('dap.ui.widgets')
-      widgets.centered_float(widgets.scopes, { border = "rounded" })
-    end, desc = "" },
--- ========== outline ==========
-	{ "<leader>/", "<cmd>Outline<CR>", desc = "Toggle outline"},
+			if vim.tbl_isempty(bufs) then
+				require("fyler").open({})
+			else
+				vim.iter(bufs):map(function(buf)
+					vim.api.nvim_buf_delete(buf, { force = true })
+				end)
+			end
+		end,
+		desc = "Toggle fyler.nvim",
+	},
+	-- ========== Substitute ==========
+	{ "<Leader>r", require("substitute").operator, desc = "Substitution operator" },
+	{ "<Leader>rr", require("substitute").line, desc = "Substitute line with register" },
+	{ "<Leader>R", require("substitute").eol, desc = "Substitute until EOL with register" },
+	-- ========== Overseer ==========
+	{ "<leader>or", ":OverseerRun<Return>", desc = "Run overseer command" },
+	{ "<leader>ot", ":OverseerToggle left<Return>", desc = "Open overseer panel" },
+	-- ========== ZK: zettelkasten ==========
+	{ "<leader>zo", ":Telescope zk notes<Return>", desc = "Open a zk note" },
+	{ "<leader>zn", ":ZkNew<Return>", desc = "Create a new zk note" },
+	{ "<leader>zt", ":Telescope zk tags<Return>", desc = "List all tags" },
+	{
+		"<leader>zn",
+		turnSelectionIntoZkLink,
+		desc = "Create note with visual selection",
+		mode = "v",
+	},
+	-- ========== fzf ==========
+	{ "<leader>ff", require("fzf-lua").files, desc = "FZF Files" },
+	{ "<leader>fg", require("fzf-lua").live_grep_native, desc = "FZF Ripgrep" },
+	{ "<leader>fp", require("fzf-lua").resume, desc = "Resume FZF search" },
+	{ "<leader>f:", require("fzf-lua").jumps, desc = "Resume FZF search" },
+	-- ========== bufjump ==========
+	{ "<C-i>", require("bufjump").forward, desc = "Jump to the next buffer in the jump list" },
+	{ "<C-o>", require("bufjump").backward, desc = "Jump to the previous buffer in the jump list" },
+	{
+		"<C-S-o>",
+		require("bufjump").backward_same_buf,
+		desc = "Jump back in the jump list within the same buffer",
+	},
+	{
+		"<C-S-i>",
+		require("bufjump").forward_same_buf,
+		desc = "Jump forward in the jump list within the same buffer",
+	},
+	-- ========== dap ==========
+	{ "<F5>", require("dap").continue, desc = "Start debug session" },
+	{ "<F10>", require("dap").step_over, desc = "Step over" },
+	{ "<F11>", require("dap").step_into, desc = "Step into" },
+	{ "<F12>", require("dap").step_out, desc = "Step out" },
+	{ "<Leader>;a", require("dap").set_exception_breakpoints, desc = "Set Exception Breakpoints" },
+	{ "<Leader>;b", require("dap").toggle_breakpoint, desc = "Toggle Breakpoint" },
+	{
+		"<Leader>;B",
+		function()
+			require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+		end,
+		desc = "Set Logging Breakpoint",
+	},
+	{
+		"<Leader>;l",
+		function()
+			require("dap").list_breakpoints()
+			vim.cmd("copen")
+		end,
+		desc = "List Breakpoints",
+	},
+	{ "<Leader>;;", require("dap").repl.toggle, desc = "Toggle Repl" },
+	{
+		"<Leader>;k",
+		function()
+			require("dap.ui.widgets").hover(nil, { border = "rounded" })
+		end,
+		desc = "DAP hover",
+	},
+	{
+		"<Leader>;f",
+		function()
+			local widgets = require("dap.ui.widgets")
+			widgets.centered_float(widgets.frames, { border = "rounded" })
+		end,
+		desc = "",
+	},
+	{
+		"<Leader>;s",
+		function()
+			local widgets = require("dap.ui.widgets")
+			widgets.centered_float(widgets.scopes, { border = "rounded" })
+		end,
+		desc = "",
+	},
+	-- ========== outline ==========
+	{ "<leader>/", "<cmd>Outline<CR>", desc = "Toggle outline" },
 })
 -- ========== Filetype specific keybinds ==========
 vim.api.nvim_create_autocmd("Filetype", {
@@ -279,18 +350,8 @@ vim.api.nvim_create_autocmd("Filetype", {
 			local filepath = vim.fn.expand("%:p")
 			local filename = vim.fn.expand("%:t")
 			local task =
-					require("overseer").new_task({ cmd = "openscad", args = { filepath }, name = "OpenSCAD " .. filename })
+				require("overseer").new_task({ cmd = "openscad", args = { filepath }, name = "OpenSCAD " .. filename })
 			require("overseer").run_action(task, "start")
-		end)
-	end,
-})
-
--- Run an entire lua file through neovim. Good for testing new plugins
-vim.api.nvim_create_autocmd("filetype", {
-	pattern = { "lua" },
-	callback = function()
-		vim.keymap.set("n", "<leader>ff", function()
-			vim.cmd([[luafile %]])
 		end)
 	end,
 })

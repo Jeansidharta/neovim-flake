@@ -30,6 +30,17 @@ require("notify").setup({ background_colour = "#000000" })
 -- The schedule_wrap is due to https://github.com/rcarriga/nvim-notify/issues/205
 vim.notify = vim.schedule_wrap(require("notify"))
 
+require("fzf-lua").setup({
+	winopts = {
+		fullscreen = true,
+	},
+	keymap = {
+		fzf = {
+			["ctrl-q"] = "select-all+accept",
+		},
+	},
+})
+
 require("snacks").setup({
 	input = {},
 	picker = {
