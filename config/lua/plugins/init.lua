@@ -78,8 +78,6 @@ require("markview").setup({
 	},
 })
 
-require("substitute").setup({})
-
 require("bufjump").setup()
 
 require("fidget").setup({

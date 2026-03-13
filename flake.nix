@@ -70,10 +70,6 @@
       url = "github:glts/vim-radical";
       flake = false;
     };
-    substitute_plugin = {
-      url = "github:gbprod/substitute.nvim";
-      flake = false;
-    };
     bufjump_plugin = {
       url = "github:kwkarlwang/bufjump.nvim";
       flake = false;

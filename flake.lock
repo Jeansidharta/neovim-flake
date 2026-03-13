@@ -539,7 +539,6 @@
         "silkcircuit_plugin": "silkcircuit_plugin",
         "snacks_plugin": "snacks_plugin",
         "sqlite_plugin": "sqlite_plugin",
-        "substitute_plugin": "substitute_plugin",
         "telescope_plugin": "telescope_plugin",
         "theme": "theme",
         "treesitter_plugin": "treesitter_plugin",
@@ -609,22 +608,6 @@
       "original": {
         "owner": "kkharji",
         "repo": "sqlite.lua",
-        "type": "github"
-      }
-    },
-    "substitute_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1771324844,
-        "narHash": "sha256-t3wgyUtHab0erJkA7kUOGvbyHTzMmWlNE5WNtjDZL0g=",
-        "owner": "gbprod",
-        "repo": "substitute.nvim",
-        "rev": "0d2077398552f069abccbd964a26dd7cd26882cd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "gbprod",
-        "repo": "substitute.nvim",
         "type": "github"
       }
     },

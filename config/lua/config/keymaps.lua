@@ -225,10 +225,6 @@ utils.keymaps({
             vim.iter(bufs):map(function (buf) vim.api.nvim_buf_delete(buf, { force = true }) end)
         end
     end,               desc = "Toggle fyler.nvim" },
--- ========== Substitute ==========
-	{ "<Leader>r",  require("substitute").operator,    desc = "Substitution operator" },
-	{ "<Leader>rr", require("substitute").line,        desc = "Substitute line with register" },
-	{ "<Leader>R",  require("substitute").eol,         desc = "Substitute until EOL with register" },
 -- ========== Overseer ==========
 	{ "<leader>or", ":OverseerRun<Return>",            desc = "Run overseer command" },
 	{ "<leader>ot", ":OverseerToggle left<Return>",    desc = "Open overseer panel" },
