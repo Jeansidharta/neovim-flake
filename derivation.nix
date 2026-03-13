@@ -9,6 +9,10 @@
   sqlite,
   extraPackages,
   git,
+  fzf,
+  bat,
+  delta,
+  ripgrep,
 
   # For treesitter
   gcc,
@@ -24,6 +28,10 @@ writeShellApplication {
   runtimeInputs = [
     neovim
     git
+    fzf
+    bat
+    delta
+    ripgrep
     # For treesitter
     gcc
   ]

@@ -21,6 +21,10 @@
     };
 
     # Plugins
+    fzf_plugin = {
+      url = "github:ibhagwan/fzf-lua";
+      flake = false;
+    };
     neoclip_plugin = {
       url = "github:AckslD/nvim-neoclip.lua";
       flake = false;
