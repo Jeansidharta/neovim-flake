@@ -197,7 +197,7 @@
             };
           global-lsps = [
             pkgs.nil
-            pkgs.nodePackages_latest.bash-language-server
+            pkgs.bash-language-server
             pkgs.nixfmt
             pkgs.prettierd
             pkgs.zk
@@ -210,7 +210,7 @@
             pkgs.nodejs
             pkgs.vscode-langservers-extracted
             pkgs.astro-language-server
-            pkgs.nodePackages_latest.typescript-language-server
+            pkgs.typescript-language-server
             pkgs.gleam
             pkgs.kakounePlugins.parinfer-rust
             pkgs.terraform-ls
