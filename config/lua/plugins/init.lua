@@ -16,7 +16,7 @@ require("plugins.dap")
 
 require("marks")
 
-require("vim._core.ui2").setup({})
+require("vim._core.ui2").enable({})
 
 -- Set colorscheme
 require("silkcircuit").setup({ transparent = true })
