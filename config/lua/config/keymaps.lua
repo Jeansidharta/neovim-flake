@@ -122,6 +122,10 @@ local function toggle_lsp_lines()
 	end
 end
 
+local function toggle_diagnostics()
+	vim.diagnostic.toggle(not vim.diagnostic.is_enabled())
+end
+
 utils.keymaps({
 	-- ========== Misc ==========
 	{ "<Tab>", ":w<CR>", desc = "Save buffer" },
@@ -133,7 +137,7 @@ utils.keymaps({
 		function()
 			vim.lsp.buf.format()
 			-- For some reason, format will sometimes disable diagnostic?
-			vim.diagnostic.enable()
+			vim.diagnostic.enable(vim.diagnostic.is_enabled())
 		end,
 		desc = "Format buffer",
 	},
@@ -144,8 +148,7 @@ utils.keymaps({
 	{ "<leader>s<Left>", ":vsplit<CR><c-w>h<CR>", desc = "Split left" },
 	{ "<leader>s<Right>", ":vsplit<CR>", desc = "Split right" },
 	-- ========== Diagnostics ==========
-	{ "<leader>dn", vim.diagnostic.goto_next, desc = "Go to next diagnostics" },
-	{ "<leader>dN", vim.diagnostic.goto_prev, desc = "Go to prev diagnostics" },
+	{ "<leader>dd", toggle_diagnostics, desc = "Toggle diagnostics" },
 	{ "<leader>do", vim.diagnostic.open_float, desc = "Open diagnostics float" },
 	{ "<leader>dq", vim.diagnostic.setloclist, desc = "Send diagnostics to qf list" },
 	{ "<leader>di", toggle_inlay_hints, desc = "Toggle inlay hints" },
@@ -180,43 +183,6 @@ utils.keymaps({
 	-- ========== Plugins ==========
 	-- ========== Atone.nvim ==========
 	{ "<leader>u", ":Atone toggle<CR>", desc = "Toggle Atone" },
-	-- ========== Telescope Pickers ==========
-	{ "<leader>tt", ":Telescope<CR>", desc = "Open telescope pickers" },
-	{ "<leader>twt", ":Telescope live_grep<CR>", desc = "Open live grep" },
-	{ "<leader>th", ":Telescope help_tags<CR>", desc = "Open help window" },
-	{ "<leader>tp", require("telescope.builtin").resume, desc = "Resume last picker" },
-	{
-		"<leader>tr",
-		":Telescope lsp_references<CR>",
-		noremap = true,
-		desc = "Open LSP references",
-	},
-	-- ========== Diagnostics ==========
-	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>", desc = "Open diagnostics" },
-	{ "<leader>tdd", "<cmd>Telescope diagnostics<cr>", desc = "Open diagnostics" },
-	{ "<leader>tdh", "<cmd>Telescope diagnostics severity=HINT<cr>", desc = "Open diagnostics for errors" },
-	{ "<leader>tdi", "<cmd>Telescope diagnostics severity=INFO<cr>", desc = "Open diagnostics for errors" },
-	{ "<leader>tdw", "<cmd>Telescope diagnostics severity=WARN<cr>", desc = "Open diagnostics for errors" },
-	{ "<leader>tde", "<cmd>Telescope diagnostics severity=ERROR<cr>", desc = "Open diagnostics for errors" },
-	-- ========== Notify ==========
-	{ "<leader>tn", ":Telescope notify<CR>", desc = "Open notifications history" },
-	-- ========== Git ==========
-	{ "<leader>tgb", ":Telescope telescope_git all_branches<CR>", desc = "Open branch list" },
-	{
-		"<leader>tgd",
-		":Telescope git_bcommits<CR>",
-		desc = "Open git commits for current file",
-	},
-	{ "<leader>tgc", ":Telescope git_commits<CR>", desc = "Open git commits" },
-	{ "<leader>tgs", ":Telescope git_status<CR>", desc = "Open git status" },
-	{ "<leader>tgf", ":Telescope git_files<CR>", desc = "Open git files" },
-	-- ========== Neoclip ==========
-	{ "<leader>tc", ":Telescope neoclip<Return>", desc = "Open neoclip in telescope" },
-	{
-		"<leader>tm",
-		require("telescope").extensions.macroscope.default,
-		desc = "Open macroscope in telescope",
-	},
 	-- ========== Hover ==========
 	{
 		"K",
@@ -262,13 +228,11 @@ utils.keymaps({
 	{ "<leader>or", ":OverseerRun<Return>", desc = "Run overseer command" },
 	{ "<leader>ot", ":OverseerToggle left<Return>", desc = "Open overseer panel" },
 	-- ========== ZK: zettelkasten ==========
-	{ "<leader>zo", ":Telescope zk notes<Return>", desc = "Open a zk note" },
 	{ "<leader>zn", ":ZkNew<Return>", desc = "Create a new zk note" },
-	{ "<leader>zt", ":Telescope zk tags<Return>", desc = "List all tags" },
 	{
 		"<leader>zn",
 		turnSelectionIntoZkLink,
-		desc = "Create note with visual selection",
+		desc = "New note with visual selection",
 		mode = "v",
 	},
 	-- ========== fzf ==========
@@ -276,6 +240,9 @@ utils.keymaps({
 	{ "<leader>fg", require("fzf-lua").live_grep_native, desc = "FZF Ripgrep" },
 	{ "<leader>fp", require("fzf-lua").resume, desc = "Resume FZF search" },
 	{ "<leader>f:", require("fzf-lua").jumps, desc = "Resume FZF search" },
+	{ "<leader>fd", require("fzf-lua").diagnostics_workspace, desc = "FZF Workspace Diagnostics" },
+	{ "<leader>fh", require("fzf-lua").helptags, desc = "FZF Help tags" },
+	{ "<leader>fb", require("fzf-lua").builtin, desc = "FZF Builtins" },
 	-- ========== bufjump ==========
 	{ "<C-i>", require("bufjump").forward, desc = "Jump to the next buffer in the jump list" },
 	{ "<C-o>", require("bufjump").backward, desc = "Jump to the previous buffer in the jump list" },

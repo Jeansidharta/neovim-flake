@@ -1,6 +1,5 @@
 -- Plugins should be setup so that importing them would be enough to trigger their setup.
 -- Therefore, no need to do anything else after importing them.
-require("plugins.telescope")
 require("plugins.blink")
 require("plugins.lsp-config")
 require("plugins.git-signs")
@@ -10,7 +9,6 @@ require("plugins.luasnip")
 require("plugins.null")
 require("plugins.treesitter")
 require("plugins.vim-illuminate")
-require("plugins.neoclip")
 require("plugins.mdeval")
 require("plugins.dap")
 
@@ -27,7 +25,6 @@ require("various-textobjs").setup({
 })
 
 -- Setup vim-notify
-require("telescope").load_extension("notify")
 require("notify").setup({ background_colour = "#000000" })
 -- The schedule_wrap is due to https://github.com/rcarriga/nvim-notify/issues/205
 vim.notify = vim.schedule_wrap(require("notify"))
@@ -106,6 +103,5 @@ require("fidget").setup({
 require("colorizer").setup({})
 
 require("zk").setup({})
-require("telescope").load_extension("zk")
 
 require("outline").setup({})

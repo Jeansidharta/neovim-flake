@@ -11,10 +11,6 @@
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
-    sqlite_plugin = {
-      url = "github:kkharji/sqlite.lua";
-      flake = false;
-    };
     git-magnum_plugin = {
       url = "github:glts/vim-magnum";
       flake = false;
@@ -25,16 +21,16 @@
       url = "github:ibhagwan/fzf-lua";
       flake = false;
     };
-    neoclip_plugin = {
-      url = "github:AckslD/nvim-neoclip.lua";
-      flake = false;
-    };
     snacks_plugin = {
       url = "github:folke/snacks.nvim";
       flake = false;
     };
     fyler_plugin = {
       url = "github:A7Lavinraj/fyler.nvim";
+      flake = false;
+    };
+    diffview_plugin = {
+      url = "github:sindrets/diffview.nvim";
       flake = false;
     };
     silkcircuit_plugin = {
@@ -56,10 +52,6 @@
     };
     nvim-colorizer_plugin = {
       url = "github:catgoose/nvim-colorizer.lua";
-      flake = false;
-    };
-    telescope_plugin = {
-      url = "github:nvim-telescope/telescope.nvim";
       flake = false;
     };
     nvim-notify_plugin = {

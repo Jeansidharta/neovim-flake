@@ -68,6 +68,22 @@
         "type": "github"
       }
     },
+    "diffview_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718279802,
+        "narHash": "sha256-SX+ybIzL/w6uyCy4iZKnWnzTFwqB1oXSgyYVAdpdKi8=",
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sindrets",
+        "repo": "diffview.nvim",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -316,22 +332,6 @@
         "type": "github"
       }
     },
-    "neoclip_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739108756,
-        "narHash": "sha256-IjkpqLHGO48QRiYkELyadZK2uFXQVyklGfBJSgAbzIY=",
-        "owner": "AckslD",
-        "repo": "nvim-neoclip.lua",
-        "rev": "831a97c7697736411a05ff8b91e8798ea4c2d6fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AckslD",
-        "repo": "nvim-neoclip.lua",
-        "type": "github"
-      }
-    },
     "neovim-dap_plugin": {
       "flake": false,
       "locked": {
@@ -529,6 +529,7 @@
         "blink": "blink",
         "blink-cmp-words_plugin": "blink-cmp-words_plugin",
         "bufjump_plugin": "bufjump_plugin",
+        "diffview_plugin": "diffview_plugin",
         "fidget_plugin": "fidget_plugin",
         "fyler_plugin": "fyler_plugin",
         "fzf_plugin": "fzf_plugin",
@@ -542,7 +543,6 @@
         "markview_plugin": "markview_plugin",
         "mdeval_plugin": "mdeval_plugin",
         "mini-icons_plugin": "mini-icons_plugin",
-        "neoclip_plugin": "neoclip_plugin",
         "neovim-dap_plugin": "neovim-dap_plugin",
         "nixpkgs": "nixpkgs_2",
         "none-ls_plugin": "none-ls_plugin",
@@ -555,8 +555,6 @@
         "plenary_plugin": "plenary_plugin",
         "silkcircuit_plugin": "silkcircuit_plugin",
         "snacks_plugin": "snacks_plugin",
-        "sqlite_plugin": "sqlite_plugin",
-        "telescope_plugin": "telescope_plugin",
         "theme": "theme",
         "treesitter_plugin": "treesitter_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
@@ -609,38 +607,6 @@
       "original": {
         "owner": "folke",
         "repo": "snacks.nvim",
-        "type": "github"
-      }
-    },
-    "sqlite_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1741959551,
-        "narHash": "sha256-u6Mo+3hg3miqR4EmsoGZhajxiIk24+y5N+YdNW36/JQ=",
-        "owner": "kkharji",
-        "repo": "sqlite.lua",
-        "rev": "50092d60feb242602d7578398c6eb53b4a8ffe7b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "kkharji",
-        "repo": "sqlite.lua",
-        "type": "github"
-      }
-    },
-    "telescope_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1774941932,
-        "narHash": "sha256-QNBlbeVc7wl8j+K38xfC6ZT4XpGJzylQtateQiZxjBY=",
-        "owner": "nvim-telescope",
-        "repo": "telescope.nvim",
-        "rev": "cfb85dcf7f822b79224e9e6aef9e8c794211b20b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-telescope",
-        "repo": "telescope.nvim",
         "type": "github"
       }
     },
