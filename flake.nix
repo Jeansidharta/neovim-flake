@@ -33,10 +33,6 @@
       url = "github:sindrets/diffview.nvim";
       flake = false;
     };
-    silkcircuit_plugin = {
-      url = "github:hyperb1iss/silkcircuit-nvim";
-      flake = false;
-    };
     # Dependency for fyler.nvim
     mini-icons_plugin = {
       url = "github:echasnovski/mini.icons";

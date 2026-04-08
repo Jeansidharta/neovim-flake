@@ -17,8 +17,8 @@ require("marks")
 require("vim._core.ui2").enable({})
 
 -- Set colorscheme
-require("silkcircuit").setup({ transparent = true })
-vim.cmd([[colorscheme silkcircuit]])
+-- require("config.colorscheme").setup()
+-- vim.cmd([[colorscheme industry]])
 
 require("various-textobjs").setup({
 	keymaps = { useDefaults = true },
