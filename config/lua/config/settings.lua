@@ -165,15 +165,22 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- Godot auto-start listener
-local port = tonumber(os.getenv("GDScript_Port")) or 6005
-local cmd = vim.lsp.rpc.connect("127.0.0.1", port)
-local pipe = "/tmp/nvim-godot-pipe"
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		local port = tonumber(os.getenv("GDScript_Port")) or 6005
+		local pipe = "/tmp/nvim-godot-pipe"
 
-vim.lsp.start({
-	name = "Godot",
-	cmd = cmd,
-	root_dir = vim.fs.dirname(vim.fs.find({ "project.godot", ".git" }, { upward = true })[1]),
-	on_init = function(client, init_result)
-		vim.api.nvim_command('echo serverstart("' .. pipe .. '")')
+		local root_dir = vim.fs.root(0, { "project.godot" })
+		if root_dir == nil then
+			return
+		end
+		vim.lsp.start({
+			name = "Godot",
+			cmd = vim.lsp.rpc.connect("127.0.0.1", port),
+			root_dir = root_dir,
+			on_init = function(client, init_result)
+				vim.api.nvim_command('echo serverstart("' .. pipe .. '")')
+			end,
+		})
 	end,
 })
