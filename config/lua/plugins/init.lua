@@ -75,19 +75,6 @@ require("atone").setup({
 	},
 })
 
-require("markview").setup({
-	markdown = {
-		code_blocks = {
-			border_hl = "CursorLine",
-			label_hl = "Cursor",
-			default = {
-				block_hl = "CursorLine",
-				pad_hl = "CursorLine",
-			},
-		},
-	},
-})
-
 require("bufjump").setup()
 
 require("fidget").setup({

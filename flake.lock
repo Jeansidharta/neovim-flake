@@ -68,22 +68,6 @@
         "type": "github"
       }
     },
-    "diffview_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1718279802,
-        "narHash": "sha256-SX+ybIzL/w6uyCy4iZKnWnzTFwqB1oXSgyYVAdpdKi8=",
-        "owner": "sindrets",
-        "repo": "diffview.nvim",
-        "rev": "4516612fe98ff56ae0415a259ff6361a89419b0a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "sindrets",
-        "repo": "diffview.nvim",
-        "type": "github"
-      }
-    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -172,54 +156,6 @@
         "type": "github"
       }
     },
-    "git-conflict_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1735340003,
-        "narHash": "sha256-CmSgmpg5K3ySXYrDjg8yTAojeLWJdSHP8uNVFyrkNhc=",
-        "owner": "akinsho",
-        "repo": "git-conflict.nvim",
-        "rev": "a1badcd070d176172940eb55d9d59029dad1c5a6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "akinsho",
-        "repo": "git-conflict.nvim",
-        "type": "github"
-      }
-    },
-    "git-magnum_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1573572500,
-        "narHash": "sha256-dLZRR6B94+DoUlRHM24XmPV+iBlMDxDaj+GSOuStkrs=",
-        "owner": "glts",
-        "repo": "vim-magnum",
-        "rev": "7a30761b935d72bada5bbe90162a6afdb77c858d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "glts",
-        "repo": "vim-magnum",
-        "type": "github"
-      }
-    },
-    "git-radical_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1711391667,
-        "narHash": "sha256-OjYr+PhqjELQuX+b4HiDkfYpTBXeP0vlDrCHe3S7RAs=",
-        "owner": "glts",
-        "repo": "vim-radical",
-        "rev": "aca8992a25d317a4c6fa42e263e8506ea3e355d8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "glts",
-        "repo": "vim-radical",
-        "type": "github"
-      }
-    },
     "git-signs_plugin": {
       "flake": false,
       "locked": {
@@ -255,11 +191,11 @@
     "lualine_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1775321324,
-        "narHash": "sha256-Ew/gES5NYHPUYzRXSo7+LwvjKdn7BlGNcvAC7hujSPU=",
+        "lastModified": 1775957658,
+        "narHash": "sha256-PHunrG0yd3pDw3c1S9w1AXQx5/1nT68M+mjxT53enmM=",
         "owner": "nvim-lualine",
         "repo": "lualine.nvim",
-        "rev": "8811f3f3f4dc09d740c67e9ce399e7a541e2e5b2",
+        "rev": "a905eeebc4e63fdc48b5135d3bf8aea5618fb21c",
         "type": "github"
       },
       "original": {
@@ -281,22 +217,6 @@
       "original": {
         "owner": "L3MON4D3",
         "repo": "LuaSnip",
-        "type": "github"
-      }
-    },
-    "markview_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1774017863,
-        "narHash": "sha256-T6ZVy7o9sSGa2vOolvmL7KO3cXkyEwJ9F4n6BbWdPGk=",
-        "owner": "OXY2DEV",
-        "repo": "markview.nvim",
-        "rev": "1861f959599ae03cfd59f56222a542035b0cd947",
-        "type": "github"
-      },
-      "original": {
-        "owner": "OXY2DEV",
-        "repo": "markview.nvim",
         "type": "github"
       }
     },
@@ -529,18 +449,13 @@
         "blink": "blink",
         "blink-cmp-words_plugin": "blink-cmp-words_plugin",
         "bufjump_plugin": "bufjump_plugin",
-        "diffview_plugin": "diffview_plugin",
         "fidget_plugin": "fidget_plugin",
         "fyler_plugin": "fyler_plugin",
         "fzf_plugin": "fzf_plugin",
-        "git-conflict_plugin": "git-conflict_plugin",
-        "git-magnum_plugin": "git-magnum_plugin",
-        "git-radical_plugin": "git-radical_plugin",
         "git-signs_plugin": "git-signs_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "lualine_plugin": "lualine_plugin",
         "luasnip_plugin": "luasnip_plugin",
-        "markview_plugin": "markview_plugin",
         "mdeval_plugin": "mdeval_plugin",
         "mini-icons_plugin": "mini-icons_plugin",
         "neovim-dap_plugin": "neovim-dap_plugin",
@@ -557,6 +472,7 @@
         "theme": "theme",
         "treesitter_plugin": "treesitter_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
+        "vim-radical_plugin": "vim-radical_plugin",
         "zk-nvim_plugin": "zk-nvim_plugin"
       }
     },
@@ -639,6 +555,22 @@
       "original": {
         "owner": "chrisgrieser",
         "repo": "nvim-various-textobjs",
+        "type": "github"
+      }
+    },
+    "vim-radical_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711391667,
+        "narHash": "sha256-OjYr+PhqjELQuX+b4HiDkfYpTBXeP0vlDrCHe3S7RAs=",
+        "owner": "glts",
+        "repo": "vim-radical",
+        "rev": "aca8992a25d317a4c6fa42e263e8506ea3e355d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "glts",
+        "repo": "vim-radical",
         "type": "github"
       }
     },

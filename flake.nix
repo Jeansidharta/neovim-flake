@@ -11,10 +11,6 @@
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
-    git-magnum_plugin = {
-      url = "github:glts/vim-magnum";
-      flake = false;
-    };
 
     # Plugins
     fzf_plugin = {
@@ -27,10 +23,6 @@
     };
     fyler_plugin = {
       url = "github:A7Lavinraj/fyler.nvim";
-      flake = false;
-    };
-    diffview_plugin = {
-      url = "github:sindrets/diffview.nvim";
       flake = false;
     };
     # Dependency for fyler.nvim
@@ -54,11 +46,7 @@
       url = "github:rcarriga/nvim-notify";
       flake = false;
     };
-    git-conflict_plugin = {
-      url = "github:akinsho/git-conflict.nvim";
-      flake = false;
-    };
-    git-radical_plugin = {
+    vim-radical_plugin = {
       url = "github:glts/vim-radical";
       flake = false;
     };
@@ -117,10 +105,6 @@
     };
     various-textobjs_plugin = {
       url = "github:chrisgrieser/nvim-various-textobjs";
-      flake = false;
-    };
-    markview_plugin = {
-      url = "github:OXY2DEV/markview.nvim";
       flake = false;
     };
     zk-nvim_plugin = {
