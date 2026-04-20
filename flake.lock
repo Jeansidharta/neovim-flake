@@ -156,6 +156,22 @@
         "type": "github"
       }
     },
+    "git-magnum_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1573572500,
+        "narHash": "sha256-dLZRR6B94+DoUlRHM24XmPV+iBlMDxDaj+GSOuStkrs=",
+        "owner": "glts",
+        "repo": "vim-magnum",
+        "rev": "7a30761b935d72bada5bbe90162a6afdb77c858d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "glts",
+        "repo": "vim-magnum",
+        "type": "github"
+      }
+    },
     "git-signs_plugin": {
       "flake": false,
       "locked": {
@@ -452,6 +468,7 @@
         "fidget_plugin": "fidget_plugin",
         "fyler_plugin": "fyler_plugin",
         "fzf_plugin": "fzf_plugin",
+        "git-magnum_plugin": "git-magnum_plugin",
         "git-signs_plugin": "git-signs_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "lualine_plugin": "lualine_plugin",

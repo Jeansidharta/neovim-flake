@@ -11,6 +11,10 @@
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
+    vim-magnum_plugin = {
+      url = "github:glts/vim-magnum";
+      flake = false;
+    };
 
     # Plugins
     fzf_plugin = {
