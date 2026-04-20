@@ -1,6 +1,5 @@
 {
-  plugins ? [ ],
-  treesitter-dir,
+  plugins,
   init_lua,
   # lib
   linkFarm,
@@ -45,13 +44,12 @@ writeShellApplication {
     ZK_NOTEBOOK_DIR = "/home/sidharta/notes";
   };
 
-  # export TREESITTER_INSTALL_DIR=~/.local/state/treesitter
   text = ''
+    export TREESITTER_INSTALL_DIR=~/.local/state/treesitter
 
     nvim \
-      --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\""\
-      --cmd "let &runtimepath.=',' .. \"${plugins_dir}/*\" .. ',' .. \"${treesitter-dir}\""\
-      --cmd "source ${treesitter-dir}/treesitter.lua"\
+      --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
+      --cmd "let &runtimepath.=',' .. \"${plugins_dir}/*\"" \
       -u ${init_lua} "$@"
   '';
 }
