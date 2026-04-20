@@ -23,11 +23,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1775669094,
-        "narHash": "sha256-YnzqnXrvjU7Z4N0NIUF2CBe471zM3wvs5Fx63NzG4LY=",
+        "lastModified": 1776635333,
+        "narHash": "sha256-/vLok7aUhnRmUv12dVDK8HyZG6ANSXSRzc3f9JNzEsQ=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "456d38d1cd3743926f329204c2340f3e7840aad6",
+        "rev": "90d14caca4ae557665ab105080c27d5f289a2e30",
         "type": "github"
       },
       "original": {
@@ -143,32 +143,16 @@
     "fzf_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1775863183,
-        "narHash": "sha256-LcAXKeUGQ+Lev3bNgJdYGo2sKsMrcdF1hFTAyzR7hpM=",
+        "lastModified": 1776570678,
+        "narHash": "sha256-ZCKyz6R175Ll18OPoIy5VLuWN2YXPsVlgMPLytfjJ1Y=",
         "owner": "ibhagwan",
         "repo": "fzf-lua",
-        "rev": "657c1bbb7357c61e26a20d868b53a460b05c18c0",
+        "rev": "834246377489f9a1e6d4df570a7874a48c644b56",
         "type": "github"
       },
       "original": {
         "owner": "ibhagwan",
         "repo": "fzf-lua",
-        "type": "github"
-      }
-    },
-    "git-magnum_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1573572500,
-        "narHash": "sha256-dLZRR6B94+DoUlRHM24XmPV+iBlMDxDaj+GSOuStkrs=",
-        "owner": "glts",
-        "repo": "vim-magnum",
-        "rev": "7a30761b935d72bada5bbe90162a6afdb77c858d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "glts",
-        "repo": "vim-magnum",
         "type": "github"
       }
     },
@@ -255,11 +239,11 @@
     "mini-icons_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1775224834,
-        "narHash": "sha256-rcoCa3/F/LmU3l3RYF14pjYa14f6ILN+1Rl9neBhxeI=",
+        "lastModified": 1776167816,
+        "narHash": "sha256-/arujhZe9m9VB5nZ0xzCZjkxu4ai9Rfit7y6RwrLf7s=",
         "owner": "echasnovski",
         "repo": "mini.icons",
-        "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
+        "rev": "bac6317300e205335df425296570d84322730067",
         "type": "github"
       },
       "original": {
@@ -317,11 +301,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1775710090,
-        "narHash": "sha256-ar3rofg+awPB8QXDaFJhJ2jJhu+KqN/PRCXeyuXR76E=",
+        "lastModified": 1776169885,
+        "narHash": "sha256-l/iNYDZ4bGOAFQY2q8y5OAfBBtrDAaPuRQqWaFHVRXM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4c1018dae018162ec878d42fec712642d214fdfa",
+        "rev": "4bd9165a9165d7b5e33ae57f3eecbcb28fb231c9",
         "type": "github"
       },
       "original": {
@@ -334,11 +318,11 @@
     "none-ls_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1775938832,
-        "narHash": "sha256-43aW6ajA73oV3Dpm6QENHEwP0G4oitY14VaKpGiGK1w=",
+        "lastModified": 1776573314,
+        "narHash": "sha256-W4mPpNxLjCBIrjthHi/y8EJ5C/N97Hgf1P+7c19wSWA=",
         "owner": "nvimtools",
         "repo": "none-ls.nvim",
-        "rev": "899e93f9f10251d7220b188eba1b837c0ba27927",
+        "rev": "e135361b9c11755ef6c48f54a2c970c509b56239",
         "type": "github"
       },
       "original": {
@@ -382,11 +366,11 @@
     "nvim-lspconfig_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1775831283,
-        "narHash": "sha256-QSK9roF9ZcPUQcW3yRpKwTjLiRPK/cAcfKy0C3tPazI=",
+        "lastModified": 1776329745,
+        "narHash": "sha256-RZs2wqVgGy6TNBWZifoj+58gIpNC0kZtt5MiNPQ38+U=",
         "owner": "neovim",
         "repo": "nvim-lspconfig",
-        "rev": "cb5bc0b2b35a6d513e3298d285db81453e791f4f",
+        "rev": "4b7fbaa239c5db6b36f424a4521ca9f1a401be33",
         "type": "github"
       },
       "original": {
@@ -468,7 +452,6 @@
         "fidget_plugin": "fidget_plugin",
         "fyler_plugin": "fyler_plugin",
         "fzf_plugin": "fzf_plugin",
-        "git-magnum_plugin": "git-magnum_plugin",
         "git-signs_plugin": "git-signs_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "lualine_plugin": "lualine_plugin",
@@ -488,6 +471,7 @@
         "snacks_plugin": "snacks_plugin",
         "theme": "theme",
         "various-textobjs_plugin": "various-textobjs_plugin",
+        "vim-magnum_plugin": "vim-magnum_plugin",
         "vim-radical_plugin": "vim-radical_plugin",
         "zk-nvim_plugin": "zk-nvim_plugin"
       }
@@ -528,11 +512,11 @@
     "theme": {
       "locked": {
         "dir": "theming",
-        "lastModified": 1775969361,
-        "narHash": "sha256-5T1AVaHH2bPjDG30Xn8Zob+7yCJmCTR1uTNrqnLvYG0=",
+        "lastModified": 1776445556,
+        "narHash": "sha256-dMbl8FgcJXaXwv2R+IF3AIoeFVQQLD4+eyCMFD/SwfM=",
         "owner": "jeansidharta",
         "repo": "configuration.nix",
-        "rev": "f465319a8a48edbea2ffb51c73c154eb75dc9b10",
+        "rev": "430cb2521b69fe148327b4bca05a7cb77d30d931",
         "type": "github"
       },
       "original": {
@@ -545,16 +529,32 @@
     "various-textobjs_plugin": {
       "flake": false,
       "locked": {
-        "lastModified": 1775207077,
-        "narHash": "sha256-F8dkARLPSVoVcu23nynjjuTFqDHLzZ8wxgrdB9cXCk0=",
+        "lastModified": 1776092586,
+        "narHash": "sha256-FZKW7/9Y6MRxEbd00HBt9eGpJWbAP8GNM6p8M9s/3ts=",
         "owner": "chrisgrieser",
         "repo": "nvim-various-textobjs",
-        "rev": "e049b24fc2042a424843a8db79af5ceb273be6f6",
+        "rev": "ad78e9d925c95d675b32dd7ba6d253f96ce063fe",
         "type": "github"
       },
       "original": {
         "owner": "chrisgrieser",
         "repo": "nvim-various-textobjs",
+        "type": "github"
+      }
+    },
+    "vim-magnum_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1573572500,
+        "narHash": "sha256-dLZRR6B94+DoUlRHM24XmPV+iBlMDxDaj+GSOuStkrs=",
+        "owner": "glts",
+        "repo": "vim-magnum",
+        "rev": "7a30761b935d72bada5bbe90162a6afdb77c858d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "glts",
+        "repo": "vim-magnum",
         "type": "github"
       }
     },
