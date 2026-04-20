@@ -95,10 +95,10 @@
       url = "github:neovim/nvim-lspconfig";
       flake = false;
     };
-    treesitter_plugin = {
-      url = "github:nvim-treesitter/nvim-treesitter";
-      flake = false;
-    };
+    # treesitter_plugin = {
+    #   url = "github:nvim-treesitter/nvim-treesitter";
+    #   flake = false;
+    # };
     nvim-illuminate_plugin = {
       url = "github:RRethy/vim-illuminate";
       flake = false;
@@ -167,6 +167,39 @@
               parinfer = "${pkgs.kakounePlugins.parinfer-rust}/plugin/parinfer.vim";
               blink = "${blink}";
             };
+          treesitter-parsers = with pkgs.tree-sitter-grammars; {
+            html = tree-sitter-html;
+            go = tree-sitter-go;
+            nix = tree-sitter-nix;
+            zig = tree-sitter-zig;
+            bash = tree-sitter-bash;
+            vim = tree-sitter-vim;
+            vue = tree-sitter-vue;
+            tsx = tree-sitter-tsx;
+            sql = tree-sitter-sql;
+            json = tree-sitter-json;
+            make = tree-sitter-make;
+            toml = tree-sitter-toml;
+            yaml = tree-sitter-yaml;
+            gleam = tree-sitter-gleam;
+            jsdoc = tree-sitter-jsdoc;
+            python = tree-sitter-python;
+            c-sharp = tree-sitter-c-sharp;
+            javascript = tree-sitter-javascript;
+            typescript = tree-sitter-typescript;
+            supercollider = tree-sitter-supercollider;
+          };
+          treesitter-dir = pkgs.runCommand "treesitter-parsers" { } (
+            ''
+              mkdir $out
+              mkdir $out/parser
+            ''
+            + (lib.join "\n" (
+              lib.mapAttrsToList (
+                name: parser: "ln -s '${parser}/parser' \"$out/parser/${name}.so\""
+              ) treesitter-parsers
+            ))
+          );
           global-lsps = [
             pkgs.nil
             pkgs.bash-language-server
@@ -204,10 +237,12 @@
           ];
         in
         rec {
+          inherit treesitter-dir;
           plugins_dir = pkgs.lib.makeOverridable ({ plugins }: pkgs.linkFarm "neovim-plugins" plugins) {
             plugins = plugins_list;
           };
           base = lib.makeOverridable (final: pkgs.callPackage (import ./derivation.nix) final) {
+            inherit treesitter-dir;
             plugins = plugins_list;
             init_lua = ./config/init.lua;
             extraPackages = [ ];

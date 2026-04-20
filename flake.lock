@@ -470,7 +470,6 @@
         "plenary_plugin": "plenary_plugin",
         "snacks_plugin": "snacks_plugin",
         "theme": "theme",
-        "treesitter_plugin": "treesitter_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
         "vim-radical_plugin": "vim-radical_plugin",
         "zk-nvim_plugin": "zk-nvim_plugin"
@@ -523,22 +522,6 @@
         "dir": "theming",
         "owner": "jeansidharta",
         "repo": "configuration.nix",
-        "type": "github"
-      }
-    },
-    "treesitter_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775221900,
-        "narHash": "sha256-PQR6tFt4lCrAZNQG7BLMD1IiCKja9wDS1S4laGJf/HE=",
-        "owner": "nvim-treesitter",
-        "repo": "nvim-treesitter",
-        "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-treesitter",
-        "repo": "nvim-treesitter",
         "type": "github"
       }
     },
