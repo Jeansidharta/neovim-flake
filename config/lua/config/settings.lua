@@ -66,12 +66,12 @@ vim.fn.sign_define({
 
 -- ========== Search options ==========
 -- Options related to any editor search.
-vim.o.hlsearch = true -- Highlight items that match search
-vim.o.wrapscan = true -- Wrap search from the end of the document to the start
-vim.o.incsearch = true -- Match search pattern as the user is typing
+vim.o.hlsearch = true   -- Highlight items that match search
+vim.o.wrapscan = true   -- Wrap search from the end of the document to the start
+vim.o.incsearch = true  -- Match search pattern as the user is typing
 vim.o.ignorecase = true -- Will ignore case by default
-vim.o.smartcase = true -- If the user has mixed casing, then casing is relevat. Otherwise, ignore it
-vim.o.infercase = true -- basically smartcase but for keyword search in insert mode.
+vim.o.smartcase = true  -- If the user has mixed casing, then casing is relevat. Otherwise, ignore it
+vim.o.infercase = true  -- basically smartcase but for keyword search in insert mode.
 
 -- ========== Tab config ==========
 -- Size configurations:
@@ -183,4 +183,13 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			end,
 		})
 	end,
+})
+
+vim.api.nvim_create_user_command("LspLog", function(_)
+	local state_path = vim.fn.stdpath("state")
+	local log_path = vim.fs.joinpath(state_path, "lsp.log")
+
+	vim.cmd(string.format("edit %s", log_path))
+end, {
+	desc = "Show LSP log",
 })
