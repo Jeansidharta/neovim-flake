@@ -49,8 +49,9 @@ writeShellApplication {
   text = ''
 
     nvim \
-      --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\"" \
-      --cmd "let &runtimepath.=',' .. \"${plugins_dir}/*\" .. ',' .. \"${treesitter-dir}\"" \
+      --cmd "let g:sqlite_clib_path=\"${sqlite_lib_path}\""\
+      --cmd "let &runtimepath.=',' .. \"${plugins_dir}/*\" .. ',' .. \"${treesitter-dir}\""\
+      --cmd "source ${treesitter-dir}/treesitter.lua"\
       -u ${init_lua} "$@"
   '';
 }

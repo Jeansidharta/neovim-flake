@@ -177,7 +177,6 @@
             nix = tree-sitter-nix;
             zig = tree-sitter-zig;
             bash = tree-sitter-bash;
-            vim = tree-sitter-vim;
             vue = tree-sitter-vue;
             tsx = tree-sitter-tsx;
             sql = tree-sitter-sql;
@@ -188,7 +187,7 @@
             gleam = tree-sitter-gleam;
             jsdoc = tree-sitter-jsdoc;
             python = tree-sitter-python;
-            c-sharp = tree-sitter-c-sharp;
+            cs = tree-sitter-c-sharp;
             javascript = tree-sitter-javascript;
             typescript = tree-sitter-typescript;
             supercollider = tree-sitter-supercollider;
@@ -197,12 +196,20 @@
             ''
               mkdir $out
               mkdir $out/parser
+              mkdir $out/queries
+
+              echo 'vim.api.nvim_create_autocmd("FileType", { pattern = {' > $out/treesitter.lua
             ''
             + (lib.join "\n" (
-              lib.mapAttrsToList (
-                name: parser: "ln -s '${parser}/parser' \"$out/parser/${name}.so\""
-              ) treesitter-parsers
+              lib.mapAttrsToList (name: parser: ''
+                ln -s '${parser}/parser' "$out/parser/${name}.so"
+                ln -s '${parser}/queries' "$out/queries/${name}"
+                echo '"${name}",' >> $out/treesitter.lua
+              '') treesitter-parsers
             ))
+            + ''
+              echo '}, callback = function () vim.treesitter.start() end })' >> $out/treesitter.lua
+            ''
           );
           global-lsps = [
             pkgs.nil

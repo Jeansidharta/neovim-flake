@@ -149,6 +149,9 @@ vim.opt.fixendofline = false
 vim.opt.endofline = false
 vim.opt.endoffile = false
 
+vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.wo[0][0].foldmethod = "expr"
+
 -- Add filetypes detaction
 vim.filetype.add({
 	extension = {
@@ -193,3 +196,5 @@ vim.api.nvim_create_user_command("LspLog", function(_)
 end, {
 	desc = "Show LSP log",
 })
+
+vim.cmd("packadd nvim.difftool")
