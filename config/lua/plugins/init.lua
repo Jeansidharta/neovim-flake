@@ -18,7 +18,7 @@ require("vim._core.ui2").enable({})
 
 -- Set colorscheme
 -- require("config.colorscheme").setup()
--- vim.cmd([[colorscheme industry]])
+vim.cmd([[colorscheme quiet]])
 
 require("various-textobjs").setup({
 	keymaps = { useDefaults = true },
