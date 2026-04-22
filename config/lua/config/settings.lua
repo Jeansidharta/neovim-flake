@@ -149,6 +149,13 @@ vim.opt.fixendofline = false
 vim.opt.endofline = false
 vim.opt.endoffile = false
 
+-- Common mistypes for me
+vim.cmd.cabbrev("W", "w")
+vim.cmd.cabbrev("Q", "q")
+vim.cmd.cabbrev("Wq", "wq")
+vim.cmd.cabbrev("WQ", "wq")
+vim.cmd.cabbrev("X", "x")
+
 -- Add filetypes detaction
 vim.filetype.add({
 	extension = {
