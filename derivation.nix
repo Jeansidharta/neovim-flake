@@ -6,6 +6,7 @@
   writeShellApplication,
 
   neovim,
+  tree-sitter,
   sqlite,
   extraPackages,
   git,
@@ -33,6 +34,7 @@ writeShellApplication {
     delta
     ripgrep
     # For treesitter
+    tree-sitter
     gcc
   ]
   ++ extraPackages;
