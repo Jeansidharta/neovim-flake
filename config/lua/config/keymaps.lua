@@ -127,6 +127,27 @@ utils.keymaps({
 	{ "<leader>n", clear_notifications, desc = "Clear all notifications" },
 	{ "/", "<esc>/\\%V", mode = "v", desc = "search within selection" },
 	{
+		"gq",
+		function()
+			local register = string.lower(vim.fn.getchar(-1, { number = false }))
+			local contents = vim.fn.keytrans(vim.fn.getreg(register))
+			vim.ui.input({ prompt = "Edit register " .. register, default = contents }, function(newValueRaw)
+				if newValueRaw == nil then
+					return
+				end
+
+				local newValue = vim.api.nvim_replace_termcodes(newValueRaw, true, true, true)
+
+				-- sets reg_recorded to target register, so we can then use Q to use it. See :help reg_recorded
+				vim.cmd.normal("q" .. register .. "q")
+
+				vim.fn.setreg(register, newValue)
+			end)
+		end,
+		expr = true,
+		desc = "Write register contents into line",
+	},
+	{
 		"<S-Tab>",
 		function()
 			vim.lsp.buf.format()
