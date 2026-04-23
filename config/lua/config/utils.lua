@@ -1,9 +1,12 @@
 local last_zindex = 1
 
-local function open_editor_temp_window(initial_lines, filetype)
+local function open_editor_temp_window(initial_lines_arg, filetype_arg)
+	local initial_lines = initial_lines_arg or {}
+	local filetype = filetype_arg or ""
+
 	local temp_buffer = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(temp_buffer, 0, -1, false, initial_lines)
-	vim.api.nvim_set_option_value("filetype", filetype or "", { buf = temp_buffer })
+	vim.api.nvim_set_option_value("filetype", filetype, { buf = temp_buffer })
 	-- Requires a 'BufWriteCmd' or "FileWriteCmd" autocmd to write
 	vim.api.nvim_set_option_value("buftype", "acwrite", { buf = temp_buffer })
 	-- Allows the user to call :write
