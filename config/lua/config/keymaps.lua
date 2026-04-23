@@ -36,12 +36,12 @@ local function new_file_selector()
 	end, buffers)
 	if not commands_buf then
 		commands_buf = vim.api.nvim_create_buf(true, false)
-		vim.api.nvim_buf_set_option(commands_buf, "filetype", "markdown")
+		vim.api.nvim_set_option_value("filetype", "markdown", { buf = commands_buf })
 		vim.api.nvim_buf_set_name(commands_buf, "cmdmd://main")
 		vim.api.nvim_create_autocmd({ "BufWriteCmd", "FileWriteCmd" }, {
 			buffer = commands_buf,
 			callback = function()
-				vim.api.nvim_buf_set_option(commands_buf, "modified", false)
+				vim.api.nvim_set_option_value("modified", false, { buf = commands_buf })
 			end,
 		})
 	end
@@ -68,6 +68,7 @@ local function turnSelectionIntoZkLink()
 		vim.notify("Cannot create note with a multi-line title", vim.log.levels.WARN)
 		return
 	end
+	---@diagnostic disable-next-line: cast-local-type
 	title = vim.trim(title[1])
 	local location = utils.get_visual_selection_position()
 	zk.new(
@@ -320,20 +321,6 @@ utils.keymaps({
 	-- ========== outline ==========
 	{ "<leader>/", "<cmd>Outline<CR>", desc = "Toggle outline" },
 })
--- ========== Filetype specific keybinds ==========
-vim.api.nvim_create_autocmd("Filetype", {
-	pattern = "openscad",
-	callback = function()
-		vim.keymap.set("n", "<leader>x", function()
-			local filepath = vim.fn.expand("%:p")
-			local filename = vim.fn.expand("%:t")
-			local task =
-				require("overseer").new_task({ cmd = "openscad", args = { filepath }, name = "OpenSCAD " .. filename })
-			require("overseer").run_action(task, "start")
-		end)
-	end,
-})
-
 -- Forces neovim to add a jumplist entry whenever the user jumps more than
 -- `max_distance` up or down using a could (e.g. in normal mode: `10j`)
 local max_distance = 3
@@ -348,7 +335,7 @@ end
 
 -- Set some bindings to run SQL queries using the `usql` cli program.
 local custom_sql_group = vim.api.nvim_create_augroup("custom_sql", { clear = true })
-vim.api.nvim_create_autocmd("filetype", {
+vim.api.nvim_create_autocmd("FileType", {
 	group = custom_sql_group,
 	pattern = "sql",
 	desc = "Add sql bindings",
