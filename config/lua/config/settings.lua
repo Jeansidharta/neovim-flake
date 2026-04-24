@@ -66,12 +66,12 @@ vim.fn.sign_define({
 
 -- ========== Search options ==========
 -- Options related to any editor search.
-vim.o.hlsearch = true   -- Highlight items that match search
-vim.o.wrapscan = true   -- Wrap search from the end of the document to the start
-vim.o.incsearch = true  -- Match search pattern as the user is typing
+vim.o.hlsearch = true -- Highlight items that match search
+vim.o.wrapscan = true -- Wrap search from the end of the document to the start
+vim.o.incsearch = true -- Match search pattern as the user is typing
 vim.o.ignorecase = true -- Will ignore case by default
-vim.o.smartcase = true  -- If the user has mixed casing, then casing is relevat. Otherwise, ignore it
-vim.o.infercase = true  -- basically smartcase but for keyword search in insert mode.
+vim.o.smartcase = true -- If the user has mixed casing, then casing is relevat. Otherwise, ignore it
+vim.o.infercase = true -- basically smartcase but for keyword search in insert mode.
 
 -- ========== Tab config ==========
 -- Size configurations:
@@ -154,6 +154,16 @@ vim.cmd.cabbrev("W", "w")
 vim.cmd.cabbrev("Q", "q")
 vim.cmd.cabbrev("Wq", "wq")
 vim.cmd.cabbrev("WQ", "wq")
+vim.cmd.cabbrev("wQ", "wq")
+vim.cmd.cabbrev("Qa", "qa")
+vim.cmd.cabbrev("QA", "qa")
+vim.cmd.cabbrev("qA", "qa")
+vim.cmd.cabbrev("Wqa", "wqa")
+vim.cmd.cabbrev("WQa", "wqa")
+vim.cmd.cabbrev("WQA", "wqa")
+vim.cmd.cabbrev("wQA", "wqa")
+vim.cmd.cabbrev("wqA", "wqa")
+vim.cmd.cabbrev("wQa", "wqa")
 vim.cmd.cabbrev("X", "x")
 
 -- Add filetypes detaction
@@ -202,3 +212,19 @@ end, {
 })
 
 vim.cmd("packadd nvim.difftool")
+
+local custom_augroup = vim.api.nvim_create_augroup("CustomAugroup", {})
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = custom_augroup,
+	callback = function()
+		vim.api.nvim_set_hl(0, "String", { fg = "#15ff00" })
+		vim.api.nvim_set_hl(0, "Type", { fg = "#00ffd5" })
+		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#00ffd5" })
+		vim.api.nvim_set_hl(0, "Pmenu", {}) -- Clear
+
+		-- SQL has no LSP, so we rely on syntax highlight
+		vim.api.nvim_set_hl(0, "@attribute.sql", { fg = "#ff8000" })
+		vim.api.nvim_set_hl(0, "@keyword.operator.sql", { fg = "#ff66cc" })
+		vim.api.nvim_set_hl(0, "@keyword.sql", { fg = "#ff66cc" })
+	end,
+})
