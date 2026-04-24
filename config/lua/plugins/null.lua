@@ -17,6 +17,14 @@ nls.setup({
 		-- Lua
 		nls.builtins.formatting.stylua,
 		nls.builtins.formatting.gleam_format,
+		nls.builtins.formatting.gofmt.with({
+			condition = function()
+				-- Only use gofmt if gofumpt does not exist.
+				return vim.fn.executable("gofumpt") == 0
+			end,
+		}),
+		nls.builtins.formatting.gofumpt,
+		nls.builtins.formatting.goimports,
 		nls.builtins.formatting.nixfmt,
 		nls.builtins.formatting.opentofu_fmt,
 		nls.builtins.diagnostics.selene.with({
