@@ -8,7 +8,6 @@ require("plugins.lualine")
 require("plugins.luasnip")
 require("plugins.null")
 require("plugins.treesitter")
-require("plugins.vim-illuminate")
 require("plugins.mdeval")
 require("plugins.dap")
 

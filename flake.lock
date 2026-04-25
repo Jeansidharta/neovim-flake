@@ -347,22 +347,6 @@
         "type": "github"
       }
     },
-    "nvim-illuminate_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748105647,
-        "narHash": "sha256-KqAJRCtDBG5xsvNsqkxoBdDckg02u4NBBreYQw7BphA=",
-        "owner": "RRethy",
-        "repo": "vim-illuminate",
-        "rev": "0d1e93684da00ab7c057410fecfc24f434698898",
-        "type": "github"
-      },
-      "original": {
-        "owner": "RRethy",
-        "repo": "vim-illuminate",
-        "type": "github"
-      }
-    },
     "nvim-lspconfig_plugin": {
       "flake": false,
       "locked": {
@@ -462,7 +446,6 @@
         "nixpkgs": "nixpkgs_2",
         "none-ls_plugin": "none-ls_plugin",
         "nvim-colorizer_plugin": "nvim-colorizer_plugin",
-        "nvim-illuminate_plugin": "nvim-illuminate_plugin",
         "nvim-lspconfig_plugin": "nvim-lspconfig_plugin",
         "nvim-notify_plugin": "nvim-notify_plugin",
         "nvim-web-devicons_plugin": "nvim-web-devicons_plugin",

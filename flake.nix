@@ -103,10 +103,6 @@
       url = "github:nvim-treesitter/nvim-treesitter";
       flake = false;
     };
-    nvim-illuminate_plugin = {
-      url = "github:RRethy/vim-illuminate";
-      flake = false;
-    };
     various-textobjs_plugin = {
       url = "github:chrisgrieser/nvim-various-textobjs";
       flake = false;
