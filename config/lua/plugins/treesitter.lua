@@ -3,9 +3,13 @@ local install_path = vim.env.TREESITTER_INSTALL_DIR
 vim.opt.runtimepath:append(install_path)
 
 -- Enable treesitter highlights
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
+vim.api.nvim_create_autocmd("BufReadPost", {
+	callback = function()
+		local parser = vim.treesitter.get_parser()
+		if parser ~= nil then
+			vim.treesitter.start()
+		end
+	end,
 })
 
 -- require("nvim-treesitter").install({
