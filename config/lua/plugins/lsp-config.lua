@@ -27,3 +27,6 @@ if vim.fn.executable("basedpyright") == 1 then
 elseif vim.fn.executable("pyright") == 1 then
 	vim.lsp.enable("pyright")
 end
+
+-- TODO: Finish this LSP later
+-- vim.lsp.enable("git_actions")
