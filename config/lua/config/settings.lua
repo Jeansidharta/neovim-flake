@@ -66,12 +66,12 @@ vim.fn.sign_define({
 
 -- ========== Search options ==========
 -- Options related to any editor search.
-vim.o.hlsearch = true -- Highlight items that match search
-vim.o.wrapscan = true -- Wrap search from the end of the document to the start
-vim.o.incsearch = true -- Match search pattern as the user is typing
+vim.o.hlsearch = true   -- Highlight items that match search
+vim.o.wrapscan = true   -- Wrap search from the end of the document to the start
+vim.o.incsearch = true  -- Match search pattern as the user is typing
 vim.o.ignorecase = true -- Will ignore case by default
-vim.o.smartcase = true -- If the user has mixed casing, then casing is relevat. Otherwise, ignore it
-vim.o.infercase = true -- basically smartcase but for keyword search in insert mode.
+vim.o.smartcase = true  -- If the user has mixed casing, then casing is relevat. Otherwise, ignore it
+vim.o.infercase = true  -- basically smartcase but for keyword search in insert mode.
 
 -- ========== Tab config ==========
 -- Size configurations:
@@ -165,3 +165,10 @@ vim.cmd.cabbrev("wQA", "wqa")
 vim.cmd.cabbrev("wqA", "wqa")
 vim.cmd.cabbrev("wQa", "wqa")
 vim.cmd.cabbrev("X", "x")
+
+-- ========== Diagnostics ==========
+vim.diagnostic.config({
+	virtual_lines = false,
+	virtual_text  = true,
+	float         = { border = "rounded", source = "if_many" },
+})
