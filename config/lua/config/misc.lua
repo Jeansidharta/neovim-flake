@@ -49,6 +49,14 @@ local custom_augroup = vim.api.nvim_create_augroup("CustomAugroup", {})
 vim.api.nvim_create_autocmd("ColorScheme", {
 	group = custom_augroup,
 	callback = function()
+		vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "#ccfff7" })
+		vim.api.nvim_set_hl(0, "Directory", { fg = "#00ffd5" })
+		vim.api.nvim_set_hl(0, "WarningMsg", { fg = "#ff8000" })
+		vim.api.nvim_set_hl(0, "qfWarning", { link = "WarningMsg" })
+		vim.api.nvim_set_hl(0, "qfNote", { fg = "#ff66cc" })
+		vim.api.nvim_set_hl(0, "qfError", { fg = "#ff0055" })
+		vim.api.nvim_set_hl(0, "QuickFixLine", { bg = "#261d26" })
+
 		vim.api.nvim_set_hl(0, "String", { fg = "#15ff00" })
 		vim.api.nvim_set_hl(0, "Type", { fg = "#00ffd5" })
 		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#00ffd5" })
@@ -58,5 +66,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "@attribute.sql", { fg = "#ff8000" })
 		vim.api.nvim_set_hl(0, "@keyword.operator.sql", { fg = "#ff66cc" })
 		vim.api.nvim_set_hl(0, "@keyword.sql", { fg = "#ff66cc" })
+
+		local custom_augroup_per_language = vim.api.nvim_create_augroup("CustomAugroupPerLanguage", { clear = true })
+		vim.api.nvim_create_autocmd("FileType", {
+			group = custom_augroup_per_language,
+			pattern = { "cs" },
+			callback = function()
+				-- They look bad with the c# roslyn lsp
+				vim.lsp.semantic_tokens.enable(false)
+			end
+		})
 	end,
 })
