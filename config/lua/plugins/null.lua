@@ -15,7 +15,6 @@ nls.setup({
 	sources = {
 		nls.builtins.code_actions.gitsigns,
 		-- Lua
-		nls.builtins.formatting.stylua,
 		nls.builtins.formatting.gleam_format,
 		nls.builtins.formatting.gofmt.with({
 			condition = function()

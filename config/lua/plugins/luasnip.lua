@@ -6,7 +6,7 @@ local i = ls.insert_node
 local types = require("luasnip.util.types")
 
 ls.config.set_config({
-	history = true,
+	history = false,
 	-- Update more often, :h events for more info.
 	updateevents = "TextChanged,TextChangedI",
 	ext_opts = {

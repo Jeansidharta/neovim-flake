@@ -3,6 +3,7 @@
 -- useful for the rest of the configureation
 require("config.settings")
 require("config.keymaps")
+require("config.misc")
 
 -- ========== plugins ==========
 -- Contains the configurations relevant to any installed plugins.
