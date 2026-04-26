@@ -45,6 +45,27 @@ end, {
 
 vim.cmd("packadd nvim.difftool")
 
+-- Enable inlay-hints automatically if supported
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	callback = function(ev)
+		local bufnr = ev.buf
+		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+		if not client then
+			return
+		end
+		if client.server_capabilities.inlayHintProvider then
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+		if client.server_capabilities.codeLensProvider then
+			vim.lsp.codelens.enable(true, { bufnr = bufnr })
+		end
+		if client.server_capabilities.inlineCompletionProvider then
+			vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+		end
+	end,
+})
+
 local custom_augroup = vim.api.nvim_create_augroup("CustomAugroup", {})
 vim.api.nvim_create_autocmd("ColorScheme", {
 	group = custom_augroup,
