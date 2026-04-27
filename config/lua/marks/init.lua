@@ -44,7 +44,7 @@ local function delete_mark(mark, bufnr)
 	buffer_marks[mark] = nil
 
 	-- Remove the mark.
-	vim.cmd('delmarks ' .. mark)
+	vim.cmd.delmarks(mark)
 end
 
 ---@param mark string
@@ -91,7 +91,7 @@ local function set_keymaps(bufnr)
 			end
 
 			register_mark(mark, bufnr)
-			vim.cmd('normal! m' .. mark)
+			vim.cmd.normal({ "m" .. mark, bang = true })
 		end,
 	})
 

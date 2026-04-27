@@ -15,7 +15,7 @@ require("marks")
 
 require("vim._core.ui2").enable({})
 
-vim.cmd([[colorscheme quiet]])
+vim.cmd.colorscheme("quiet")
 
 require("various-textobjs").setup({
 	keymaps = { useDefaults = true },

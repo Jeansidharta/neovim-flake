@@ -53,7 +53,7 @@ local function new_file_selector()
 	if open_win then
 		vim.api.nvim_win_close(open_win, true)
 	else
-		vim.cmd(vim.api.nvim_replace_termcodes("normal! :vsplit<CR>", true, true, true))
+		vim.cmd.vsplit()
 		vim.api.nvim_win_set_buf(0, commands_buf)
 	end
 end
@@ -93,8 +93,8 @@ local function turnSelectionIntoZkLink()
 				location.finish[2],
 				{ "[" .. title .. "](" .. vim.fs.basename(note.path) .. ")" }
 			)
-			vim.cmd([[write]])     -- Save current buffer. This is to make sure the recently placed link is permanently saved
-			vim.cmd([[edit ]] .. note.path) -- Open new note for editing
+			vim.cmd.write() -- Save current buffer. This is to make sure the recently placed link is permanently saved
+			vim.cmd.edit(note.path) -- Open new note for editing
 			-- Since the note wasn't saved in the filesystem (because of the dryRun) we have to
 			-- fill its content ourselves.
 			vim.api.nvim_buf_set_lines(0, 0, 0, false, vim.split(note.content, "\n"))
@@ -180,7 +180,7 @@ local function dap_set_breakpoint()
 end
 local function dap_list_breakpoints()
 	require("dap").list_breakpoints()
-	vim.cmd("copen")
+	vim.cmd.copent()
 end
 local function dap_hover()
 	require("dap.ui.widgets").hover(nil, { border = "rounded" })

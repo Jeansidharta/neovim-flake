@@ -4,7 +4,7 @@
 vim.g.mapleader = " "
 
 -- Enables filetype specific events/actions. No reason not to have it
-vim.cmd([[filetype plugin on]])
+vim.cmd.filetype("plugin", "on")
 
 -- Makes the jump list work in a more intuitive manner, where jumps are placed in a
 -- stack that can be traversed with the `<C-O>` and `<C-I>`
