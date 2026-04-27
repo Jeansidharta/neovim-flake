@@ -76,12 +76,17 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "qfWarning", { link = "WarningMsg" })
 		vim.api.nvim_set_hl(0, "qfNote", { fg = "#ff66cc" })
 		vim.api.nvim_set_hl(0, "qfError", { fg = "#ff0055" })
+		vim.api.nvim_set_hl(0, "SpellBad", { bg = "#660000" })
 		vim.api.nvim_set_hl(0, "QuickFixLine", { bg = "#261d26" })
 
 		vim.api.nvim_set_hl(0, "String", { fg = "#15ff00" })
 		vim.api.nvim_set_hl(0, "Type", { fg = "#00ffd5" })
-		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#00ffd5" })
 		vim.api.nvim_set_hl(0, "Pmenu", {}) -- Clear
+		vim.api.nvim_set_hl(0, "@type.builtin", { fg = "#00ffd5" })
+
+		vim.api.nvim_set_hl(0, "@lsp.typemod.keyword.documentation", { fg = "#ff66cc" })
+		vim.api.nvim_set_hl(0, "@lsp.mod.documentation", { link = "@lsp.typemod.keyword.documentation" })
+		-- vim.api.nvim_set_hl(0, "@comment.documentation", { link = "@lsp.typemod.keyword.documentation" })
 
 		-- SQL has no LSP, so we rely on syntax highlight
 		vim.api.nvim_set_hl(0, "@attribute.sql", { fg = "#ff8000" })
