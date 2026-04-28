@@ -101,7 +101,6 @@ local function turnSelectionIntoZkLink()
 		end
 	)
 end
-
 local function toggle_lsp_lines()
 	local is_lines_set = vim.diagnostic.config().virtual_lines
 	if is_lines_set then
@@ -224,6 +223,39 @@ utils.keymaps({
 			vim.lsp.buf.signature_help({ border = "rounded" })
 		end,
 		desc = "Signature help"
+	},
+	-- ========== Treesitter ==========
+	{
+		"<C-Up>",
+		"an",
+		desc = "Outter treesitter node",
+		mode = "v",
+		noremap = false,
+		remap = true
+	},
+	{
+		"<C-Down>",
+		"in",
+		desc = "inner treesitter node",
+		mode = "v",
+		noremap = false,
+		remap = true
+	},
+	{
+		"<C-Left>",
+		"[n",
+		desc = "previous treesitter node",
+		mode = "v",
+		noremap = false,
+		remap = true
+	},
+	{
+		"<C-Right>",
+		"]n",
+		desc = "next treesitter node",
+		mode = "v",
+		noremap = false,
+		remap = true
 	},
 	-- ========== Misc ==========
 	{ "<Tab>",      vim.cmd.write,                            desc = "Save buffer" },

@@ -129,13 +129,14 @@ local function tbl_find(f, l)
 end
 
 local function keymap(opts)
-	local mode = opts.mode or { "n" }
+	opts = vim.tbl_extend("force", { mode = "n", noremap = true, remap = false, silent = true }, opts or {})
+	local mode = opts.mode
 	local lhs = opts[1]
 	local rhs = opts[2]
-	local noremap = opts.noremap or true
-	local silent = opts.silent or true
-	local desc = opts.desc
-	vim.keymap.set(mode, lhs, rhs, { noremap = noremap, silent = silent, desc = desc })
+	opts.mode = nil
+	table.remove(opts, 2)
+	table.remove(opts, 1)
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 local function keymaps(optsArr)

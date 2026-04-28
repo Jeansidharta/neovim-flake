@@ -18,7 +18,10 @@ require("vim._core.ui2").enable({})
 vim.cmd.colorscheme("quiet")
 
 require("various-textobjs").setup({
-	keymaps = { useDefaults = true },
+	keymaps = {
+		useDefaults = true,
+		disabledDefaults = { "an", "in" },
+	},
 })
 
 -- Setup vim-notify
