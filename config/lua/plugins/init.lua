@@ -11,6 +11,8 @@ require("plugins.treesitter")
 require("plugins.mdeval")
 require("plugins.dap")
 
+require("treesitter-navigator").setup({})
+
 require("marks")
 
 require("vim._core.ui2").enable({})
