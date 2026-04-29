@@ -58,7 +58,7 @@ require("blink.cmp").setup({
 		default = { "lsp", "path", "snippets", "buffer" },
 		per_filetype = {
 			text = { "thesaurus" },
-			markdown = { "thesaurus", inherit_defaults = false },
+			markdown = { "thesaurus", "snippets", inherit_defaults = false },
 		},
 		providers = {
 			thesaurus = {
