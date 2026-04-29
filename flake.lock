@@ -453,7 +453,6 @@
         "plenary_plugin": "plenary_plugin",
         "snacks_plugin": "snacks_plugin",
         "theme": "theme",
-        "treesitter-navigator_plugin": "treesitter-navigator_plugin",
         "treesitter_plugin": "treesitter_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
         "vim-magnum_plugin": "vim-magnum_plugin",
@@ -510,18 +509,6 @@
         "repo": "configuration.nix",
         "type": "github"
       }
-    },
-    "treesitter-navigator_plugin": {
-      "flake": false,
-      "locked": {
-        "path": "./treesitter-navigator",
-        "type": "path"
-      },
-      "original": {
-        "path": "./treesitter-navigator",
-        "type": "path"
-      },
-      "parent": []
     },
     "treesitter_plugin": {
       "flake": false,

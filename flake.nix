@@ -17,10 +17,6 @@
     };
 
     # Plugins
-    treesitter-navigator_plugin = {
-      url = "./treesitter-navigator";
-      flake = false;
-    };
     fzf_plugin = {
       url = "github:ibhagwan/fzf-lua";
       flake = false;

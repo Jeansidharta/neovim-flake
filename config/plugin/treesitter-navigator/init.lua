@@ -12,12 +12,12 @@ local function to_visual_mode()
 	vim.api.nvim_feedkeys("gv", "n", true)
 end
 
----@return TSNode | nil
+---@return TSNode
 local function root_node()
 	local root = vim.treesitter.get_node({ pos = { 0, 0 } })
 
 	if root == nil then
-		return nil
+		assert(root ~= nil, "Failed to determine root node")
 	end
 
 	while root:parent() ~= nil do
@@ -29,10 +29,12 @@ local function root_node()
 end
 
 ---@param root TSNode
----@return TSNode | nil
+---@return TSNode
 local function node_in_visual_selection(root)
 	local start_pos = { unpack(vim.fn.getpos("v"), 2, 3) }
 	local end_pos = { unpack(vim.fn.getpos("."), 2, 3) }
+
+	-- Adjust be zero-based instead of one-based
 	start_pos[1] = start_pos[1] - 1
 	start_pos[2] = start_pos[2] - 1
 	end_pos[1] = end_pos[1] - 1
@@ -45,9 +47,7 @@ local function node_in_visual_selection(root)
 	end
 
 	local node = root:descendant_for_range(start_pos[1], start_pos[2], end_pos[1], end_pos[2])
-	if node == nil then
-		return nil
-	end
+	assert(node ~= nil, "Failed to determine current node from visual selection")
 
 	-- Find the highest parent that has the same range as our node
 	-- This is to prevent cases where the node is the only child of a parent,
@@ -55,6 +55,7 @@ local function node_in_visual_selection(root)
 	local parent = node:parent()
 	while parent ~= nil and vim.deep_equal({ parent:range() }, { node:range() }) do
 		node = parent
+		---@cast node -nil The lsp is being dumb here. The node cannot be nil
 		parent = node:parent()
 	end
 
@@ -66,6 +67,7 @@ local TextRange = (function()
 	---@field text string[]
 	---@field begin TextPos
 	---@field finish TextPos
+	---@diagnostic disable-next-line: redefined-local
 	local M = {}
 	M.__index = M
 
@@ -166,44 +168,43 @@ local function swap_text_ranges(text_from, text_to)
 	end
 end
 
-function M.swap_next()
-	local root = root_node()
-	assert(root ~= nil, "Failed to determine root node")
-
-	local cur = node_in_visual_selection(root)
-	assert(cur ~= nil, "Failed to determine current node")
-
-	local next = cur:next_named_sibling()
+---@param node TSNode
+---@return TSNode
+local function get_next_node(node)
+	local next = node:next_named_sibling()
 	if next == nil then
-		local parent = cur:parent()
+		local parent = node:parent()
 		assert(parent ~= nil, "Failed to determine parent node of current node")
 		next = parent:named_child(0)
 		assert(next ~= nil, "Failed to determine next node")
 	end
-
-	local cur_range = TextRange.from_tsnode(cur)
-	local next_range = TextRange.from_tsnode(next)
-	swap_text_ranges(cur_range, next_range)
-	next_range:set_as_selection()
+	return next
 end
 
-function M.swap_prev()
-	local root = root_node()
-	assert(root ~= nil, "Failed to determine root node")
-
-	local cur = node_in_visual_selection(root)
-	assert(cur ~= nil, "Failed to determine current node")
-
-	local previous = cur:prev_named_sibling()
-	if previous == nil then
-		local parent = cur:parent()
+---@param node TSNode
+---@return TSNode
+local function get_prev_node(node)
+	local prev = node:prev_named_sibling()
+	if prev == nil then
+		local parent = node:parent()
 		assert(parent ~= nil, "Failed to determine parent node of current node")
-		previous = parent:named_child(parent:named_child_count() - 1)
-		assert(previous ~= nil, "Failed to determine previous node")
+		prev = parent:named_child(parent:named_child_count() - 1)
+		assert(prev ~= nil, "Failed to determine previous node")
 	end
+	return prev
+end
+
+---@param get_target_node fun(node: TSNode): TSNode A function that will return the next node based on the current one
+function M.swap(get_target_node)
+	assert(get_target_node ~= nil and type(get_target_node) == "function",
+		"argument \"get_target_node\" is required and must be a function")
+
+	local root = root_node()
+	local cur = node_in_visual_selection(root)
+	local target = get_target_node(cur)
 
 	local cur_range = TextRange.from_tsnode(cur)
-	local previous_range = TextRange.from_tsnode(previous)
+	local previous_range = TextRange.from_tsnode(target)
 	swap_text_ranges(cur_range, previous_range)
 	previous_range:set_as_selection()
 end
@@ -211,10 +212,7 @@ end
 ---@param sort_func fun(a: TextRange, b: TextRange): boolean
 function M.sort(sort_func)
 	local root = root_node()
-	assert(root ~= nil, "Failed to determine root node")
-
 	local cur = node_in_visual_selection(root)
-	assert(cur ~= nil, "Failed to determine current node")
 
 	local children = cur:named_children()
 	while #children == 1 do
@@ -242,9 +240,12 @@ function M.sort(sort_func)
 end
 
 function M.create_user_commands()
-	vim.api.nvim_create_user_command("TSNavNext", M.swap_next, {})
-	vim.api.nvim_create_user_command("TSNavPrev", M.swap_prev, {})
-
+	vim.api.nvim_create_user_command("TSNavNext", function()
+		M.swap(get_next_node)
+	end, {})
+	vim.api.nvim_create_user_command("TSNavPrev", function()
+		M.swap(get_prev_node)
+	end, {})
 	vim.api.nvim_create_user_command("TSNavSort", function()
 		M.sort(TextRange.lt_text)
 	end, {})
