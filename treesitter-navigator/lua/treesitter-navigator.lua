@@ -4,6 +4,14 @@
 local M = {}
 M.__index = M
 
+local function to_normal_mode()
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-c>', true, false, true), 'n', true)
+end
+
+local function to_visual_mode()
+	vim.api.nvim_feedkeys("gv", "n", true)
+end
+
 ---@return TSNode | nil
 local function root_node()
 	local root = vim.treesitter.get_node({ pos = { 0, 0 } })
@@ -97,14 +105,43 @@ local TextRange = (function()
 	end
 
 	function M:set_as_selection()
-		-- Go to normal mode
-		vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<C-c>', true, false, true), 'n', true)
+		to_normal_mode()
 		vim.schedule(function()
 			vim.fn.setpos("'<", { 0, self.begin[1] + 1, self.begin[2] + 1, 0 })
 			vim.fn.setpos("'>", { 0, self.finish[1] + 1, self.finish[2], 0 })
-			-- Go to visual mode
-			vim.api.nvim_feedkeys("gv", "n", true)
+			to_visual_mode()
 		end)
+	end
+
+	---@param other TextRange
+	function M:cmp_text(other)
+		for i, text in pairs(self.text) do
+			if i > #other.text or text < other.text[i] then
+				return -1
+			elseif text > other.text[i] then
+				return 1
+			end
+		end
+		return 0
+	end
+
+	function M:gt_text(other)
+		return self:cmp_text(other) == 1
+	end
+
+	function M:lt_text(other)
+		return self:cmp_text(other) == -1
+	end
+
+	---Transforms the text property, which is a list of lines, into a single string
+	---Useful for debugging with `vim.print(range:text_to_string())`
+	---@return string
+	function M:text_to_string()
+		local res = self.text[1] or ""
+		for i = 2, #self.text, 1 do
+			res = res .. "\n" .. self.text[i]
+		end
+		return res
 	end
 
 	return M
@@ -127,8 +164,6 @@ local function swap_text_ranges(text_from, text_to)
 		last.begin[2] = last.begin[2] + diff[2]
 		last.finish[2] = last.finish[2] + diff[2]
 	end
-
-	text_to:set_as_selection()
 end
 
 function M.swap_next()
@@ -146,7 +181,10 @@ function M.swap_next()
 		assert(next ~= nil, "Failed to determine next node")
 	end
 
-	swap_text_ranges(TextRange.from_tsnode(cur), TextRange.from_tsnode(next))
+	local cur_range = TextRange.from_tsnode(cur)
+	local next_range = TextRange.from_tsnode(next)
+	swap_text_ranges(cur_range, next_range)
+	next_range:set_as_selection()
 end
 
 function M.swap_prev()
@@ -164,13 +202,57 @@ function M.swap_prev()
 		assert(previous ~= nil, "Failed to determine previous node")
 	end
 
-	swap_text_ranges(TextRange.from_tsnode(cur), TextRange.from_tsnode(previous))
+	local cur_range = TextRange.from_tsnode(cur)
+	local previous_range = TextRange.from_tsnode(previous)
+	swap_text_ranges(cur_range, previous_range)
+	previous_range:set_as_selection()
 end
 
-function M.setup(opts)
-	local opts = opts or {}
+---@param sort_func fun(a: TextRange, b: TextRange): boolean
+function M.sort(sort_func)
+	local root = root_node()
+	assert(root ~= nil, "Failed to determine root node")
+
+	local cur = node_in_visual_selection(root)
+	assert(cur ~= nil, "Failed to determine current node")
+
+	local children = cur:named_children()
+	while #children == 1 do
+		children = children[1]:named_children()
+	end
+	---@type TextRange[]
+	local children_range = vim.tbl_map(TextRange.from_tsnode, children)
+
+	---@type TextRange[] Shallow copy
+	local sorted_children_range = { unpack(children_range) }
+	table.sort(sorted_children_range, sort_func)
+
+	for i in ipairs(children_range) do
+		-- Invert i, so we iterate from last to first
+		-- Iterating backwards is important so our text changes don't interfere with each other
+		i = #children_range - i + 1
+
+		if children_range[i] ~= sorted_children_range[i] then
+			children_range[i]:replace_text(sorted_children_range[i].text)
+		end
+	end
+
+	-- Reset selection, in case it was lost during sorting
+	TextRange.from_tsnode(cur):set_as_selection()
+end
+
+function M.create_user_commands()
 	vim.api.nvim_create_user_command("TSNavNext", M.swap_next, {})
 	vim.api.nvim_create_user_command("TSNavPrev", M.swap_prev, {})
+
+	vim.api.nvim_create_user_command("TSNavSort", function()
+		M.sort(TextRange.lt_text)
+	end, {})
+	vim.api.nvim_create_user_command("TSNavSortRev", function()
+		M.sort(TextRange.gt_text)
+	end, {})
 end
+
+M.create_user_commands()
 
 return M
