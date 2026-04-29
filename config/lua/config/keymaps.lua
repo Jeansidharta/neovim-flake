@@ -259,6 +259,8 @@ utils.keymaps({
 	},
 	{ "<C-S-Right>", vim.cmd.TSNavNext,                        desc = "Swap current Treesitter node with the next",          mode = "v" },
 	{ "<C-S-Left>",  vim.cmd.TSNavPrev,                        desc = "Swap current Treesitter node with the previous",      mode = "v" },
+	{ "<C-s>",       vim.cmd.TSNavSort,                        desc = "Sort children of current Treesitter node",            mode = "v" },
+	{ "<C-S-s>",     vim.cmd.TSNavSortRev,                     desc = "Sort children of current Treesitter node in reverse", mode = "v" },
 	-- ========== Misc ==========
 	{ "<Tab>",       vim.cmd.write,                            desc = "Save buffer" },
 	{ "<leader>l",   vim.cmd.messages,                         desc = "Show messages" },
