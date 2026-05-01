@@ -55,10 +55,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			return
 		end
 		if client.server_capabilities.inlayHintProvider then
-			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+			-- This actually sucks to be enabled by default
+			vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
 		end
 		if client.server_capabilities.codeLensProvider then
-			vim.lsp.codelens.enable(true, { bufnr = bufnr })
+			-- This actually sucks to be enabled by default
+			vim.lsp.codelens.enable(false, { bufnr = bufnr })
 		end
 		if client.server_capabilities.inlineCompletionProvider then
 			vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
