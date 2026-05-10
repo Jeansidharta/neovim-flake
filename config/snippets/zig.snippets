@@ -38,5 +38,4 @@ snippet import
 snippet format
   pub fn format(self: @This(), writer: *std.Io.Writer) !void {
     try writer.print("{f}", .{ self });
-	try writer.flush();
   }

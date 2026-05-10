@@ -316,6 +316,32 @@ utils.keymaps({
 	{ "<Leader>;s",  dap_scopes,                               desc = "DAP: Show scopes" },
 	-- ========== outline ==========
 	{ "<leader>/",   require("outline").toggle,                desc = "Toggle outline" },
+
+	-- ========== Disable ===========
+	{ "<F1>",        function() end,                           mode = { "i", "n" } },
+	{ "<F2>",        function() end,                           mode = { "i", "n" } },
+	{ "<F3>",        function() end,                           mode = { "i", "n" } },
+	{ "<F4>",        function() end,                           mode = { "i", "n" } },
+	{ "<F5>",        function() end,                           mode = { "i", "n" } },
+	{ "<F6>",        function() end,                           mode = { "i", "n" } },
+	{ "<F7>",        function() end,                           mode = { "i", "n" } },
+	{ "<F8>",        function() end,                           mode = { "i", "n" } },
+	{ "<F9>",        function() end,                           mode = { "i", "n" } },
+	{ "<F10>",       function() end,                           mode = { "i", "n" } },
+	{ "<F11>",       function() end,                           mode = { "i", "n" } },
+	{ "<F12>",       function() end,                           mode = { "i", "n" } },
+	{ "<F13>",       function() end,                           mode = { "i", "n" } },
+	{ "<F14>",       function() end,                           mode = { "i", "n" } },
+	{ "<F15>",       function() end,                           mode = { "i", "n" } },
+	{ "<F16>",       function() end,                           mode = { "i", "n" } },
+	{ "<F17>",       function() end,                           mode = { "i", "n" } },
+	{ "<F18>",       function() end,                           mode = { "i", "n" } },
+	{ "<F19>",       function() end,                           mode = { "i", "n" } },
+	{ "<F20>",       function() end,                           mode = { "i", "n" } },
+	{ "<F21>",       function() end,                           mode = { "i", "n" } },
+	{ "<F22>",       function() end,                           mode = { "i", "n" } },
+	{ "<F23>",       function() end,                           mode = { "i", "n" } },
+	{ "<F24>",       function() end,                           mode = { "i", "n" } },
 })
 
 -- Forces neovim to add a jumplist entry whenever the user jumps more than
