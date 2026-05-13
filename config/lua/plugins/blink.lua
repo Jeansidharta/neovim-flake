@@ -1,6 +1,19 @@
 require("blink.cmp").setup({
 	keymap = {
 		preset = "super-tab",
+		-- Define this tab preset to remove the "snippet next" thingy
+		['<Tab>'] = {
+			function(cmp)
+				if cmp.snippet_active() then
+					return cmp.accept()
+				else
+					return cmp.select_and_accept()
+				end
+			end,
+			'fallback'
+		},
+		['<C-.>'] = { 'snippet_forward', 'fallback' },
+		['<C-,>'] = { 'snippet_backward', 'fallback' },
 		["<C-space>"] = {
 			"show",
 			"show_documentation",
