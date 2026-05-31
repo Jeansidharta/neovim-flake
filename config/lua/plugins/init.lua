@@ -29,16 +29,16 @@ require("notify").setup({ background_colour = "#000000" })
 -- The schedule_wrap is due to https://github.com/rcarriga/nvim-notify/issues/205
 vim.notify = vim.schedule_wrap(require("notify"))
 
-require("fzf-lua").setup({
-	winopts = {
-		fullscreen = true,
-	},
-	keymap = {
-		fzf = {
-			["ctrl-q"] = "select-all+accept",
-		},
-	},
-})
+-- require("fzf-lua").setup({
+-- 	winopts = {
+-- 		fullscreen = true,
+-- 	},
+-- 	keymap = {
+-- 		fzf = {
+-- 			["ctrl-q"] = "select-all+accept",
+-- 		},
+-- 	},
+-- })
 
 require("snacks").setup({
 	input = {},
@@ -47,24 +47,24 @@ require("snacks").setup({
 	},
 })
 
-require("fyler").setup({
-	integrations = {
-		icon_provider = "nvim_web_devicons",
-	},
-	views = {
-		finder = {
-			default_explorer = true,
-			win = {
-				kind = "float",
-				win_opts = {
-					number = true,
-					relativenumber = true,
-					signcolumn = "yes",
-				},
-			},
-		},
-	},
-})
+-- require("fyler").setup({
+-- 	integrations = {
+-- 		icon_provider = "nvim_web_devicons",
+-- 	},
+-- 	views = {
+-- 		finder = {
+-- 			default_explorer = true,
+-- 			win = {
+-- 				kind = "float",
+-- 				win_opts = {
+-- 					number = true,
+-- 					relativenumber = true,
+-- 					signcolumn = "yes",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- })
 
 require("atone").setup({
 	keymaps = {
@@ -89,6 +89,6 @@ require("fidget").setup({
 
 require("colorizer").setup({})
 
-require("zk").setup({})
+-- require("zk").setup({})
 
 require("outline").setup({})

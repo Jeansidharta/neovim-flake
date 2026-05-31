@@ -17,31 +17,31 @@
     };
 
     # Plugins
-    fzf_plugin = {
-      url = "github:ibhagwan/fzf-lua";
-      flake = false;
-    };
+    # fzf_plugin = {
+    #   url = "github:ibhagwan/fzf-lua";
+    #   flake = false;
+    # };
     snacks_plugin = {
       url = "github:folke/snacks.nvim";
       flake = false;
     };
-    fyler_plugin = {
-      url = "github:A7Lavinraj/fyler.nvim";
-      flake = false;
-    };
+    # fyler_plugin = {
+    #   url = "github:A7Lavinraj/fyler.nvim";
+    #   flake = false;
+    # };
     # Dependency for fyler.nvim
-    mini-icons_plugin = {
-      url = "github:echasnovski/mini.icons";
-      flake = false;
-    };
+    # mini-icons_plugin = {
+    #   url = "github:echasnovski/mini.icons";
+    #   flake = false;
+    # };
     neovim-dap_plugin = {
       url = "github:mfussenegger/nvim-dap";
       flake = false;
     };
-    nvim-web-devicons_plugin = {
-      url = "github:nvim-tree/nvim-web-devicons";
-      flake = false;
-    };
+    # nvim-web-devicons_plugin = {
+    #   url = "github:nvim-tree/nvim-web-devicons";
+    #   flake = false;
+    # };
     nvim-colorizer_plugin = {
       url = "github:catgoose/nvim-colorizer.lua";
       flake = false;
@@ -107,10 +107,10 @@
       url = "github:chrisgrieser/nvim-various-textobjs";
       flake = false;
     };
-    zk-nvim_plugin = {
-      url = "github:zk-org/zk-nvim";
-      flake = false;
-    };
+    # zk-nvim_plugin = {
+    #   url = "github:zk-org/zk-nvim";
+    #   flake = false;
+    # };
     outline_plugin = {
       url = "github:hedyhli/outline.nvim";
       flake = false;
@@ -172,7 +172,7 @@
             pkgs.bash-language-server
             pkgs.nixfmt
             pkgs.prettierd
-            pkgs.zk
+            # pkgs.zk
           ];
           lsps = [
             pkgs.rust-analyzer

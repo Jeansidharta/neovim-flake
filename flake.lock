@@ -104,38 +104,6 @@
         "type": "github"
       }
     },
-    "fyler_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1775381720,
-        "narHash": "sha256-zX0l3SnK/0HUZ8LhocmUlq3Yj6POHWeRQZdPcIzQC4Y=",
-        "owner": "A7Lavinraj",
-        "repo": "fyler.nvim",
-        "rev": "e87911e6c21d099225063f5aa672e00f6dbb5976",
-        "type": "github"
-      },
-      "original": {
-        "owner": "A7Lavinraj",
-        "repo": "fyler.nvim",
-        "type": "github"
-      }
-    },
-    "fzf_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779752992,
-        "narHash": "sha256-gvWorXIMZUPhH24BXqF3MyzEDUd+MVsqg5LOVmlTXiU=",
-        "owner": "ibhagwan",
-        "repo": "fzf-lua",
-        "rev": "fea9eedc6894c44d44cbb772a5cd11c93b82d7a1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ibhagwan",
-        "repo": "fzf-lua",
-        "type": "github"
-      }
-    },
     "git-signs_plugin": {
       "flake": false,
       "locked": {
@@ -213,22 +181,6 @@
       "original": {
         "owner": "jeansidharta",
         "repo": "mdeval.nvim",
-        "type": "github"
-      }
-    },
-    "mini-icons_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779199206,
-        "narHash": "sha256-Q61iFTDA2groQu3qMNJu0yuVnB6NtsGNihpGD5ppeuI=",
-        "owner": "echasnovski",
-        "repo": "mini.icons",
-        "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",
-        "type": "github"
-      },
-      "original": {
-        "owner": "echasnovski",
-        "repo": "mini.icons",
         "type": "github"
       }
     },
@@ -341,22 +293,6 @@
         "type": "github"
       }
     },
-    "nvim-web-devicons_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779834979,
-        "narHash": "sha256-pcU69LrhXFgXcvxbsBqLkUhgYEVGjMUDmEjaKZTSv+0=",
-        "owner": "nvim-tree",
-        "repo": "nvim-web-devicons",
-        "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nvim-tree",
-        "repo": "nvim-web-devicons",
-        "type": "github"
-      }
-    },
     "outline_plugin": {
       "flake": false,
       "locked": {
@@ -396,21 +332,17 @@
         "blink-cmp-words_plugin": "blink-cmp-words_plugin",
         "bufjump_plugin": "bufjump_plugin",
         "fidget_plugin": "fidget_plugin",
-        "fyler_plugin": "fyler_plugin",
-        "fzf_plugin": "fzf_plugin",
         "git-signs_plugin": "git-signs_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "lualine_plugin": "lualine_plugin",
         "luasnip_plugin": "luasnip_plugin",
         "mdeval_plugin": "mdeval_plugin",
-        "mini-icons_plugin": "mini-icons_plugin",
         "neovim-dap_plugin": "neovim-dap_plugin",
         "nixpkgs": "nixpkgs_2",
         "none-ls_plugin": "none-ls_plugin",
         "nvim-colorizer_plugin": "nvim-colorizer_plugin",
         "nvim-lspconfig_plugin": "nvim-lspconfig_plugin",
         "nvim-notify_plugin": "nvim-notify_plugin",
-        "nvim-web-devicons_plugin": "nvim-web-devicons_plugin",
         "outline_plugin": "outline_plugin",
         "plenary_plugin": "plenary_plugin",
         "snacks_plugin": "snacks_plugin",
@@ -418,8 +350,7 @@
         "treesitter_plugin": "treesitter_plugin",
         "various-textobjs_plugin": "various-textobjs_plugin",
         "vim-magnum_plugin": "vim-magnum_plugin",
-        "vim-radical_plugin": "vim-radical_plugin",
-        "zk-nvim_plugin": "zk-nvim_plugin"
+        "vim-radical_plugin": "vim-radical_plugin"
       }
     },
     "snacks_plugin": {
@@ -516,22 +447,6 @@
       "original": {
         "owner": "glts",
         "repo": "vim-radical",
-        "type": "github"
-      }
-    },
-    "zk-nvim_plugin": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1779121977,
-        "narHash": "sha256-cq76bVNyoK1Oi0d61Wa3B3iFvLzboozZaZlWBTJik5U=",
-        "owner": "zk-org",
-        "repo": "zk-nvim",
-        "rev": "bc3b39374b25fad977cecc936588cb060f15a773",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zk-org",
-        "repo": "zk-nvim",
         "type": "github"
       }
     }

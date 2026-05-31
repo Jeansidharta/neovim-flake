@@ -61,46 +61,46 @@ end
 -- Should be invoked while on a visual selection
 -- Will take the text selected and create a new zk note with that text as a title.
 -- The originally selected note will be replaced by a link to the note.
-local function turnSelectionIntoZkLink()
-	local zk = require("zk.api")
-	local title = utils.get_visual_selection_text()
-	if #title > 1 then
-		vim.notify("Cannot create note with a multi-line title", vim.log.levels.WARN)
-		return
-	end
-	---@diagnostic disable-next-line: cast-local-type
-	title = vim.trim(title[1])
-	local location = utils.get_visual_selection_position()
-	zk.new(
-	-- Path to the note. If nil, zk will create one itself.
-		nil,
-		-- dryRun makes sure the note is not created in the filesystem. This allows the user to change
-		-- their mind before actually saving the note.
-		{ title = title, dryRun = true },
-		function(err, note)
-			if err ~= nil then
-				vim.notify("Failed to create link", vim.log.levels.ERROR)
-				vim.print(err)
-				return
-			end
-			vim.notify("Created note " .. note.path)
-			-- Replace the selected text with the link
-			vim.api.nvim_buf_set_text(
-				location.buf,
-				location.start[1] - 1,
-				location.start[2] - 1,
-				location.finish[1] - 1,
-				location.finish[2],
-				{ "[" .. title .. "](" .. vim.fs.basename(note.path) .. ")" }
-			)
-			vim.cmd.write() -- Save current buffer. This is to make sure the recently placed link is permanently saved
-			vim.cmd.edit(note.path) -- Open new note for editing
-			-- Since the note wasn't saved in the filesystem (because of the dryRun) we have to
-			-- fill its content ourselves.
-			vim.api.nvim_buf_set_lines(0, 0, 0, false, vim.split(note.content, "\n"))
-		end
-	)
-end
+-- local function turnSelectionIntoZkLink()
+-- 	local zk = require("zk.api")
+-- 	local title = utils.get_visual_selection_text()
+-- 	if #title > 1 then
+-- 		vim.notify("Cannot create note with a multi-line title", vim.log.levels.WARN)
+-- 		return
+-- 	end
+-- 	---@diagnostic disable-next-line: cast-local-type
+-- 	title = vim.trim(title[1])
+-- 	local location = utils.get_visual_selection_position()
+-- 	zk.new(
+-- 	-- Path to the note. If nil, zk will create one itself.
+-- 		nil,
+-- 		-- dryRun makes sure the note is not created in the filesystem. This allows the user to change
+-- 		-- their mind before actually saving the note.
+-- 		{ title = title, dryRun = true },
+-- 		function(err, note)
+-- 			if err ~= nil then
+-- 				vim.notify("Failed to create link", vim.log.levels.ERROR)
+-- 				vim.print(err)
+-- 				return
+-- 			end
+-- 			vim.notify("Created note " .. note.path)
+-- 			-- Replace the selected text with the link
+-- 			vim.api.nvim_buf_set_text(
+-- 				location.buf,
+-- 				location.start[1] - 1,
+-- 				location.start[2] - 1,
+-- 				location.finish[1] - 1,
+-- 				location.finish[2],
+-- 				{ "[" .. title .. "](" .. vim.fs.basename(note.path) .. ")" }
+-- 			)
+-- 			vim.cmd.write() -- Save current buffer. This is to make sure the recently placed link is permanently saved
+-- 			vim.cmd.edit(note.path) -- Open new note for editing
+-- 			-- Since the note wasn't saved in the filesystem (because of the dryRun) we have to
+-- 			-- fill its content ourselves.
+-- 			vim.api.nvim_buf_set_lines(0, 0, 0, false, vim.split(note.content, "\n"))
+-- 		end
+-- 	)
+-- end
 local function toggle_lsp_lines()
 	local is_lines_set = vim.diagnostic.config().virtual_lines
 	if is_lines_set then
@@ -146,27 +146,27 @@ local function edit_register()
 	end)
 end
 
-local function toggle_fyler()
-	if vim.startswith(vim.api.nvim_buf_get_name(0), "fyler://") then
-		local old_cwd = vim.api.nvim_buf_get_name(0):gsub("^fyler://", "")
-		require("fyler").open({ cwd = vim.fs.dirname(old_cwd:gsub("(.+)/$", "%1")) })
-		return
-	end
-
-	local bufs = vim.iter(vim.api.nvim_list_bufs())
-		:filter(function(buf)
-			return vim.startswith(vim.api.nvim_buf_get_name(buf), "fyler://")
-		end)
-		:totable()
-
-	if vim.tbl_isempty(bufs) then
-		require("fyler").open({})
-	else
-		vim.iter(bufs):map(function(buf)
-			vim.api.nvim_buf_delete(buf, { force = true })
-		end)
-	end
-end
+-- local function toggle_fyler()
+-- 	if vim.startswith(vim.api.nvim_buf_get_name(0), "fyler://") then
+-- 		local old_cwd = vim.api.nvim_buf_get_name(0):gsub("^fyler://", "")
+-- 		require("fyler").open({ cwd = vim.fs.dirname(old_cwd:gsub("(.+)/$", "%1")) })
+-- 		return
+-- 	end
+--
+-- 	local bufs = vim.iter(vim.api.nvim_list_bufs())
+-- 		:filter(function(buf)
+-- 			return vim.startswith(vim.api.nvim_buf_get_name(buf), "fyler://")
+-- 		end)
+-- 		:totable()
+--
+-- 	if vim.tbl_isempty(bufs) then
+-- 		require("fyler").open({})
+-- 	else
+-- 		vim.iter(bufs):map(function(buf)
+-- 			vim.api.nvim_buf_delete(buf, { force = true })
+-- 		end)
+-- 	end
+-- end
 
 local function format_buffer()
 	vim.lsp.buf.format()
@@ -284,18 +284,18 @@ utils.keymaps({
 	-- ========== Lsp lines ==========
 	{ "<leader>dl",  toggle_lsp_lines,                         desc = "Toggle lsp_lines" },
 	-- ========== Fyler ==========
-	{ "-",           toggle_fyler,                             desc = "Toggle fyler.nvim" },
+	-- { "-",           toggle_fyler,                             desc = "Toggle fyler.nvim" },
 	-- ========== ZK: zettelkasten ==========
-	{ "<leader>zn",  vim.cmd.ZkNew,                            desc = "Create a new zk note" },
-	{ "<leader>zn",  turnSelectionIntoZkLink,                  desc = "New note with visual selection",                      mode = "v" },
+	-- { "<leader>zn",  vim.cmd.ZkNew,                            desc = "Create a new zk note" },
+	-- { "<leader>zn",  turnSelectionIntoZkLink,                  desc = "New note with visual selection",                      mode = "v" },
 	-- ========== fzf ==========
-	{ "<leader>ff",  require("fzf-lua").files,                 desc = "FZF Files" },
-	{ "<leader>fg",  require("fzf-lua").live_grep_native,      desc = "FZF Ripgrep" },
-	{ "<leader>fp",  require("fzf-lua").resume,                desc = "Resume FZF search" },
-	{ "<leader>f:",  require("fzf-lua").jumps,                 desc = "Resume FZF search" },
-	{ "<leader>fd",  require("fzf-lua").diagnostics_workspace, desc = "FZF Workspace Diagnostics" },
-	{ "<leader>fh",  require("fzf-lua").helptags,              desc = "FZF Help tags" },
-	{ "<leader>fb",  require("fzf-lua").builtin,               desc = "FZF Builtins" },
+	-- { "<leader>ff",  require("fzf-lua").files,                 desc = "FZF Files" },
+	-- { "<leader>fg",  require("fzf-lua").live_grep_native,      desc = "FZF Ripgrep" },
+	-- { "<leader>fp",  require("fzf-lua").resume,                desc = "Resume FZF search" },
+	-- { "<leader>f:",  require("fzf-lua").jumps,                 desc = "Resume FZF search" },
+	-- { "<leader>fd",  require("fzf-lua").diagnostics_workspace, desc = "FZF Workspace Diagnostics" },
+	-- { "<leader>fh",  require("fzf-lua").helptags,              desc = "FZF Help tags" },
+	-- { "<leader>fb",  require("fzf-lua").builtin,               desc = "FZF Builtins" },
 	-- ========== bufjump ==========
 	{ "<C-i>",       require("bufjump").forward,               desc = "Jump to the next buffer in the jump list" },
 	{ "<C-o>",       require("bufjump").backward,              desc = "Jump to the previous buffer in the jump list" },

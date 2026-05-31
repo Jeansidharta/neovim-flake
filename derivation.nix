@@ -10,7 +10,7 @@
   sqlite,
   extraPackages,
   git,
-  fzf,
+  # fzf,
   bat,
   delta,
   ripgrep,
@@ -29,7 +29,7 @@ writeShellApplication {
   runtimeInputs = [
     neovim
     git
-    fzf
+    # fzf
     bat
     delta
     ripgrep
@@ -43,7 +43,7 @@ writeShellApplication {
     # Provides a config file for prettierd
     PRETTIERD_DEFAULT_CONFIG = ./prettierrc.json;
     # For the zk plugin. This should be your ZK notebook directory
-    ZK_NOTEBOOK_DIR = "/home/sidharta/notes";
+    # ZK_NOTEBOOK_DIR = "/home/sidharta/notes";
   };
 
   text = ''
