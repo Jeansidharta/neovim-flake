@@ -86,6 +86,10 @@
       url = "github:nvimtools/none-ls.nvim";
       flake = false;
     };
+    blink-lib_plugin = {
+      url = "github:saghen/blink.lib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # This is a plugin, but wont have the plugin prefix because it has
     # to be handled separately, as it is a proper flake.
     blink = {
@@ -210,7 +214,7 @@
           base = lib.makeOverridable (final: pkgs.callPackage (import ./derivation.nix) final) {
             plugins = plugins_list;
             init_lua = ./config/init.lua;
-            extraPackages = [ ];
+            extraPackages = [];
           };
           simple = base.override (prev: {
             extraPackages = prev.extraPackages ++ misc-tools;
@@ -225,7 +229,6 @@
             extraPackages = prev.extraPackages ++ misc-tools ++ lsps ++ formatters;
           });
           default = with-global-lsps;
-
         }
       );
       devShell = forAllSystems (

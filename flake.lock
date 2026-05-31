@@ -74,6 +74,26 @@
         "type": "github"
       }
     },
+    "blink-lib_plugin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1780099343,
+        "narHash": "sha256-+cV+LgHcPqdwr2/QWFJ5xyCNhxiLb9Zxqqc/4TRYYng=",
+        "owner": "saghen",
+        "repo": "blink.lib",
+        "rev": "2cb62890cee636fe46722d03b7b2331e54fb3755",
+        "type": "github"
+      },
+      "original": {
+        "owner": "saghen",
+        "repo": "blink.lib",
+        "type": "github"
+      }
+    },
     "bufjump_plugin": {
       "flake": false,
       "locked": {
@@ -335,6 +355,7 @@
         "attone_plugin": "attone_plugin",
         "blink": "blink",
         "blink-cmp-words_plugin": "blink-cmp-words_plugin",
+        "blink-lib_plugin": "blink-lib_plugin",
         "bufjump_plugin": "bufjump_plugin",
         "fidget_plugin": "fidget_plugin",
         "fzf_plugin": "fzf_plugin",
