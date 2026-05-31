@@ -200,7 +200,6 @@
           misc-tools = [
             pkgs.ripgrep
             pkgs.unixtools.xxd
-            pkgs.marksman
           ];
         in
         rec {
