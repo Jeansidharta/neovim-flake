@@ -10,7 +10,7 @@
   sqlite,
   extraPackages,
   git,
-  # fzf,
+  fzf,
   bat,
   delta,
   ripgrep,
@@ -29,7 +29,7 @@ writeShellApplication {
   runtimeInputs = [
     neovim
     git
-    # fzf
+    fzf
     bat
     delta
     ripgrep

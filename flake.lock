@@ -19,7 +19,9 @@
     "blink": {
       "inputs": {
         "blink-lib": "blink-lib",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1780162999,
@@ -101,6 +103,22 @@
       "original": {
         "owner": "j-hui",
         "repo": "fidget.nvim",
+        "type": "github"
+      }
+    },
+    "fzf_plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779752992,
+        "narHash": "sha256-gvWorXIMZUPhH24BXqF3MyzEDUd+MVsqg5LOVmlTXiU=",
+        "owner": "ibhagwan",
+        "repo": "fzf-lua",
+        "rev": "fea9eedc6894c44d44cbb772a5cd11c93b82d7a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ibhagwan",
+        "repo": "fzf-lua",
         "type": "github"
       }
     },
@@ -201,19 +219,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1779560665,
-        "narHash": "sha256-NpH8iEQ5JHv/BtUuzTEXUMDxPLetCDzIv4OxL8H7Kps=",
-        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.05pre1004030.64c08a7ca051/nixexprs.tar.xz"
-      },
-      "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1779560665,
         "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
@@ -332,13 +337,14 @@
         "blink-cmp-words_plugin": "blink-cmp-words_plugin",
         "bufjump_plugin": "bufjump_plugin",
         "fidget_plugin": "fidget_plugin",
+        "fzf_plugin": "fzf_plugin",
         "git-signs_plugin": "git-signs_plugin",
         "indent-blankline_plugin": "indent-blankline_plugin",
         "lualine_plugin": "lualine_plugin",
         "luasnip_plugin": "luasnip_plugin",
         "mdeval_plugin": "mdeval_plugin",
         "neovim-dap_plugin": "neovim-dap_plugin",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "none-ls_plugin": "none-ls_plugin",
         "nvim-colorizer_plugin": "nvim-colorizer_plugin",
         "nvim-lspconfig_plugin": "nvim-lspconfig_plugin",

@@ -17,10 +17,10 @@
     };
 
     # Plugins
-    # fzf_plugin = {
-    #   url = "github:ibhagwan/fzf-lua";
-    #   flake = false;
-    # };
+    fzf_plugin = {
+      url = "github:ibhagwan/fzf-lua";
+      flake = false;
+    };
     snacks_plugin = {
       url = "github:folke/snacks.nvim";
       flake = false;
@@ -90,6 +90,7 @@
     # to be handled separately, as it is a proper flake.
     blink = {
       url = "github:Saghen/blink.cmp";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     blink-cmp-words_plugin = {
       url = "github:archie-judd/blink-cmp-words";
