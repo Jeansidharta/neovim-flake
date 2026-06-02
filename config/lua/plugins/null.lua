@@ -50,7 +50,6 @@ nls.setup({
 				"markdown.mdx",
 				"graphql",
 				"handlebars",
-				"astro",
 			},
 		}),
 	},
