@@ -87,13 +87,13 @@
       flake = false;
     };
     blink-lib_plugin = {
-      url = "github:saghen/blink.lib";
+      url = "github:saghen/blink.lib/41bc1199dd1f5f0687efbd522061b22002c2d4c5";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # This is a plugin, but wont have the plugin prefix because it has
     # to be handled separately, as it is a proper flake.
     blink = {
-      url = "github:Saghen/blink.cmp";
+      url = "github:Saghen/blink.cmp/d2c4d170ad51e5116da7b19f2426f3b6e318161d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     blink-cmp-words_plugin = {
@@ -214,7 +214,7 @@
           base = lib.makeOverridable (final: pkgs.callPackage (import ./derivation.nix) final) {
             plugins = plugins_list;
             init_lua = ./config/init.lua;
-            extraPackages = [];
+            extraPackages = [ ];
           };
           simple = base.override (prev: {
             extraPackages = prev.extraPackages ++ misc-tools;
