@@ -24,11 +24,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1780944076,
-        "narHash": "sha256-0doHz8JpWqezBmvO6f4ndfJMd+CEaURAUlnNQjle2GM=",
+        "lastModified": 1781434631,
+        "narHash": "sha256-a8XJ3dt8g1C3F8fWR4GghuhBASlZH1oeyvJPJMNxH1c=",
         "owner": "Saghen",
         "repo": "blink.cmp",
-        "rev": "b02ac65634bdb8af2dcc4eb6c807c060e1e15ae6",
+        "rev": "05fd5da399a9e3a559ba2585d70c17a8f50a4471",
         "type": "github"
       },
       "original": {
@@ -399,11 +399,11 @@
     "theme": {
       "locked": {
         "dir": "theming",
-        "lastModified": 1781277284,
-        "narHash": "sha256-6B5SUkeoGDsxhgJnce5BDFJ+7ut6cxdPsc2rT+Oi4ck=",
+        "lastModified": 1781396297,
+        "narHash": "sha256-EMGfgw3tHm2f5e40YwIIsxR92+qAixb28dgZGs48h0k=",
         "owner": "jeansidharta",
         "repo": "configuration.nix",
-        "rev": "b3dc996bc96b1cb15068eb82b75dde405d318553",
+        "rev": "0251d5feaa8c35c27d52b63c8d473f979e007ee0",
         "type": "github"
       },
       "original": {
