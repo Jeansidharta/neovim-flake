@@ -284,7 +284,7 @@ utils.keymaps({
 	-- ========== Lsp lines ==========
 	{ "<leader>dl",  toggle_lsp_lines,                         desc = "Toggle lsp_lines" },
 	-- ========== Fyler ==========
-	-- { "-",           toggle_fyler,                             desc = "Toggle fyler.nvim" },
+	{ "-",           function() vim.cmd.edit("%:h") end,       desc = "Open netwr on file dir" },
 	-- ========== ZK: zettelkasten ==========
 	-- { "<leader>zn",  vim.cmd.ZkNew,                            desc = "Create a new zk note" },
 	-- { "<leader>zn",  turnSelectionIntoZkLink,                  desc = "New note with visual selection",                      mode = "v" },
