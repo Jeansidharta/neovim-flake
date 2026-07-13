@@ -22,7 +22,9 @@ vim.lsp.enable("qmlls")
 vim.lsp.enable("zls")
 vim.lsp.enable("openscad_ls")
 
-if vim.fn.executable("basedpyright") == 1 then
+if vim.fn.executable("pyrefly") == 1 then
+	vim.lsp.enable("pyrefly")
+elseif vim.fn.executable("basedpyright") == 1 then
 	vim.lsp.enable("basedpyright")
 elseif vim.fn.executable("pyright") == 1 then
 	vim.lsp.enable("pyright")
