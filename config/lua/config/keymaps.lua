@@ -169,7 +169,7 @@ end
 -- end
 
 local function format_buffer()
-	vim.lsp.buf.format()
+	vim.lsp.buf.format({ timeout_ms = 5000 })
 	-- For some reason, format will sometimes disable diagnostic?
 	vim.diagnostic.enable(vim.diagnostic.is_enabled())
 end
