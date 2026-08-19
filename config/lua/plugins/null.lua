@@ -25,7 +25,7 @@ nls.setup({
 		nls.builtins.formatting.gofumpt,
 		nls.builtins.formatting.goimports,
 		nls.builtins.formatting.nixfmt,
-		nls.builtins.formatting.black.with({ timeout = 5000 }),
+		--nls.builtins.formatting.black.with({ timeout = 5000 }),
 		nls.builtins.formatting.opentofu_fmt,
 		nls.builtins.diagnostics.selene.with({
 			condition = function(utils)

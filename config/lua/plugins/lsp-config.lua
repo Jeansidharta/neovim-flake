@@ -29,6 +29,8 @@ elseif vim.fn.executable("basedpyright") == 1 then
 	vim.lsp.enable("basedpyright")
 elseif vim.fn.executable("pyright") == 1 then
 	vim.lsp.enable("pyright")
+elseif vim.fn.executable("ruff") == 1 then
+	vim.lsp.enable("ruff")
 end
 
 -- TODO: Finish this LSP later
