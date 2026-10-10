@@ -6,6 +6,11 @@
 
     theme.url = "github:jeansidharta/configuration.nix?dir=theming";
 
+    neovim-nightly = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Libraries
     plenary_plugin = {
       url = "github:nvim-lua/plenary.nvim";
@@ -212,6 +217,7 @@
             plugins = plugins_list;
           };
           base = lib.makeOverridable (final: pkgs.callPackage (import ./derivation.nix) final) {
+            neovim = inputs.neovim-nightly.packages.${pkgs.stdenv.hostPlatform.system}.default;
             plugins = plugins_list;
             init_lua = ./config/init.lua;
             extraPackages = [ ];
