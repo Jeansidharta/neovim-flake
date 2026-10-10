@@ -20,7 +20,37 @@ vim.cmd.colorscheme("quiet")
 require("various-textobjs").setup({
 	keymaps = {
 		useDefaults = true,
-		disabledDefaults = { "an", "in" },
+		disabledDefaults = {
+			-- "indentation",
+			-- "restOfIndentation",
+			-- "greedyOuterIndentation",
+			-- "subword",
+			"toNextClosingBracket",
+			"anyBracket",
+			"anyQuote",
+			"toNextQuotationMark",
+			"restOfParagraph",
+			"entireBuffer",
+			"nearEoL",
+			"lineCharacterwise",
+			"column",
+			"value",
+			"key",
+			-- "url",
+			-- "number",
+			"diagnostic",
+			"closedFold",
+			"chainMember",
+			"visibleInWindow",
+			"restOfWindow",
+			"lastChange",
+			"notebookCell",
+			"emoji",
+			"argument",
+			"filepath",
+			"color",
+			"doubleSquareBrackets",
+		}
 	},
 })
 
