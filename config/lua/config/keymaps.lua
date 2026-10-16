@@ -297,10 +297,7 @@ utils.keymaps({
 	{ "aI",         '<cmd>lua require("various-textobjs").indentation("outer", "outer")<CR>', mode = { "o", "x" } },
 	{ "as",         '<cmd>lua require("various-textobjs").subword("outer")<CR>',              mode = { "o", "x" } },
 	{ "is",         '<cmd>lua require("various-textobjs").subword("inner")<CR>',              mode = { "o", "x" } },
-	{ "an",         '<cmd>lua require("various-textobjs").number("outer")<CR>',               mode = { "o", "x" } },
-	{ "in",         '<cmd>lua require("various-textobjs").number("inner")<CR>',               mode = { "o", "x" } },
 	{ "L",          '<cmd>lua require("various-textobjs").url()<CR>',                         mode = { "o", "x" } },
-	-- ========== fzf ==========
 	-- ========== fzf ==========
 	{ "<leader>ff", require("fzf-lua").files,                                                 desc = "FZF Files" },
 	{ "<leader>fg", require("fzf-lua").live_grep_native,                                      desc = "FZF Ripgrep" },
